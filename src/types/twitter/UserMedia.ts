@@ -21,7 +21,8 @@
 // });
 
 // VARIBLES :
-// '{"userId":"843157717611089920",
+// variables={
+// "userId":"843157717611089920",
 // "count":20,
 // "includePromotedContent":false,
 // "withDownvotePerspective":false,
@@ -30,7 +31,10 @@
 // "withClientEventToken":false,
 // "withBirdwatchNotes":false,
 // "withVoice":true,
-// "withV2Timeline":true}&features={"blue_business_profile_image_shape_enabled":false,
+// "withV2Timeline":true
+// }
+// &features={
+// "blue_business_profile_image_shape_enabled":false,
 // "responsive_web_graphql_exclude_directive_enabled":true,
 // "verified_phone_label_enabled":false,
 // "responsive_web_graphql_timeline_navigation_enabled":true,
@@ -49,9 +53,9 @@
 // "responsive_web_text_conversations_enabled":false,
 // "longform_notetweets_richtext_consumption_enabled":false,
 // "responsive_web_enhance_cards_enabled":false
-// }'
+// }
 
-export interface userMedia {
+export interface UserMedia {
   data: Data
 }
 

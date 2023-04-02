@@ -24,33 +24,37 @@
 // });
 
 // VARIABLES :
-// {"userIds":["843157717611089920",
+// variables={
+// "userIds":["843157717611089920",
 // "1270649793048649728",
-// "1540235765317246976"]}&features={"blue_business_consumption_api_enabled":true,
-// "responsive_web_graphql_timeline_navigation_enabled":true}
+// "1540235765317246976"]
+// }
+// &features={
+// "blue_business_consumption_api_enabled":true,
+// "responsive_web_graphql_timeline_navigation_enabled":true
+// }
 
-export interface allProfileVerified {
-    data: Data
-  }
-  
-  export interface Data {
-    usersResults: UsersResult[]
-  }
-  
-  export interface UsersResult {
-    result: Result
-  }
-  
-  export interface Result {
-    __typename: string
-    is_blue_verified: boolean
-    has_nft_avatar: boolean
-    affiliates_highlighted_label: AffiliatesHighlightedLabel
-    rest_id: string
-    legacy: Legacy
-  }
-  
-  export interface AffiliatesHighlightedLabel {}
-  
-  export interface Legacy {}
-  
+export interface AllProfileVerified {
+  data: Data;
+}
+
+export interface Data {
+  usersResults: UsersResult[];
+}
+
+export interface UsersResult {
+  result: Result;
+}
+
+export interface Result {
+  __typename: string;
+  is_blue_verified: boolean;
+  has_nft_avatar: boolean;
+  affiliates_highlighted_label: AffiliatesHighlightedLabel;
+  rest_id: string;
+  legacy: Legacy;
+}
+
+export interface AffiliatesHighlightedLabel {}
+
+export interface Legacy {}

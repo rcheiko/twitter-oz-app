@@ -24,40 +24,39 @@
 // });
 
 // VARIABLES :
-// '{"screen_name":"ZeratoR"}' ======= // screen_name = username of the profile you want to get the spotlight of
+// "screen_name":"ZeratoR" ======= // screen_name = username of the profile you want to get the spotlight of
 
-export interface ProfilSpotlight {
-    data: Data
-  }
-  
-  export interface Data {
-    user_result_by_screen_name: UserResultByScreenName
-  }
-  
-  export interface UserResultByScreenName {
-    result: Result
-    id: string
-  }
-  
-  export interface Result {
-    __typename: string
-    legacy: Legacy
-    rest_id: string
-    profilemodules: Profilemodules
-    id: string
-  }
-  
-  export interface Legacy {
-    blocking: boolean
-    blocked_by: boolean
-    protected: boolean
-    following: boolean
-    followed_by: boolean
-    name: string
-    screen_name: string
-  }
-  
-  export interface Profilemodules {
-    v1: any[]
-  }
-  
+export interface ProfileSpotlight {
+  data: Data;
+}
+
+export interface Data {
+  user_result_by_screen_name: UserResultByScreenName;
+}
+
+export interface UserResultByScreenName {
+  result: Result;
+  id: string;
+}
+
+export interface Result {
+  __typename: string;
+  legacy: Legacy;
+  rest_id: string;
+  profilemodules: Profilemodules;
+  id: string;
+}
+
+export interface Legacy {
+  blocking: boolean;
+  blocked_by: boolean;
+  protected: boolean;
+  following: boolean;
+  followed_by: boolean;
+  name: string;
+  screen_name: string;
+}
+
+export interface Profilemodules {
+  v1: any[];
+}
