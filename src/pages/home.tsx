@@ -1,17 +1,23 @@
-import { useEffect, useState } from "react";
 import { ProfileConnectedType } from "../types/twitter/profileConnected/ProfileConnected";
-import { client } from "../apollo/client";
-import { GET_PROFILE_CONNECTED } from "../apollo/global/queries";
+import { GET_PROFILE_CONNECTED, GET_RECOMMENDATION } from "../apollo/global/queries";
 import { useQuery } from "@apollo/client";
+import { ProfileSpotlightType } from "../types/twitter/ProfileSpotlight";
+import { GET_PROFILE_SPOTLIGHT } from "../apollo/profile/queries";
+import { RecommendationArray } from "../types/twitter/Recommendation";
 
 
 
 
 export default function Home() {
-  // const [data, setData] = useState<null | Settings>(null);
 
   const { data: { ProfileConnected } = { } } = useQuery<{ProfileConnected: ProfileConnectedType}>(GET_PROFILE_CONNECTED)
-  console.log(ProfileConnected);
+  console.log("ProfileConnected: ", ProfileConnected);
+
+  const { data : { ProfileSpotlight } = { } } = useQuery<{ProfileSpotlight: ProfileSpotlightType}>(GET_PROFILE_SPOTLIGHT)
+  console.log("ProfileSpotlight: ", ProfileSpotlight);
+
+  const { data : { Recommendation } = { } } = useQuery<{Recommendation: RecommendationArray}>(GET_RECOMMENDATION)
+  console.log("Recommandation: ", Recommendation);
 
   return (
     <div>

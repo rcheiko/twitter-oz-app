@@ -28,12 +28,12 @@ VARIABLES :
 "screen_name":"ZeratoR" ======= // screen_name = username of the profile you want to get the spotlight of
 */
 
-export interface ProfileSpotlight {
+export interface ProfileSpotlightType {
   data: Data;
 }
 
 export interface Data {
-  user_result_by_screen_name: UserResultByScreenName;
+  user_result: UserResultByScreenName;
 }
 
 export interface UserResultByScreenName {

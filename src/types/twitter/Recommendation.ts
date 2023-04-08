@@ -42,9 +42,9 @@ VARIABLES :
   ext=mediaStats,highlightedLabel,hasNftAvatar,voiceInfo,birdwatchPivot,enrichments,superFollowMetadata,unmentionInfo,editControl,vibe
 */
 
-export type RecommandationArray = Recommandation[]
+export type RecommendationArray = Recommendation[]
 
-export interface Recommandation {
+export interface Recommendation {
   token: string
   user: User
   user_id: string
