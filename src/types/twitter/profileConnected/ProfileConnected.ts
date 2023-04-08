@@ -19,7 +19,7 @@
   "credentials": "include"
 });
 */
-export interface AllProfileConnected {
+export interface ProfileConnectedType {
   users: Array<{
     avatar_image_url: string;
     is_auth_valid: boolean;

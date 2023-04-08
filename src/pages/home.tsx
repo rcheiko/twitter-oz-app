@@ -1,26 +1,17 @@
 import { useEffect, useState } from "react";
-import { Settings } from "../types/twitter/Settings";
+import { ProfileConnectedType } from "../types/twitter/profileConnected/ProfileConnected";
+import { client } from "../apollo/client";
+import { GET_PROFILE_CONNECTED } from "../apollo/global/queries";
+import { useQuery } from "@apollo/client";
+
+
+
 
 export default function Home() {
-  const [data, setData] = useState<null | Settings>(null);
+  // const [data, setData] = useState<null | Settings>(null);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/settings")
-      .then((res) => res.json())
-      .then((data: Settings) => {
-        setData(data);
-        console.log("DATA :", data);
-        data.
-      })
-  }, []);
-
-  if (!data) {
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
-  }
+  const { data: { ProfileConnected } = { } } = useQuery<{ProfileConnected: ProfileConnectedType}>(GET_PROFILE_CONNECTED)
+  console.log(ProfileConnected);
 
   return (
     <div>

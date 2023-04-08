@@ -36,7 +36,7 @@ variables={
 }
 */
 
-export interface AllProfileVerified {
+export interface ProfileVerifiedType {
   data: Data;
 }
 

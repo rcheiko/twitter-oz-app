@@ -25,3 +25,6 @@ dist-ssr
 
 # Config vscode file
 .vscode
+
+#environment variable
+.env
