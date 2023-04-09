@@ -55,7 +55,7 @@ variables={
 }
 */
 
-export interface UserTweet {
+export interface UserTweetType {
   data: Data;
 }
 
