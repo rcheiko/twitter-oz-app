@@ -10,12 +10,21 @@ import {
   gql,
 } from "@apollo/client";
 import { client } from "./apollo/client";
+import Sidebar from "./components/sidebar";
+
+const wrapElement = (child: React.ReactNode) =>
+  <>
+    {/* <NotificationRoot> */}
+      <Sidebar />
+      {child}
+    {/* </NotificationRoot> */}
+  </>
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
-    errorElement: <ErrorPage />,
+    element: wrapElement(<Home />),
+    errorElement: wrapElement(<ErrorPage />),
   },
 ]);
 
