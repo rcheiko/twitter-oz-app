@@ -16,10 +16,8 @@ import Notifications from "./pages/notifications";
 
 const wrapElement = (child: React.ReactNode) => (
   <>
-    {/* <NotificationRoot> */}
     <Sidebar />
     {child}
-    {/* </NotificationRoot> */}
   </>
 )
 
