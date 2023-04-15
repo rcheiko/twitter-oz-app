@@ -7,8 +7,16 @@ import { RecommendationArray } from "../types/twitter/Recommendation"
 import { HomeTimelineType } from "../types/twitter/HomeTimeline"
 import { UserTweetType } from "../types/twitter/UserTweet"
 import { useQuery } from "@apollo/client"
+import { Theme, useTheme } from "../theme"
+import { css } from "@emotion/react"
+
+export const dashboard = (theme: Theme) => css`
+
+`;
 
 export default function Dashboard() {
+  const theme = useTheme()
+
   const { data: { ProfileConnected } = { } } = useQuery<{ProfileConnected: ProfileConnectedType}>(GET_PROFILE_CONNECTED)
   console.log("ProfileConnected: ", ProfileConnected)
 
@@ -25,7 +33,7 @@ export default function Dashboard() {
   console.log("UserTweet: ", UserTweets)
 
   return (
-    <div>
+    <div css={dashboard(theme)}>
       <h1>Home</h1>
     </div>
   )

@@ -1,61 +1,118 @@
 /// <reference types="@emotion/react/types/css-prop" />
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./error-page";
-import Dashboard from "./pages/dashboard";
+import { getRouterRoutePath, Route } from "./path";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "./apollo/client";
-import Sidebar from "./components/sidebar";
-import { getRouterRoutePath, Route } from "./path";
+import { css, Global } from "@emotion/react";
+import { Theme, useTheme } from "./theme";
+import { breakpoints, globalStyle } from "./styles/global";
+import Dashboard from "./pages/dashboard";
 import Profile from "./pages/profile";
 import Messages from "./pages/messages";
 import Bookmarks from "./pages/bookmarks";
 import Settings from "./pages/settings";
 import Notifications from "./pages/notifications";
+import ErrorPage from "./error-page";
+import Sidebar from "./components/side-bar";
+import Rightbar from "./components/right-bar";
 
-const wrapElement = (child: React.ReactNode) => (
+export const positionStyle = (theme: Theme) => css`
+&.body {
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: auto;
+  overflow: hidden;
+  @media (max-width: ${breakpoints.md}) {
+    grid-template-columns: 15% 70% 15%;
+  }
+}
+`;
+
+const WrapElement = ({children}: HTMLAttributes<HTMLDivElement>) => {
+  const theme = useTheme()
+
+  return (
   <>
-    <Sidebar />
-    {child}
+    <Global styles={globalStyle(theme)} />
+    <div css={positionStyle(theme)} className="body">
+        <Sidebar />
+        {children}
+        <Rightbar />
+    </div>
   </>
-)
+  )
+}
 
 const router = createBrowserRouter([
   {
     path: getRouterRoutePath(Route.DASHBOARD),
-    element: wrapElement(<Dashboard />),
+    element: (
+      <WrapElement>
+        <Dashboard/>
+      </WrapElement>
+    ),
   },
   {
     path: getRouterRoutePath(Route.PROFILE),
-    element: wrapElement(<Profile />),
+    element: (
+      <WrapElement>
+        <Profile/>
+      </WrapElement>
+    ),
   },
   {
     path: getRouterRoutePath(Route.MESSAGES),
-    element: wrapElement(<Messages />),
+    element: (
+      <WrapElement>
+        <Messages />
+      </WrapElement>
+    ),
   },
   {
     path: getRouterRoutePath(Route.BOOKMARKS),
-    element: wrapElement(<Bookmarks />),
+    element: (
+      <WrapElement>
+        <Bookmarks />
+      </WrapElement>
+    ),
   },
   {
     path: getRouterRoutePath(Route.SETTINGS),
-    element: wrapElement(<Settings />),
+    element: (
+      <WrapElement>
+        <Settings />
+      </WrapElement>
+    ),
   },
   {
     path: getRouterRoutePath(Route.NOTIFICATIONS),
-    element: wrapElement(<Notifications />),
+    element: (
+      <WrapElement>
+        <Notifications />
+      </WrapElement>
+    ),
   },
   {
     path: "/*",
-    element: wrapElement(<ErrorPage />),
+    element: (
+      <WrapElement>
+        <ErrorPage />
+      </WrapElement>
+    ),
   },
 ])
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <RouterProvider router={router} />
-    </ApolloProvider>
-  </React.StrictMode>
-)
+const mount = document.createElement('div')
+mount.className = 'mount'
+
+ReactDOM
+  .createRoot(document.body.appendChild(mount))
+  .render(
+    <React.StrictMode>
+      <ApolloProvider client={client}>
+        <RouterProvider router={router} />
+      </ApolloProvider>
+    </React.StrictMode>
+  )
