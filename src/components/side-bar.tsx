@@ -5,62 +5,7 @@ import { breakpoints } from "../styles/global"
 import { Theme, toggleTheme, useTheme } from "../theme"
 import { Route, getRoutePath } from "../path"
 import twitter from '../assets/twitter-30.svg'
-
-export const styleSidebar = (theme: Theme) => css`
-  &.nav {
-    position: sticky;
-    top:0;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    align-items: center;
-
-    p {
-      display: none;
-    }
-
-    @media (min-width: ${breakpoints.md}) {
-      align-items: flex-end;
-      p {
-        display: inline;
-      }
-    }
-
-
-
-    a :first-of-type {
-      @media (min-width: ${breakpoints.md}) {
-        margin-right: 1rem;
-      }
-    }
-
-    > * {
-      @media (min-width: ${breakpoints.md}) {
-        width: 175px;
-      }
-
-      @media (min-width: ${breakpoints.lg}) {
-        width: 225px;
-      }
-
-      > * {
-        display: flex;
-
-        > * {
-          display: flex;
-          margin: 0.25rem 0;
-          padding: 1rem 1rem;
-    
-          &:hover {
-            border-radius: 2rem;
-            background-color: ${theme.colors.backgroundSecondary};
-          }
-        }
-      }
-    }
-  }
-`;
+import { styleSidebar } from "../styles/side"
 
 const themeToggleStyle = (theme: Theme) => css`
   &.theme {
@@ -86,9 +31,9 @@ export default function Sidebar() {
     <div>
       <nav css={styleSidebar(theme)} className="nav">
         <div>
-          <div>
+          <NavLink to={getRoutePath(Route.DASHBOARD)}>
             <img src={twitter} alt="twitter logo" />
-          </div>
+          </NavLink>
         </div>
         <div>
           <NavLink to={getRoutePath(Route.DASHBOARD)}>

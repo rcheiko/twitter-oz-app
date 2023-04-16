@@ -1,15 +1,7 @@
 import { css } from "@emotion/react";
 import { breakpoints } from "../styles/global";
 import { Theme, useTheme } from "../theme"
-
-export const styleRightbar = (theme: Theme) => css`
-&.nav {
-  display: none;
-  @media (min-width: ${breakpoints.md}) {
-    display: none;
-  }
-}
-`;
+import { styleRightbar } from "../styles/side"
 
 export default function Rightbar() {
   const theme = useTheme();

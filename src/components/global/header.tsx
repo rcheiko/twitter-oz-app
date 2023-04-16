@@ -1,8 +1,7 @@
 import { css } from "@emotion/react";
 
-export const styleRightbar = () => css`
+const styleHeader = () => css`
 &.top-page {
-  padding: 0.25rem 1.5rem;
   position: sticky;
   top: 0;
   backdrop-filter: blur(12px);
@@ -27,7 +26,7 @@ export default function Header({ children, scrollToTop }: { children: React.Reac
   };
 
   return (
-    <div css={styleRightbar()} onClick={bottomToTop} className="top-page">
+    <div css={styleHeader()} onClick={bottomToTop} className="top-page">
       {children}
     </div>
   );

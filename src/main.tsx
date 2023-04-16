@@ -18,7 +18,7 @@ import ErrorPage from "./error-page";
 import Sidebar from "./components/side-bar";
 import Rightbar from "./components/right-bar";
 
-export const positionStyle = (theme: Theme) => css`
+const positionStyle = (theme: Theme) => css`
 &.body {
   display: grid;
   grid-template-columns: 15% 70% 15%;
@@ -107,11 +107,8 @@ const router = createBrowserRouter([
   },
 ])
 
-const mount = document.createElement('div')
-mount.className = 'mount'
-
 ReactDOM
-  .createRoot(document.body.appendChild(mount))
+  .createRoot(document.getElementById("root")!)
   .render(
     <React.StrictMode>
       <ApolloProvider client={client}>
