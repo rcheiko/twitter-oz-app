@@ -1,8 +1,6 @@
 import { css } from "@emotion/react";
-import { breakpoints } from "../../styles/global";
-import { Theme, useTheme } from "../../theme";
 
-export const styleRightbar = (theme: Theme) => css`
+export const styleRightbar = () => css`
 &.top-page {
   padding: 0.25rem 1.5rem;
   position: sticky;
@@ -19,9 +17,7 @@ export const styleRightbar = (theme: Theme) => css`
 }
 `;
 
-export default function Header({ children, scrollToTop }: { children: React.ReactNode, scrollToTop: boolean }) {
-  const theme = useTheme();
-  
+export default function Header({ children, scrollToTop }: { children: React.ReactNode, scrollToTop: boolean }) {  
   const bottomToTop = () => {
     if (scrollToTop) {
       window.scrollTo({
@@ -31,7 +27,7 @@ export default function Header({ children, scrollToTop }: { children: React.Reac
   };
 
   return (
-    <div css={styleRightbar(theme)} onClick={bottomToTop} className="top-page">
+    <div css={styleRightbar()} onClick={bottomToTop} className="top-page">
       {children}
     </div>
   );
