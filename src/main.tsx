@@ -24,7 +24,7 @@ export const positionStyle = (theme: Theme) => css`
   grid-template-columns: 15% 70% 15%;
   grid-template-rows: auto;
   @media (min-width: ${breakpoints.md}) {
-    grid-template-columns: 25% 50% 25%;
+    grid-template-columns: 30% 40% 30%;
   }
 
   > * {
