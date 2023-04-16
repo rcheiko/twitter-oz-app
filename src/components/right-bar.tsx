@@ -1,11 +1,11 @@
-import { css } from "@emotion/react"
+import { css } from "@emotion/react";
 import { breakpoints } from "../styles/global";
 import { Theme, useTheme } from "../theme"
 
 export const styleRightbar = (theme: Theme) => css`
 &.nav {
   display: none;
-  @media (max-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.md}) {
     display: none;
   }
 }

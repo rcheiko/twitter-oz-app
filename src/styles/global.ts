@@ -60,7 +60,6 @@ ul {
 button {
   color: ${theme.colors.white};
   cursor: pointer;
-  background-color: ${theme.colors.third};
   border: none;
 
   &:hover {

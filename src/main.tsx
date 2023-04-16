@@ -21,11 +21,14 @@ import Rightbar from "./components/right-bar";
 export const positionStyle = (theme: Theme) => css`
 &.body {
   display: grid;
-  grid-template-columns: 25% 50% 25%;
+  grid-template-columns: 15% 70% 15%;
   grid-template-rows: auto;
-  overflow: hidden;
-  @media (max-width: ${breakpoints.md}) {
-    grid-template-columns: 15% 70% 15%;
+  @media (min-width: ${breakpoints.md}) {
+    grid-template-columns: 25% 50% 25%;
+  }
+
+  > * {
+    border: 1px solid ${theme.colors.borderPrimary};
   }
 }
 `;

@@ -41,7 +41,7 @@ export const lightTheme = {
     tertiaryActive: colors.light_blue,
     inactive: '#D1D1D1',
     backgroundPrimary: colors.white,
-    backgroundSecondary: colors.eggshell,
+    backgroundSecondary: colors.lightgrey,
     backgroundTertiary: colors.eggshell,
     backgroundQuaternary: colors.eggshell,
     borderPrimary: '#eeeeee',

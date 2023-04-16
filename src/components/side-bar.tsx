@@ -1,27 +1,62 @@
 import { NavLink } from "react-router-dom"
-import { Theme, toggleTheme, useTheme } from "../theme"
+import { Bell, Bookmark, Home, Mail, User, Settings, Moon, Sun } from "react-feather"
 import { css } from "@emotion/react"
 import { breakpoints } from "../styles/global"
+import { Theme, toggleTheme, useTheme } from "../theme"
 import { Route, getRoutePath } from "../path"
-import { Bell, Bookmark, Home, Mail, User, Settings, Moon, Sun } from "react-feather"
 import twitter from '../assets/twitter-30.svg'
 
 export const styleSidebar = (theme: Theme) => css`
   &.nav {
+    position: sticky;
+    top:0;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    
-    a {
-      display: flex;
-      padding-bottom: 1rem;
+    width: 100%;
+
+    align-items: center;
+
+    p {
+      display: none;
     }
 
-    @media (max-width: ${breakpoints.md}) {
-      align-items: center;
-      
+    @media (min-width: ${breakpoints.md}) {
+      align-items: flex-end;
       p {
-        display: none;
+        display: inline;
+      }
+    }
+
+
+
+    a :first-of-type {
+      @media (min-width: ${breakpoints.md}) {
+        margin-right: 1rem;
+      }
+    }
+
+    > * {
+      @media (min-width: ${breakpoints.md}) {
+        width: 175px;
+      }
+
+      @media (min-width: ${breakpoints.lg}) {
+        width: 225px;
+      }
+
+      > * {
+        display: flex;
+
+        > * {
+          display: flex;
+          margin: 0.25rem 0;
+          padding: 1rem 1rem;
+    
+          &:hover {
+            border-radius: 2rem;
+            background-color: ${theme.colors.backgroundSecondary};
+          }
+        }
       }
     }
   }
@@ -29,7 +64,7 @@ export const styleSidebar = (theme: Theme) => css`
 
 const themeToggleStyle = (theme: Theme) => css`
   &.theme {
-    background-color: ${theme.colors.backgroundPrimary};
+    background-color: transparent;
   }
 `
 
@@ -48,35 +83,65 @@ export default function Sidebar() {
   const theme = useTheme();
 
   return (
-    <>
+    <div>
       <nav css={styleSidebar(theme)} className="nav">
-        {/* <img src={twitter} alt="twitter logo" /> */}
-        <NavLink to={getRoutePath(Route.DASHBOARD)}>
-          <Home />
-          <p>Home</p>
-        </NavLink>
-        <NavLink to={getRoutePath(Route.NOTIFICATIONS)}>
-          <Bell />
-          <p>Notifications</p>
-        </NavLink>
-        <NavLink to={getRoutePath(Route.MESSAGES)}>
-          <Mail />
-          <p>Message</p>
-        </NavLink>
-        <NavLink to={getRoutePath(Route.BOOKMARKS)}>
-          <Bookmark />
-          <p>Bookmarks</p>
-        </NavLink>
-        <NavLink to={getRoutePath(Route.PROFILE, { profileName: "Shokker" })}>
-          <User />
-          <p>Profile</p>
-        </NavLink>
-        <NavLink to={getRoutePath(Route.SETTINGS)}>
-          <Settings />
-          <p>Settings</p>
-        </NavLink>
-        <ThemeToggle />
+        <div>
+          <div>
+            <img src={twitter} alt="twitter logo" />
+          </div>
+        </div>
+        <div>
+          <NavLink to={getRoutePath(Route.DASHBOARD)}>
+            <div>
+              <Home />
+              <p>Home</p>
+            </div>
+          </NavLink>
+        </div>
+        <div>
+          <div>
+            <NavLink to={getRoutePath(Route.NOTIFICATIONS)}>
+              <Bell />
+              <p>Notifications</p>
+            </NavLink>
+          </div>
+        </div>
+        <div>
+          <div>
+          <NavLink to={getRoutePath(Route.MESSAGES)}>
+            <Mail />
+            <p>Message</p>
+          </NavLink>
+          </div>
+        </div>
+        <div>
+          <div>
+            <NavLink to={getRoutePath(Route.BOOKMARKS)}>
+                <Bookmark />
+                <p>Bookmarks</p>
+            </NavLink>
+          </div>
+        </div>
+        <div>
+          <div>
+            <NavLink to={getRoutePath(Route.PROFILE, { profileName: "Shokker" })}>
+              <User />
+              <p>Profile</p>
+            </NavLink>
+          </div>
+        </div>
+        <div>
+          <div>
+              <NavLink to={getRoutePath(Route.SETTINGS)}>
+                <Settings />
+                <p>Settings</p>
+              </NavLink>
+          </div>
+        </div>
+        <div>
+          <ThemeToggle />
+        </div>
       </nav>
-    </>
+    </div>
   )
 }
