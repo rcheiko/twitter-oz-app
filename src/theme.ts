@@ -16,7 +16,8 @@ export const colors = {
   eggshell: '#F8F8F8',
   seagrey: '#cddadf',
   lightgrey: '#e9ecef',
-  white: '#fff'
+  white: '#fff',
+  blur: 'rgba(247, 249, 249, 0.1)'
 }
 
 export const darkColors = {

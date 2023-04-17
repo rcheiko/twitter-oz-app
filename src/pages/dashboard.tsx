@@ -7,7 +7,7 @@ import { RecommendationArray } from "../types/twitter/Recommendation"
 import { HomeTimelineType } from "../types/twitter/HomeTimeline"
 import { UserTweetType } from "../types/twitter/UserTweet"
 import { useQuery } from "@apollo/client"
-import { Theme, useTheme } from "../theme"
+import { Theme, colors, useTheme } from "../theme"
 import { css } from "@emotion/react"
 import Header from "../components/global/header"
 import { useState } from "react"
@@ -60,7 +60,7 @@ const dashboard = (theme: Theme) => css`
     flex-grow: 1;
 
     :hover {
-      background-color: ${theme.colors.backgroundSecondary};
+      background-color: ${colors.blur}};
     }
   }
 }
