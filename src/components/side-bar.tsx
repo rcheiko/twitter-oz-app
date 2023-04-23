@@ -1,12 +1,11 @@
 import { NavLink } from "react-router-dom"
-import { Bell, Bookmark, Home, Mail, User, Settings, Moon, Sun, MoreHorizontal } from "react-feather"
+import { Bell, Bookmark, Home, Mail, User, Settings, Moon, Sun } from "react-feather"
 import { css } from "@emotion/react"
-import { breakpoints } from "../styles/global"
 import { Theme, toggleTheme, useTheme } from "../theme"
 import { Route, getRoutePath } from "../path"
 import twitter from '../assets/twitter-30.svg'
 import { styleSidebar } from "../styles/side"
-import avatar from "../assets/avatar.jpg"
+import { ListProfileConnected } from "./list-profile-connected"
 
 const themeToggleStyle = (theme: Theme) => css`
   &.theme {
@@ -71,24 +70,30 @@ export default function Sidebar() {
           </NavLink>
         </div>
         <ThemeToggle />
-        <div className="profile">
-            <img src={avatar} className="profilePicture" />
-            <div className="nameProfile">
-              <p>
-                {
-                  "Shokker".length > 12 ? "Shokker".slice(0, 12) + "..." : "Shokker"
-                }
-              </p>
-              <p className="text-grey">
-                {
-                  "@Shokker".length > 18 ? "@Shokker".slice(0, 18) + "..." : "@Shokker"
-                }
-              </p>
-            </div>
-            <div className="endProfile">
-              <MoreHorizontal />
-            </div>
-        </div>
+        {/* <Modal open={isOpenListProfile} onClose={() => SetIsOpenListProfile(false)}>
+          <div>Salut</div>
+        </Modal> */}
+        {/* <div onClick={() => SetIsOpenListProfile(!isOpenListProfile)} className="profile">
+          <img src={avatar} className="profilePicture" />
+          <div className="nameProfile">
+            <p>
+              {
+                "Shokker".length > 12 ? "Shokker".slice(0, 12) + "..." : "Shokker"
+              }
+            </p>
+            <p className="text-grey">
+              {
+                "@Shokker".length > 18 ? "@Shokker".slice(0, 18) + "..." : "@Shokker"
+              }
+            </p>
+          </div>
+          <div className="endProfile">
+            <MoreHorizontal />
+          </div>
+        </div> */}
+
+        <ListProfileConnected />
+
       </nav>
     </div>
   )
