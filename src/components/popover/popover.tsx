@@ -3,7 +3,7 @@ import * as RadixPopover from "@radix-ui/react-popover";
 import { ReactNode, useState } from "react";
 import { Theme, useTheme } from "../../theme";
 
-const styleDropdownMenu = (theme: Theme) => css`
+const stylePopOverMenu = (theme: Theme) => css`
 border-radius: 15px;
 background-color: ${theme.colors.backgroundTertiary};
 box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -19,7 +19,7 @@ span {
 }
 `
 
-export function Dropdown ({ children }: { children: ReactNode }) {
+export function PopOver ({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false)
   return (
     <RadixPopover.Root open={open} onOpenChange={setOpen}>
@@ -28,7 +28,7 @@ export function Dropdown ({ children }: { children: ReactNode }) {
   )
 }
 
-export function DropdownCard ({ children }: { children: ReactNode }) {
+export function PopOverCard ({ children }: { children: ReactNode }) {
   return (
     <RadixPopover.Trigger asChild>
       {children}
@@ -36,12 +36,12 @@ export function DropdownCard ({ children }: { children: ReactNode }) {
   )
 }
 
-export function DropdownMenu ({ children }: { children: ReactNode }) {
+export function PopOverMenu ({ children }: { children: ReactNode }) {
   const theme = useTheme()
 
   return (
     <RadixPopover.Portal>
-      <RadixPopover.Content sideOffset={5} align="start" css={styleDropdownMenu(theme)}>
+      <RadixPopover.Content sideOffset={5} align="start" css={stylePopOverMenu(theme)}>
         {children}
         <RadixPopover.Arrow />
       </RadixPopover.Content>
@@ -49,15 +49,7 @@ export function DropdownMenu ({ children }: { children: ReactNode }) {
   )
 }
 
-export function DropdownItem ({ children }: { children: ReactNode }) {
-  return (
-    <RadixPopover.Item className="DropdownMenuItem">
-      {children}
-    </RadixPopover.Item>
-  )
-}
-
-export function DropdownArrow () {
+export function PopOverArrow () {
   return (
     <RadixPopover.Arrow />
   )

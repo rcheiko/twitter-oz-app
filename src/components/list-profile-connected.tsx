@@ -2,7 +2,8 @@ import { CheckCircle, MoreHorizontal } from "react-feather"
 import avatar from "../assets/avatar.jpg"
 import { Theme, colors, useTheme } from '../theme';
 import { css } from '@emotion/react';
-import { Dropdown, DropdownCard, DropdownMenu } from './dropdown/dropdown';
+import { PopOver, PopOverCard, PopOverMenu } from './popover/popover';
+import Avatar from "./avatar";
 
 const avatarStyle = (theme: Theme) => css`
 padding: 5px 0;
@@ -13,13 +14,6 @@ padding: 5px 0;
   padding: 3px 8px;
 }
 
-.avatar-image {
-  width: 45px;
-  height: 45px;
-  border-radius: 100px;
-  margin-right: 20px;
-}
-
 .endProfile {
   flex: auto;
   display: flex;
@@ -28,6 +22,10 @@ padding: 5px 0;
 
 .margin {
   margin: 10px 0;
+}
+
+.margin-top {
+  margin-top: 10px;
 }
 
 .text-next-to-profile {
@@ -57,10 +55,10 @@ export function ListProfileConnected () {
   const theme = useTheme();
   
   return (
-    <Dropdown>
-      <DropdownCard>
+    <PopOver>
+      <PopOverCard>
         <div className="profile">
-          <img src={avatar} className="profilePicture" />
+          <Avatar src={avatar} />
           <div className="nameProfile">
             <p>
               {
@@ -77,12 +75,12 @@ export function ListProfileConnected () {
             <MoreHorizontal />
           </div>
         </div>
-      </DropdownCard>
-      <DropdownMenu>
+      </PopOverCard>
+      <PopOverMenu>
         <div css={avatarStyle(theme)}>
-          <div className="profile active">
-            <img src={avatar} className="avatar-image margin" />
-            <div className="flex">
+          <div className="profile margin-top">
+            <Avatar src={avatar} />
+            <div className="flex margin">
               <span className="text-next-to-profile">Shokker</span>
               <span className="text-grey">@Shokker</span>
             </div>
@@ -91,15 +89,15 @@ export function ListProfileConnected () {
             </div>
           </div>
           <div className="profile">
-            <img src={avatar} className="avatar-image margin" />
-            <div className="flex">
+            <Avatar src={avatar} />
+            <div className="flex margin">
               <span className="text-next-to-profile">Shokker</span>
               <span className="text-grey">@Shokker</span>
             </div>
           </div>
           <div className="profile">
-            <img src={avatar} className="avatar-image margin" />
-            <div className="flex">
+            <Avatar src={avatar} />
+            <div className="flex margin">
               <span className="text-next-to-profile">Shokker</span>
               <span className="text-grey">@Shokker</span>
             </div>
@@ -111,50 +109,8 @@ export function ListProfileConnected () {
             Change Account
           </div>
         </div>
-          {/* <DropdownArrow /> */}
-      </DropdownMenu>
-    </Dropdown>
-    // <DropdownMenu.Root css={styleListProfile(theme)}>
-    //   <DropdownMenu.Trigger asChild>
-    //     <div className="profile">
-    //       <img src={avatar} className="profilePicture" />
-    //       <div className="nameProfile">
-    //         <p>
-    //           {
-    //             "Shokker".length > 12 ? "Shokker".slice(0, 12) + "..." : "Shokker"
-    //           }
-    //         </p>
-    //         <p className="text-grey">
-    //           {
-    //             "@Shokker".length > 18 ? "@Shokker".slice(0, 18) + "..." : "@Shokker"
-    //           }
-    //         </p>
-    //       </div>
-    //       <div className="endProfile">
-    //         <MoreHorizontal />
-    //       </div>
-    //     </div>
-    //   </DropdownMenu.Trigger>
-
-    //   <DropdownMenu.Portal>
-    //     <DropdownMenu.Content className="" sideOffset={10}>
-          // <DropdownMenu.Item className="">
-          //   New Tab
-          // </DropdownMenu.Item>
-          // <DropdownMenu.Item className="DropdownMenuItem">
-          //   New Window
-          // </DropdownMenu.Item>
-          // <DropdownMenu.Item className="DropdownMenuItem">
-          //   New Private Window
-          // </DropdownMenu.Item>
-
-    //       <DropdownMenu.Separator className="DropdownMenuSeparator test" />
-    //       <DropdownMenu.Separator className="DropdownMenuSeparator test" />
-
-    //       <DropdownMenu.Arrow className="DropdownMenuArrow" />
-    //     </DropdownMenu.Content>
-    //   </DropdownMenu.Portal>
-    // </DropdownMenu.Root>
-
+          {/* <PopOverArrow /> */}
+      </PopOverMenu>
+    </PopOver>
   )
 }
