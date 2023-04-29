@@ -8,6 +8,13 @@ import Avatar from "./avatar";
 const avatarStyle = (theme: Theme) => css`
 padding: 5px 0;
 
+.separator {
+  margin: 10px 0;
+  height: 2px;
+  border-radius: 50%;
+  background-color: ${theme.colors.backgroundQuaternary};
+}
+
 .profile {
   display: flex;
   align-items: center;
@@ -18,6 +25,7 @@ padding: 5px 0;
   flex: auto;
   display: flex;
   justify-content: flex-end;
+  margin-right: 10px;
 }
 
 .margin {
@@ -33,11 +41,12 @@ padding: 5px 0;
 }
 
 > * {
-  &:hover:not(.active) {
+  &:hover:not(.separator) {
     cursor: pointer;
     background-color: ${colors.blur}};
   }
 }
+
 .flex {
   display: flex;
   align-items: center;
@@ -79,15 +88,19 @@ export function ListProfileConnected () {
       <PopOverMenu>
         <div css={avatarStyle(theme)}>
           <div className="profile margin-top">
+
             <Avatar src={avatar} />
+
             <div className="flex margin">
               <span className="text-next-to-profile">Shokker</span>
               <span className="text-grey">@Shokker</span>
             </div>
+
             <div className="endProfile">
-              <CheckCircle />
+              <CheckCircle size={18} />
             </div>
           </div>
+
           <div className="profile">
             <Avatar src={avatar} />
             <div className="flex margin">
@@ -95,6 +108,7 @@ export function ListProfileConnected () {
               <span className="text-grey">@Shokker</span>
             </div>
           </div>
+
           <div className="profile">
             <Avatar src={avatar} />
             <div className="flex margin">
@@ -102,14 +116,18 @@ export function ListProfileConnected () {
               <span className="text-grey">@Shokker</span>
             </div>
           </div>
+
+          <div className="separator" />
+
           <div className="profile margin">
             Shokitooo
           </div>
+
           <div className="profile margin">
             Change Account
           </div>
+
         </div>
-          {/* <PopOverArrow /> */}
       </PopOverMenu>
     </PopOver>
   )
