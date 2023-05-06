@@ -5,6 +5,7 @@ import Avatar from "../avatar";
 import { useEffect, useRef, useState } from "react";
 import { Calendar, Image, PieChart, Plus, PlusCircle, Smile, Trash2, X } from "react-feather";
 import { breakpoints } from "../../styles/global";
+import { PopOver, PopOverCard, PopOverMenu } from "../popover/popover";
 
 const tweet = (theme: Theme) => css`
 display: flex;
@@ -149,7 +150,20 @@ export default function Tweet() {
               <Image size={20} />
             </div>
             <div>
-              <Smile size={20} />
+              <PopOver>
+                <PopOverCard>
+                  <Smile size={20} />
+                </PopOverCard>
+                <PopOverMenu>
+                  <div>
+                    <input type="text" placeholder="Search Emoji" />
+                    <div>
+                        
+                    </div>                  
+                    <div>test</div>
+                  </div>
+                </PopOverMenu>
+              </PopOver>
             </div>
             <div>
               <PieChart size={20} />

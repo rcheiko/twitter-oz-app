@@ -28,7 +28,7 @@ const positionStyle = (theme: Theme) => css`
   }
 
   > * {
-    border: 1px solid ${theme.colors.borderPrimary};
+    border-right: 1px solid ${theme.colors.borderPrimary};
   }
 }
 `;
