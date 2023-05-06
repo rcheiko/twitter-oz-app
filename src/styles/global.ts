@@ -66,20 +66,4 @@ button {
     opacity: 0.9;
   }
 }
-
-input[type="number"] {
-  -webkit-appearance: textfield;
-    -moz-appearance: textfield;
-          appearance: textfield;
-}
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none;
-}
-input[type=number]:focus {
-  outline: none;
-}
-input[type=number]:focus::placeholder {
-  color: transparent;
-}
 `

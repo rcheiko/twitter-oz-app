@@ -29,6 +29,7 @@ const positionStyle = (theme: Theme) => css`
 
   > * {
     border-right: 1px solid ${theme.colors.borderPrimary};
+    min-height: 100vh;
   }
 }
 `;

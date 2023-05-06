@@ -2,6 +2,38 @@
 import { create } from 'zustand'
 import { Theme as EmotionTheme } from '@emotion/react'
 
+export const fontSizes = {
+  xs: '1rem',
+  sm: '1.2rem',
+  base: '1.4rem',
+  lg: '1.6rem',
+  xl: '1.8rem',
+  '2xl': '2rem',
+  '3xl': '2.5rem',
+  '4xl': '3rem',
+}
+
+export function fontWeights (size: keyof typeof fontSizes) {
+  switch (size) {
+    case 'xs':
+      return 400
+    case 'sm':
+      return 400
+    case 'base':
+      return 400
+    case 'lg':
+      return 400
+    case 'xl':
+      return 500
+    case '2xl':
+      return 500
+    case '3xl':
+      return 500
+    case '4xl':
+      return 600
+  }
+}
+
 export const colors = {
   green: '#21bba6',
   dark_blue: '#0084b4',

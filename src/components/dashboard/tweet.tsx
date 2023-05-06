@@ -5,7 +5,7 @@ import Avatar from "../avatar";
 import { useEffect, useRef, useState } from "react";
 import { Calendar, Image, PieChart, Plus, PlusCircle, Smile, Trash2, X } from "react-feather";
 import { breakpoints } from "../../styles/global";
-import { PopOver, PopOverCard, PopOverMenu } from "../popover/popover";
+import { PopOver, PopOverCard, PopOverMenu } from "../popover/popover"
 
 const tweet = (theme: Theme) => css`
 display: flex;
@@ -116,21 +116,21 @@ padding: 1rem 1.5rem;
 export default function Tweet() {
   const theme = useTheme()
 
-  const [val, setVal] = useState("");
-  const textAreaRef = useRef(null);
+  const [val, setVal] = useState("")
+  const textAreaRef = useRef(null)
 
   const resizeTextArea = () => {
     if (textAreaRef.current) {
-      textAreaRef.current.style.height = "auto";
-      textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px";  
+      textAreaRef.current.style.height = "auto"
+      textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px"
     }
-  };
+  }
 
-  useEffect(resizeTextArea, [val]);
+  useEffect(resizeTextArea, [val])
 
   const onChange = (e) => {
-    setVal(e.target.value);
-  };
+    setVal(e.target.value)
+  }
 
   return (
     <div css={tweet(theme)}>

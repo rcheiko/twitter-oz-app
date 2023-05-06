@@ -1,6 +1,6 @@
 import { CheckCircle, MoreHorizontal } from "react-feather"
 import avatar from "../assets/avatar.jpg"
-import { Theme, colors, useTheme } from '../theme';
+import { Theme, colors, fontSizes, fontWeights, useTheme } from '../theme';
 import { css } from '@emotion/react';
 import { PopOver, PopOverCard, PopOverMenu } from './popover/popover';
 import Avatar from "./avatar";
@@ -19,13 +19,12 @@ padding: 5px 0;
   display: flex;
   align-items: center;
   padding: 3px 8px;
-}
-
-.endProfile {
-  flex: auto;
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 10px;
+  .endProfile {
+    flex: auto;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+  }
 }
 
 .margin {
@@ -34,10 +33,6 @@ padding: 5px 0;
 
 .margin-top {
   margin-top: 10px;
-}
-
-.text-next-to-profile {
-  margin-left: 15px;
 }
 
 > * {
@@ -49,14 +44,18 @@ padding: 5px 0;
 
 .flex {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-}
 
-.text-grey {
-  font-size: 1.1rem;
-  font-weight: 200;
+  .text-next-to-profile, .text-at-profile {
+    margin-left: 1rem;
+  }
+
+  .text-at-profile {
+    font-size: ${fontSizes.sm};
+    font-weight: ${fontWeights('sm')};
+  }
 }
 `
 
@@ -65,35 +64,36 @@ export function ListProfileConnected () {
   
   return (
     <PopOver>
-      <PopOverCard>
-        <div className="profile">
-          <Avatar src={avatar} />
-          <div className="nameProfile">
-            <p>
-              {
-                "Shokker".length > 12 ? "Shokker".slice(0, 12) + "..." : "Shokker"
-              }
-            </p>
-            <p className="text-grey">
-              {
-                "@Shokker".length > 18 ? "@Shokker".slice(0, 18) + "..." : "@Shokker"
-              }
-            </p>
-          </div>
-          <div className="endProfile">
-            <MoreHorizontal />
-          </div>
-        </div>
-      </PopOverCard>
+      <div className="profile-under">
+        <PopOverCard>
+            <div className="profile">
+              <Avatar src={avatar} />
+              <div className="nameProfile">
+                <p>
+                  {
+                    "Shokker".length > 12 ? "Shokker".slice(0, 12) + "..." : "Shokker"
+                  }
+                </p>
+                <p className="text-at-profile">
+                  {
+                    "@Shokker".length > 18 ? "@Shokker".slice(0, 18) + "..." : "@Shokker"
+                  }
+                </p>
+              </div>
+              <div className="endProfile">
+                <MoreHorizontal />
+              </div>
+            </div>
+        </PopOverCard>
+      </div>
       <PopOverMenu>
         <div css={avatarStyle(theme)}>
           <div className="profile margin-top">
-
             <Avatar src={avatar} />
 
             <div className="flex margin">
               <span className="text-next-to-profile">Shokker</span>
-              <span className="text-grey">@Shokker</span>
+              <span className="text-at-profile">@Shokker</span>
             </div>
 
             <div className="endProfile">
@@ -105,7 +105,7 @@ export function ListProfileConnected () {
             <Avatar src={avatar} />
             <div className="flex margin">
               <span className="text-next-to-profile">Shokker</span>
-              <span className="text-grey">@Shokker</span>
+              <span className="text-at-profile">@Shokker</span>
             </div>
           </div>
 
@@ -113,7 +113,7 @@ export function ListProfileConnected () {
             <Avatar src={avatar} />
             <div className="flex margin">
               <span className="text-next-to-profile">Shokker</span>
-              <span className="text-grey">@Shokker</span>
+              <span className="text-at-profile">@Shokker</span>
             </div>
           </div>
 

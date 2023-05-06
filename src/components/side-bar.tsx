@@ -70,28 +70,6 @@ export default function Sidebar() {
           </NavLink>
         </div>
         <ThemeToggle />
-        {/* <Modal open={isOpenListProfile} onClose={() => SetIsOpenListProfile(false)}>
-          <div>Salut</div>
-        </Modal> */}
-        {/* <div onClick={() => SetIsOpenListProfile(!isOpenListProfile)} className="profile">
-          <img src={avatar} className="profilePicture" />
-          <div className="nameProfile">
-            <p>
-              {
-                "Shokker".length > 12 ? "Shokker".slice(0, 12) + "..." : "Shokker"
-              }
-            </p>
-            <p className="text-grey">
-              {
-                "@Shokker".length > 18 ? "@Shokker".slice(0, 18) + "..." : "@Shokker"
-              }
-            </p>
-          </div>
-          <div className="endProfile">
-            <MoreHorizontal />
-          </div>
-        </div> */}
-
         <ListProfileConnected />
 
       </nav>
