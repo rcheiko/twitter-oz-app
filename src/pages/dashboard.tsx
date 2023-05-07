@@ -7,7 +7,7 @@ import { RecommendationArray } from "../types/twitter/Recommendation"
 import { HomeTimelineType } from "../types/twitter/HomeTimeline"
 import { UserTweetType } from "../types/twitter/UserTweet"
 import { useQuery } from "@apollo/client"
-import { Theme, colors, useTheme } from "../theme"
+import { Theme, colors, fontSizes, useTheme } from "../theme"
 import { css } from "@emotion/react"
 import Header from "../components/global/header"
 import { useState } from "react"
@@ -50,7 +50,7 @@ const dashboard = (theme: Theme) => css`
   justify-content: center;
   align-items: center;
   div p {
-    font-size: 1.6rem;
+    font-size: ${fontSizes.lg};
     font-weight: 500;
     padding-bottom: 0.5rem;
   }

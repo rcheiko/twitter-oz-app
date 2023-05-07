@@ -1,11 +1,13 @@
 import { css } from "@emotion/react";
-import { Theme, colors, useTheme } from "../../theme";
+import { Theme, colors, fontSizes, useTheme } from "../../theme";
 import avatar from "../../assets/avatar.jpg"
 import Avatar from "../avatar";
 import { useEffect, useRef, useState } from "react";
 import { Calendar, Image, PieChart, Plus, PlusCircle, Smile, Trash2, X } from "react-feather";
 import { breakpoints } from "../../styles/global";
 import { PopOver, PopOverCard, PopOverMenu } from "../popover/popover"
+import { openDB, deleteDB, wrap, unwrap } from 'idb'
+import { fontWeights } from "../../theme";
 
 const tweet = (theme: Theme) => css`
 display: flex;
@@ -34,8 +36,8 @@ padding: 1rem 1.5rem;
       overflow-y: hidden;
       border: none;
       outline: none;
-      font-size: 1.4rem;
-      font-weight: 500;
+      font-size: ${fontSizes.base};
+      font-weight: ${fontWeights('base')};
       color: ${theme.colors.primary};
       background-color: ${theme.colors.backgroundSecondary};
       border-radius: 1rem;
@@ -95,13 +97,13 @@ padding: 1rem 1.5rem;
         outline: none;
         border-radius: 3rem;
         padding: 0.75rem 1.75rem;
-        font-size: 1.4rem;
+        font-size: ${fontSizes.lg};
         font-weight: 500;
         cursor: pointer;
 
         @media (max-width: ${breakpoints.lg}) {
           padding: 0.5rem 1.25rem;
-          font-size: 1.2rem;
+          font-size: ${fontSizes.sm};
           font-weight: 500;
         }
 
@@ -131,6 +133,8 @@ export default function Tweet() {
   const onChange = (e) => {
     setVal(e.target.value)
   }
+
+  const db = openDB('my-db', 1.2);
 
   return (
     <div css={tweet(theme)}>

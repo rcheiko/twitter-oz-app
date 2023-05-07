@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { Theme, colors, useTheme } from "../theme";
+import { Theme, colors, fontSizes, useTheme } from "../theme";
 import Header from "../components/global/header";
 import { Settings } from "react-feather";
 import { useState } from "react";
@@ -40,7 +40,7 @@ export const motifications = (theme: Theme) => css`
   justify-content: center;
   align-items: center;
   div p {
-    font-size: 1.6rem;
+    font-size: ${fontSizes.lg};
     font-weight: 500;
     padding-bottom: 0.5rem;
   }

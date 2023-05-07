@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { Theme } from "../theme";
+import { Theme, fontSizes } from "../theme";
 
 export const breakpoints = {
   sm: '640px',
@@ -28,7 +28,7 @@ body {
   margin: 0;
   height: 100%;
   width: 100%;
-  font-size: 1.6rem;
+  font-size: ${fontSizes.lg};
   font-family: Fira Sans;
   background-color: ${theme.colors.backgroundPrimary};
   color: ${theme.colors.primary};
