@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-import { breakpoints } from "../styles/global";
 import { Theme, useTheme } from "../theme";
 import Header from "../components/global/header";
 

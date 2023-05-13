@@ -1,6 +1,4 @@
-import { css } from "@emotion/react";
-import { breakpoints } from "../styles/global";
-import { Theme, useTheme } from "../theme"
+import { useTheme } from "../theme"
 import { styleRightbar } from "../styles/side"
 
 export default function Rightbar() {

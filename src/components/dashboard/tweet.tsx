@@ -3,7 +3,7 @@ import { Theme, colors, fontSizes, useTheme } from "../../theme";
 import avatar from "../../assets/avatar.jpg"
 import Avatar from "../avatar";
 import { useEffect, useRef, useState } from "react";
-import { Calendar, Image, PieChart, Plus, PlusCircle, Smile, Trash2, X } from "react-feather";
+import { Calendar, Image, PieChart, PlusCircle, Smile, X } from "react-feather";
 import { breakpoints } from "../../styles/global";
 import { PopOver, PopOverCard, PopOverMenu } from "../popover/popover"
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
@@ -42,8 +42,7 @@ padding: 1rem 1.5rem;
       background-color: ${theme.colors.backgroundSecondary};
       border-radius: 1rem;
       padding: 1rem;
-      margin-left: 1rem;
-      margin-top: 1rem;
+      margin: 1rem 0 0 1rem;
     }
     .delete {
       height: 0;
