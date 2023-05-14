@@ -3,7 +3,7 @@ import { Theme, colors, fontSizes, useTheme } from "../../theme";
 import avatar from "../../assets/avatar.jpg"
 import Avatar from "../avatar";
 import { useEffect, useRef, useState } from "react";
-import { Calendar, Image, PieChart, PlusCircle, Smile, X } from "react-feather";
+import { Calendar, Clock, Image, PieChart, PlusCircle, Smile, X } from "react-feather";
 import { breakpoints } from "../../styles/global";
 import { PopOver, PopOverCard, PopOverMenu } from "../popover/popover"
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
@@ -79,6 +79,13 @@ padding: 1rem 1.5rem;
           background-color: ${colors.blur};
           border-radius: 50%;
         }
+      }
+
+      .smiley-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
       }
     }
 
@@ -159,11 +166,17 @@ export default function Tweet() {
                 </PopOverCard>
                 <PopOverMenu>
                   <div>
-                    <input type="text" placeholder="Search Emoji" />
-                    <div>
-                        
-                    </div>                  
-                    <div>test</div>
+                    <input type="text" placeholder="Search Emoji" />               
+                    <div className="smiley-list">
+                      <div>
+                        <Clock size={20} />
+                      </div>
+                      <div>
+                        <Smile size={20} />
+                      </div>
+                      <div></div>
+                      <div></div>
+                    </div>
                   </div>
                 </PopOverMenu>
               </PopOver>
