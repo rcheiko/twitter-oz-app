@@ -80,13 +80,6 @@ padding: 1rem 1.5rem;
           border-radius: 50%;
         }
       }
-
-      .smiley-list {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-      }
     }
 
     .tweet-button {
@@ -120,6 +113,17 @@ padding: 1rem 1.5rem;
   }
 }
 `
+
+const smileyStyle = (theme: Theme) => css`
+.smiley-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 1rem;
+}
+`
+
 
 export default function Tweet() {
   const theme = useTheme()
@@ -165,7 +169,7 @@ export default function Tweet() {
                   <Smile size={20} />
                 </PopOverCard>
                 <PopOverMenu>
-                  <div>
+                  <div css={smileyStyle(theme)}>
                     <input type="text" placeholder="Search Emoji" />               
                     <div className="smiley-list">
                       <div>
