@@ -8,6 +8,8 @@ import { breakpoints } from "../../styles/global";
 import { PopOver, PopOverCard, PopOverMenu } from "../popover/popover"
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 import { fontWeights } from "../../theme";
+import Modal from "../modal";
+import { TweetModal } from "./modal/tweet";
 
 const tweet = (theme: Theme) => css`
 display: flex;
@@ -130,6 +132,11 @@ export default function Tweet() {
 
   const [val, setVal] = useState("")
   const textAreaRef = useRef(null)
+  const [open, setOpen] = useState(false)
+
+  const handleModal = () => {
+    setOpen(!open)
+  }
 
   const resizeTextArea = () => {
     if (textAreaRef.current) {
@@ -196,12 +203,13 @@ export default function Tweet() {
             </div>
           </div>
           <div className="tweet-button">
-            <button>
+            <button onClick={handleModal}>
               Tweet
             </button>
           </div>
         </div>
       </div>
+      <TweetModal open={open} onClose={handleModal} />
     </div>
   )
 }
