@@ -4,6 +4,7 @@ import { css } from '@emotion/react'
 import { X } from 'react-feather'
 
 import { Theme, colors, useTheme } from '../theme'
+import { breakpoints } from '../styles/global'
 
 export const modalRootStyle = (theme: Theme) => css`
 position: fixed;
@@ -45,6 +46,10 @@ overflow-y: auto;
   border: 2px solid #000;
   border-radius: 4px;
   overflow: hidden;
+  padding: .5rem;
+  @media (min-width: ${breakpoints.sm}) {
+    padding: 1.5rem;    
+  }
   @media (max-width: 425px) {
     min-width: initial;
     width: 100%;
@@ -149,7 +154,7 @@ const ModalRoot = ({ header, onClose, preventBackdropClose, children, ...rest }:
           }
           {children}
           <button onClick={onClose} className="close">
-            <X width={16} height={16} />
+            <X width={20} height={20} />
           </button>
         </div>
       </div>
