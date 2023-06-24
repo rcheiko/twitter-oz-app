@@ -1,6 +1,6 @@
 import { css } from "@emotion/react"
-import { Theme } from "../../../theme"
-import Modal from "../../modal"
+import { Theme } from "../../theme"
+import Modal from "../modal"
 
 export const tweetModalStyle = (theme: Theme) => css`
 

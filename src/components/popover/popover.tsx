@@ -1,7 +1,7 @@
-import { css } from "@emotion/react";
-import * as RadixPopover from "@radix-ui/react-popover";
-import { ReactNode, useState } from "react";
-import { Theme, useTheme } from "../../theme";
+import { css } from "@emotion/react"
+import * as RadixPopover from "@radix-ui/react-popover"
+import { ReactNode, useState } from "react"
+import { Theme, useTheme } from "../../theme"
 
 const stylePopOverMenu = (theme: Theme) => css`
 border-radius: 15px;
@@ -21,6 +21,7 @@ span {
 
 export function PopOver ({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false)
+
   return (
     <RadixPopover.Root open={open} onOpenChange={setOpen}>
       {children}

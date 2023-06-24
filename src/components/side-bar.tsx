@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { Bell, Bookmark, Home, Mail, User, Settings, Moon, Sun } from "react-feather"
+import { Bell, Bookmark, Home, Mail, User, Settings, Moon, Sun, Feather } from "react-feather"
 import { css } from "@emotion/react"
 import { Theme, toggleTheme, useTheme } from "../theme"
 import { Route, getRoutePath } from "../path"
@@ -7,7 +7,7 @@ import twitter from '../assets/twitter-30.svg'
 import { styleSidebar } from "../styles/side"
 import { ListProfileConnected } from "./list-profile-connected"
 import { useState } from "react"
-import { TweetModal } from "./dashboard/modal/tweet"
+import { TweetModal } from "./modal/tweet"
 
 const themeToggleStyle = (theme: Theme) => css`
   &.theme {
@@ -86,7 +86,8 @@ export default function Sidebar() {
             className="tweet-button"
             onClick={handleModal}
           >
-            Tweet
+            <span>Tweet</span>
+            <Feather />
           </button>
         </div>
         <ListProfileConnected />

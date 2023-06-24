@@ -1,20 +1,21 @@
 import { css } from "@emotion/react";
 import { Theme, colors, fontSizes, useTheme } from "../../theme";
 import avatar from "../../assets/avatar.jpg"
-import Avatar from "../avatar";
+import Avatar from "../../components/avatar";
 import { useEffect, useRef, useState } from "react";
 import { Calendar, Clock, Image, PieChart, PlusCircle, Smile, X } from "react-feather";
 import { breakpoints } from "../../styles/global";
-import { PopOver, PopOverCard, PopOverMenu } from "../popover/popover"
+import { PopOver, PopOverCard, PopOverMenu } from "../../components/popover/popover"
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 import { fontWeights } from "../../theme";
-import { TweetModal } from "./modal/tweet";
+import { TweetModal } from "../../components/modal/tweet";
 
 const tweet = (theme: Theme) => css`
 display: flex;
 align-items: flex-start;
 justify-content: space-between;
 padding: 1rem 1.5rem;
+border-bottom: 1px solid ${theme.colors.borderPrimary};
 
 @media (max-width: 767px) {
   .responsive-avatar {
@@ -110,6 +111,11 @@ padding: 1rem 1.5rem;
         &:hover {
           opacity: 0.8;
         }
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
     }
   }
 }
@@ -131,24 +137,13 @@ export default function Tweet() {
 
   const [val, setVal] = useState("")
   const textAreaRef = useRef(null)
-  const [open, setOpen] = useState(false)
 
-  const handleModal = () => {
-    setOpen(!open)
-  }
-
-  const resizeTextArea = () => {
+  useEffect(() => {
     if (textAreaRef.current) {
       textAreaRef.current.style.height = "auto"
       textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px"
     }
-  }
-
-  useEffect(resizeTextArea, [val])
-
-  const onChange = (e) => {
-    setVal(e.target.value)
-  }
+  }, [val])
 
   const db = openDB('my-db', 1.2);
 
@@ -159,7 +154,7 @@ export default function Tweet() {
       </div>
       <div className="tweet">
         <div className="area-tweet">
-          <textarea className="text-area-tweet"  ref={textAreaRef} value={val} onChange={onChange} rows={3} placeholder="What's Happening?" />
+          <textarea className="text-area-tweet"  ref={textAreaRef} value={val} onChange={(e)=> setVal(e.target.value)} rows={3} placeholder="What's Happening?" />
           <div className="delete">
             <X onClick={() => setVal("")} />
           </div>
@@ -202,13 +197,12 @@ export default function Tweet() {
             </div>
           </div>
           <div className="tweet-button">
-            <button onClick={handleModal}>
+            <button disabled={!val.length}>
               Tweet
             </button>
           </div>
         </div>
       </div>
-      <TweetModal open={open} onClose={handleModal} />
     </div>
   )
 }

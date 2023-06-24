@@ -1,18 +1,18 @@
-import { GET_PROFILE_CONNECTED, GET_RECOMMENDATION } from "../apollo/global/queries"
-import { GET_PROFILE_SPOTLIGHT, GET_PROFILE_TIMELINE_TWEET } from "../apollo/profile/queries"
-import { GET_HOME_TIMELINE } from "../apollo/timeline/queries"
-import { ProfileConnectedType } from "../types/twitter/profileConnected/ProfileConnected"
-import { ProfileSpotlightType } from "../types/twitter/ProfileSpotlight"
-import { RecommendationArray } from "../types/twitter/Recommendation"
-import { HomeTimelineType } from "../types/twitter/HomeTimeline"
-import { UserTweetType } from "../types/twitter/UserTweet"
+import { GET_PROFILE_CONNECTED, GET_RECOMMENDATION } from "../../apollo/global/queries"
+import { GET_PROFILE_SPOTLIGHT, GET_PROFILE_TIMELINE_TWEET } from "../../apollo/profile/queries"
+import { GET_HOME_TIMELINE } from "../../apollo/timeline/queries"
+import { ProfileConnectedType } from "../../types/twitter/profileConnected/ProfileConnected"
+import { ProfileSpotlightType } from "../../types/twitter/ProfileSpotlight"
+import { RecommendationArray } from "../../types/twitter/Recommendation"
+import { HomeTimelineType } from "../../types/twitter/HomeTimeline"
+import { UserTweetType } from "../../types/twitter/UserTweet"
 import { useQuery } from "@apollo/client"
-import { Theme, colors, fontSizes, useTheme } from "../theme"
+import { Theme, colors, fontSizes, useTheme } from "../../theme"
 import { css } from "@emotion/react"
-import Header from "../components/global/header"
+import Header from "../../components/global/header"
 import { useState } from "react"
 import { RefreshCw } from "react-feather"
-import Tweet from "../components/dashboard/tweet"
+import Tweet from "./tweet"
 
 const dashboard = (theme: Theme) => css`
 .icon {
@@ -54,10 +54,11 @@ const dashboard = (theme: Theme) => css`
     font-weight: 500;
     padding-bottom: 0.5rem;
   }
+  border-bottom: 1px solid ${theme.colors.borderPrimary};
 
   > * {
     text-align: center;
-    padding: 0.5rem 0;
+    padding-top: 0.5rem;
     flex-grow: 1;
 
     :hover {
@@ -105,11 +106,15 @@ export default function Dashboard() {
           {
             wichTimeline.map((item, index) => (
               <div key={item} onClick={() => setlistTimeline(index)}>
-                <p>
-                  {item}
-                </p>
+                <p>{item}</p>
                 {
-                  index === listTimeline ? <div className="bar-blue"><span></span></div> : null
+                  index === listTimeline
+                    ? (
+                      <div className="bar-blue">
+                        <span />
+                      </div>
+                    )
+                    : null
                 }
               </div>
             ))

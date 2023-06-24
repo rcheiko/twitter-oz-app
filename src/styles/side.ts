@@ -45,7 +45,6 @@ export const styleSidebar = (theme: Theme) => css`
     margin-bottom: 1rem;
     .profile {
       display: flex;
-      margin: 0.25rem;
       cursor: pointer;
       padding: 0.75rem 0.75rem;
 
@@ -54,6 +53,7 @@ export const styleSidebar = (theme: Theme) => css`
       }
       @media (min-width: ${breakpoints.lg}) {
         width: 225px;
+        margin: 0.25rem;
       }
       @media (min-width: ${breakpoints.md}) {
         justify-content: center;
@@ -94,22 +94,34 @@ export const styleSidebar = (theme: Theme) => css`
     }
   }
   .tweet-div {
-    padding-right: 2rem;
+    padding-right: .5rem;
+    @media (min-width: ${breakpoints.md}) {
+      padding-right: 2rem;
+    }
+
     .tweet-button {
       display: flex;
       align-items: center;
       justify-content: center;
       background-color: ${colors.blue};
-      font-size: ${fontSizes.lg};
-      font-weight: ${fontWeights('lg')};
       width: 100%;
       min-height: 3rem;
       border-radius: 2rem;
 
-      @media (max-width: ${breakpoints.lg}) {
-        padding: 0.5rem 1.25rem;
-        font-size: ${fontSizes.sm};
-        font-weight: 500;
+      // padding: 0.75rem 1.25rem;
+      span { 
+        display: none;
+      }
+
+      @media (min-width: ${breakpoints.md}) {
+        span {
+          display: initial;
+        }
+        svg {
+          display: none;
+        }
+        font-size: ${fontSizes.lg};
+        font-weight: ${fontWeights('lg')};
       }
 
       &:hover {

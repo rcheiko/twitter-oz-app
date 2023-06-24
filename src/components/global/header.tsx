@@ -1,5 +1,5 @@
-import { css } from "@emotion/react";
-import { fontSizes, fontWeights } from "../../theme";
+import { css } from "@emotion/react"
+import { fontSizes, fontWeights } from "../../theme"
 
 const styleHeader = () => css`
 &.top-page {
@@ -15,20 +15,20 @@ const styleHeader = () => css`
     font-weight: ${fontWeights('sm')};
   }
 }
-`;
+`
 
 export default function Header({ children, scrollToTop }: { children: React.ReactNode, scrollToTop: boolean }) {  
   const bottomToTop = () => {
     if (scrollToTop) {
       window.scrollTo({
         top: 0,
-      });  
+      })
     }
-  };
+  }
 
   return (
     <div css={styleHeader()} onClick={bottomToTop} className="top-page">
       {children}
     </div>
-  );
+  )
 }

@@ -1,21 +1,21 @@
 import { css } from "@emotion/react";
-import { Theme, useTheme } from "../theme";
-import Header from "../components/global/header";
+import { Theme, useTheme } from "../../theme";
+import Header from "../../components/global/header";
 
-export const bookmarks = (theme: Theme) => css`
+export const settings = (theme: Theme) => css`
 .top-header {
   padding: 0.25rem 1.5rem;
 }
 `;
 
-export default function Bookmarks() {
-  const theme = useTheme();
+export default function Settings() {
+  const theme = useTheme()
 
   return (
-    <div css={bookmarks(theme)}>
+    <div css={settings(theme)}>
       <Header scrollToTop={true}>
         <div className="top-header">
-          <h3>Bookmarks</h3>
+          <h3>Settings</h3>
           <p>Pseudo</p>
         </div>
       </Header>

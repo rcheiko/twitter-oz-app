@@ -2,7 +2,6 @@ import { HTMLAttributes, ReactNode, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { css } from '@emotion/react'
 import { X } from 'react-feather'
-
 import { Theme, colors, useTheme } from '../theme'
 import { breakpoints } from '../styles/global'
 

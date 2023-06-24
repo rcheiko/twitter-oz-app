@@ -2,7 +2,7 @@ import { useTheme } from "../theme"
 import { styleRightbar } from "../styles/side"
 
 export default function Rightbar() {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <>

@@ -9,4 +9,4 @@ export const GET_UNREAD = gql`
         is_from_urt
     }
   }
-`;
+`
