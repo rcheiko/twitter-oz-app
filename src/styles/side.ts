@@ -1,5 +1,5 @@
 import { css } from "@emotion/react"
-import { Theme, fontSizes, fontWeights } from "../theme"
+import { Theme, colors, fontSizes, fontWeights } from "../theme"
 import { breakpoints } from "./global";
 
 export const styleSidebar = (theme: Theme) => css`
@@ -90,6 +90,30 @@ export const styleSidebar = (theme: Theme) => css`
           align-items: center;
           justify-content: flex-end;
         }
+      }
+    }
+  }
+  .tweet-div {
+    padding-right: 2rem;
+    .tweet-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: ${colors.blue};
+      font-size: ${fontSizes.lg};
+      font-weight: ${fontWeights('lg')};
+      width: 100%;
+      min-height: 3rem;
+      border-radius: 2rem;
+
+      @media (max-width: ${breakpoints.lg}) {
+        padding: 0.5rem 1.25rem;
+        font-size: ${fontSizes.sm};
+        font-weight: 500;
+      }
+
+      &:hover {
+        opacity: 0.8;
       }
     }
   }

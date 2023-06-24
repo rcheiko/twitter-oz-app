@@ -8,7 +8,6 @@ import { breakpoints } from "../../styles/global";
 import { PopOver, PopOverCard, PopOverMenu } from "../popover/popover"
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 import { fontWeights } from "../../theme";
-import Modal from "../modal";
 import { TweetModal } from "./modal/tweet";
 
 const tweet = (theme: Theme) => css`
@@ -92,14 +91,14 @@ padding: 1rem 1.5rem;
       padding: 0.75rem;
 
       button {
-        background-color: ${theme.colors.secondary};
-        color: ${theme.colors.primary};
+        background-color: ${colors.blue};
+        color: ${colors.white};
         border: none;
         outline: none;
         border-radius: 3rem;
         padding: 0.75rem 1.75rem;
         font-size: ${fontSizes.lg};
-        font-weight: 500;
+        font-weight: ${fontWeights('lg')};
         cursor: pointer;
 
         @media (max-width: ${breakpoints.lg}) {
