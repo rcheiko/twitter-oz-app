@@ -8,7 +8,6 @@ import { breakpoints } from "../../styles/global";
 import { PopOver, PopOverCard, PopOverMenu } from "../../components/popover/popover"
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 import { fontWeights } from "../../theme";
-import { TweetModal } from "../../components/modal/tweet";
 
 const tweet = (theme: Theme) => css`
 display: flex;
@@ -121,7 +120,8 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
 }
 `
 
-const smileyStyle = (theme: Theme) => css`
+export const smileyStyle = (theme: Theme) => css`
+z-index: 999999999!important;
 .smiley-list {
   display: flex;
   justify-content: flex-start;

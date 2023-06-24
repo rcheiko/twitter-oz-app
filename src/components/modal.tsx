@@ -25,16 +25,6 @@ overflow-y: auto;
   opacity: 0.5;
 }
 
-.modal:before {
-  content: '';
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #6366AE 0%, #4C8CCA 29.32%, #219DCB 57.71%, #43BC95 89.35%);
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 .modal {
   z-index: 1060;
   position: absolute;
@@ -54,7 +44,7 @@ overflow-y: auto;
     width: 100%;
   }
 
-  background-color: ${theme.colorScheme === 'dark' ? colors.dark_blue : '#ffffff'};
+  background-color: ${theme.colors.backgroundPrimary};
   background-clip: padding-box;
   border: none;
   border-radius: .5rem;
@@ -73,17 +63,18 @@ overflow-y: auto;
   & > .close {
     cursor: pointer;
     position: absolute;
-    top: 2rem;
-    right: 1.6rem;
+    top: .5rem;
+    right: .5rem;
     background: none;
     border: none;
     color: ${theme.colors.primary};
     display: grid;
     justify-content: center;
     align-items: center;
-
+    padding: .75rem;
     &:hover {
-      color: ${theme.colors.active};
+      background-color: ${theme.colors.backgroundSecondary};
+      border-radius: 50%;
     }
   }
 }
