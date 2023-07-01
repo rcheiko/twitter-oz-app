@@ -53,8 +53,8 @@ export const tweetModalStyle = (theme: Theme) => css`
       .delete {
         height: 0;
         position: relative;
-        right: 30px;
-        top: 15px;
+        right: 3rem;
+        top: .5rem;
         cursor: pointer;
         svg:hover {
         background-color: ${colors.blur};
