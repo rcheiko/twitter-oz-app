@@ -80,6 +80,12 @@ export const motifications = (theme: Theme) => css`
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+
+    .profile-picture-notification {
+      display: flex;
+      gap: 1rem;
+    }
+
     .tweet-inactive {
       color: ${theme.colors.inactive};
     }
@@ -135,7 +141,11 @@ export default function Notifications() {
       <div className="main">
         <Repeat size={28} fill="green" color="green" className="icon-notification" />
         <div className="tweet-informations">
-          <Avatar src={avatar} size="3.5rem" />
+          <div className="profile-picture-notification">
+            <Avatar src={avatar} size="3.5rem" />
+            <Avatar src={avatar} size="3.5rem" />
+            <Avatar src={avatar} size="3.5rem" />
+          </div>
           <span>NathNath Retweeted a Tweet you were tagged in</span>
           <span className="tweet-inactive">Tweet</span>
         </div>
