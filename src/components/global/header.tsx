@@ -1,11 +1,12 @@
 import { css } from "@emotion/react"
-import { fontSizes, fontWeights } from "../../theme"
+import { colors, fontSizes, fontWeights } from "../../theme"
 
 const styleHeader = () => css`
 &.top-page {
   position: sticky;
   top: 0;
   backdrop-filter: blur(12px);
+  border-bottom: 1px solid ${colors.blur};
   cursor: pointer;
   h3 {
     font-weight: 600;

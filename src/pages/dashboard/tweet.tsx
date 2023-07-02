@@ -1,13 +1,13 @@
-import { css } from "@emotion/react";
-import { Theme, colors, fontSizes, useTheme } from "../../theme";
+import { css } from "@emotion/react"
+import { Theme, colors, fontSizes, useTheme } from "../../theme"
 import avatar from "../../assets/avatar.jpg"
-import Avatar from "../../components/avatar";
-import { useEffect, useRef, useState } from "react";
-import { Calendar, Clock, Image, PieChart, PlusCircle, Smile, X } from "react-feather";
-import { breakpoints } from "../../styles/global";
+import Avatar from "../../components/avatar"
+import { useEffect, useRef, useState } from "react"
+import { Calendar, Clock, Image, PieChart, PlusCircle, Smile, X } from "react-feather"
+import { breakpoints } from "../../styles/global"
 import { PopOver, PopOverCard, PopOverMenu } from "../../components/popover/popover"
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
-import { fontWeights } from "../../theme";
+import { fontWeights } from "../../theme"
 
 const tweet = (theme: Theme) => css`
 display: flex;
@@ -120,8 +120,7 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
 }
 `
 
-export const smileyStyle = (theme: Theme) => css`
-z-index: 999999999!important;
+export const smileyStyle = () => css`
 .smiley-list {
   display: flex;
   justify-content: flex-start;
@@ -170,7 +169,7 @@ export default function Tweet() {
                   <Smile size={20} />
                 </PopOverCard>
                 <PopOverMenu>
-                  <div css={smileyStyle(theme)}>
+                  <div css={smileyStyle()}>
                     <input type="text" placeholder="Search Emoji" />               
                     <div className="smiley-list">
                       <div>
