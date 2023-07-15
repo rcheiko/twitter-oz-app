@@ -24,13 +24,12 @@ overflow-y: auto;
 
 .modal {  
   position: relative;
-  z-index: 1060;
   top: 10%;
   min-width: 32rem;
+  z-index: 1060;
   @media (min-width: ${breakpoints.sm}) {
     padding: 1.5rem;  
     min-width: 60rem;
-    width: auto;
   }
   background-color: ${theme.colors.backgroundPrimary};
   border: none;
