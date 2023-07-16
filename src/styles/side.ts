@@ -107,8 +107,6 @@ export const styleSidebar = (theme: Theme) => css`
       width: 100%;
       min-height: 3rem;
       border-radius: 2rem;
-
-      // padding: 0.75rem 1.25rem;
       span { 
         display: none;
       }

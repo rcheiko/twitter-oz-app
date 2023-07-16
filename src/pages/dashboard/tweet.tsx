@@ -52,7 +52,7 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
       top: 15px;
       cursor: pointer;
       svg:hover {
-      background-color: ${colors.blur};
+      background-color: ${theme.colors.blur};
       border-radius: 50%;
       }
     }
@@ -77,7 +77,7 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
           justify-content: center;
         }
         &:hover {
-          background-color: ${colors.blur};
+          background-color: ${theme.colors.blur};
           border-radius: 50%;
         }
       }

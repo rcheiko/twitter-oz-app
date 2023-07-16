@@ -38,7 +38,7 @@ padding: 5px 0;
 > * {
   &:hover:not(.separator) {
     cursor: pointer;
-    background-color: ${colors.blur}};
+    background-color: ${theme.colors.blur}};
   }
 }
 

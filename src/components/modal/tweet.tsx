@@ -57,7 +57,7 @@ export const tweetModalStyle = (theme: Theme) => css`
         top: .5rem;
         cursor: pointer;
         svg:hover {
-        background-color: ${colors.blur};
+        background-color: ${theme.colors.blur};
         border-radius: 50%;
         }
       }
@@ -84,7 +84,7 @@ export const tweetModalStyle = (theme: Theme) => css`
         justify-content: center;
       }
       &:hover {
-        background-color: ${colors.blur};
+        background-color: ${theme.colors.blur};
         border-radius: 50%;
       }
     }

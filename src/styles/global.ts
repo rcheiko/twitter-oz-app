@@ -63,7 +63,7 @@ button {
   border: none;
 
   &:hover {
-    opacity: 0.9;
+    background-color: ${theme.colors.blur};
   }
 }
 `

@@ -6,7 +6,7 @@ import { useState } from "react";
 import avatar from "../../assets/avatar.jpg"
 import Avatar from "../../components/avatar"
 
-export const motifications = (theme: Theme) => css`
+export const notifications = (theme: Theme) => css`
 .icon {
   display: flex;
   align-items: center;
@@ -53,7 +53,7 @@ export const motifications = (theme: Theme) => css`
     flex-grow: 1;
 
     :hover {
-      background-color: ${colors.blur};
+      background-color: ${theme.colors.blur};
     }
   }
 }
@@ -64,10 +64,10 @@ export const motifications = (theme: Theme) => css`
   align-items: flex-start;
   padding: 2rem;
   gap: 2rem;
-  border-bottom: 1px solid ${colors.blur};
+  border-bottom: 1px solid ${theme.colors.blur};
   cursor: pointer;
   :hover {
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: ${theme.colors.blur};
   }
 
   .icon-notification {
@@ -95,16 +95,15 @@ export const motifications = (theme: Theme) => css`
 
 export default function Notifications() {
   const theme = useTheme()
-
   const [listTimeline, setlistTimeline] = useState(0)
-
   const wichTimeline = [
     'All',
     'Verified',
     'Mentions'
   ]
+
   return (
-    <div css={motifications(theme)}>
+    <div css={notifications(theme)}>
       <Header scrollToTop={true}>
         <div className="top-header">
           <div>
@@ -119,11 +118,11 @@ export default function Notifications() {
           {
             wichTimeline.map((item, index) => (
               <div key={item} onClick={() => setlistTimeline(index)}>
-                <p>
-                  {item}
-                </p>
+                <p>{item}</p>
                 {
-                  index === listTimeline ? <div className="bar-blue"><span></span></div> : null
+                  index === listTimeline
+                    ? <div className="bar-blue"><span></span></div>
+                    : null
                 }
               </div>
             ))

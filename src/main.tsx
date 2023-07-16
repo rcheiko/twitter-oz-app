@@ -36,16 +36,15 @@ const positionStyle = (theme: Theme) => css`
 
 const WrapElement = ({children}: HTMLAttributes<HTMLDivElement>) => {
   const theme = useTheme()
-
   return (
-  <>
-    <Global styles={globalStyle(theme)} />
-    <div css={positionStyle(theme)} className="body">
-        <Sidebar />
-        {children}
-        <Rightbar />
-    </div>
-  </>
+    <>
+      <Global styles={globalStyle(theme)} />
+      <div css={positionStyle(theme)} className="body">
+          <Sidebar />
+          {children}
+          <Rightbar />
+      </div>
+    </>
   )
 }
 

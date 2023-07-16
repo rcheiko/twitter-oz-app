@@ -70,8 +70,7 @@ export const lightTheme = {
     secondary: colors.dark_blue,
     third: colors.blue,
     active: colors.blue,
-    secondaryActive: colors.blue,
-    tertiaryActive: colors.light_blue,
+    secondaryActive: colors.light_blue,
     inactive: 'rgb(139, 152, 165)',
     backgroundPrimary: colors.white,
     backgroundSecondary: colors.lightgrey,
@@ -82,7 +81,8 @@ export const lightTheme = {
     walletTagBackground: 'rgba(255, 255, 255, 0.65)',
     white: colors.white,
     errorPrimary: '#DB2525', // 'rgb(255, 40, 40)',
-    backgroundError: 'rgb(214, 77, 77)'
+    backgroundError: 'rgb(214, 77, 77)',
+    blur: 'rgba(240, 240, 240, 0.3)'
   }
 } as const
 
@@ -94,8 +94,7 @@ export const darkTheme = {
     secondary: colors.dark_blue,
     third: colors.blue,
     active: colors.blue,
-    secondaryActive: colors.blue,
-    tertiaryActive: colors.light_blue,
+    secondaryActive: colors.light_blue,
     inactive: 'rgb(139, 152, 165)',
     backgroundPrimary: '#1A202B',
     backgroundSecondary: darkColors.midnight,
@@ -106,7 +105,8 @@ export const darkTheme = {
     walletTagBackground: 'rgba(26, 32, 44, 0.75)',
     white: colors.white,
     errorPrimary: '#db4c4c', // 'rgb(255, 40, 40)',
-    backgroundError: 'rgb(214, 77, 77)'
+    backgroundError: 'rgb(214, 77, 77)',
+    blur: 'rgba(255, 255, 255, 0.03)'
   }
 } as const
 
