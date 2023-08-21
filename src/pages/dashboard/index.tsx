@@ -73,7 +73,7 @@ const dashboard = (theme: Theme) => css`
 }
 `
 
-export default function Dashboard() {
+export const Dashboard = () => {
   const theme = useTheme()
   const [listTimeline, setlistTimeline] = useState(0)
   const wichTimeline = [
@@ -134,3 +134,5 @@ export default function Dashboard() {
     </div>
   )
 }
+
+export default Dashboard

@@ -30,9 +30,8 @@ const ThemeToggle = () => {
   )
 }
 
-export default function Sidebar() {
+export const Sidebar = () => {
   const theme = useTheme()
-
   const [open, setOpen] = useState(false)
 
   const handleModal = () => {
@@ -96,3 +95,5 @@ export default function Sidebar() {
     </div>
   )
 }
+
+export default Sidebar

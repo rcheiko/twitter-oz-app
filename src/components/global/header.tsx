@@ -18,7 +18,7 @@ const styleHeader = () => css`
 }
 `
 
-export default function Header({ children, scrollToTop }: { children: React.ReactNode, scrollToTop: boolean }) {  
+export const Header = ({ children, scrollToTop }: { children: React.ReactNode, scrollToTop: boolean }) => {
   const bottomToTop = () => {
     if (scrollToTop) {
       window.scrollTo({
@@ -33,3 +33,5 @@ export default function Header({ children, scrollToTop }: { children: React.Reac
     </div>
   )
 }
+
+export default Header

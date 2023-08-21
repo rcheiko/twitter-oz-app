@@ -10,12 +10,15 @@ import { smileyStyle } from "../../pages/dashboard/tweet"
 import { breakpoints } from "../../styles/global"
 
 export const tweetModalStyle = (theme: Theme) => css`
+@media (min-width: 640px) {
+  min-width: 60rem;
+}
+padding: 2rem 2rem .5rem;
 .main {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 0.5rem;
-  margin-top: .5rem;
+  padding: 2.5rem 0.5rem 1.5rem;
   border-bottom: 1px solid ${theme.colors.borderPrimary};
   .responsive-avatar {
     img {
@@ -37,6 +40,8 @@ export const tweetModalStyle = (theme: Theme) => css`
       flex: auto;
       display: flex;
       .text-area-tweet {
+        height: 100%;
+        min-height: 10rem;
         flex: auto;
         resize: none;
         overflow-y: hidden;
@@ -46,20 +51,16 @@ export const tweetModalStyle = (theme: Theme) => css`
         font-weight: ${fontWeights('base')};
         color: ${theme.colors.primary};
         background-color: ${theme.colors.backgroundSecondary};
-        border-radius: 1rem;
-        padding: 1rem;
-        margin: 0 0 1rem 1rem;
+        border-radius: .5rem;
+        padding: 1.5rem;
+        margin: 0 0 2rem 1rem;
       }
       .delete {
         height: 0;
         position: relative;
-        right: 3rem;
-        top: .5rem;
+        right: 2rem;
+        top: 0.5rem;
         cursor: pointer;
-        svg:hover {
-        background-color: ${theme.colors.blur};
-        border-radius: 50%;
-        }
       }
     }
   }
@@ -68,7 +69,7 @@ export const tweetModalStyle = (theme: Theme) => css`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-top: .5rem;
+  margin-top: 1rem;
   
   .tweet-icon {
     display: flex;
@@ -158,7 +159,7 @@ export const TweetModal = ({
             <div className="area-tweet">
               <textarea className="text-area-tweet"  ref={textAreaRef} value={val} onChange={(e)=> setVal(e.target.value)} rows={3} placeholder="What's Happening?" />
               <div className="delete">
-                <X onClick={() => setVal("")} />
+                <X size={14} onClick={() => setVal("")} />
               </div>
             </div>
           </div>
