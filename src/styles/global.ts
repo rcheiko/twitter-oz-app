@@ -1,5 +1,6 @@
-import { css } from "@emotion/react";
-import { Theme, fontSizes } from "../theme";
+import { css } from "@emotion/react"
+
+import { Theme, fontSizes } from "../theme"
 
 export const breakpoints = {
   sm: '640px',
