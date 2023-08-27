@@ -1,22 +1,23 @@
 /// <reference types="@emotion/react/types/css-prop" />
-import React, { HTMLAttributes } from "react";
-import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { getRouterRoutePath, Route } from "./path";
-import { ApolloProvider } from "@apollo/client";
-import { client } from "./apollo/client";
-import { css, Global } from "@emotion/react";
-import { Theme, useTheme } from "./theme";
-import { breakpoints, globalStyle } from "./styles/global";
-import Dashboard from "./pages/dashboard";
-import Profile from "./pages/profile";
-import Messages from "./pages/messages";
-import Bookmarks from "./pages/bookmarks";
-import Settings from "./pages/settings";
-import Notifications from "./pages/notifications";
-import ErrorPage from "./error-page";
-import Sidebar from "./components/side-bar";
-import Rightbar from "./components/right-bar";
+import React, { HTMLAttributes } from "react"
+import ReactDOM from "react-dom/client"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { ApolloProvider } from "@apollo/client"
+import { css, Global } from "@emotion/react"
+
+import { getRouterRoutePath, Route } from "./path"
+import { Theme, useTheme } from "./theme"
+import { breakpoints, globalStyle } from "./styles/global"
+import { client } from "./apollo/client"
+import Dashboard from "./pages/dashboard"
+import Profile from "./pages/profile"
+import Messages from "./pages/messages"
+import Bookmarks from "./pages/bookmarks"
+import Settings from "./pages/settings"
+import Notifications from "./pages/notifications"
+import ErrorPage from "./error-page"
+import Sidebar from "./components/side-bar"
+import Rightbar from "./components/right-bar"
 
 const positionStyle = (theme: Theme) => css`
 &.body {
@@ -32,7 +33,7 @@ const positionStyle = (theme: Theme) => css`
     min-height: 100vh;
   }
 }
-`;
+`
 
 const WrapElement = ({children}: HTMLAttributes<HTMLDivElement>) => {
   const theme = useTheme()

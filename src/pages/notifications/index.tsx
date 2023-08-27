@@ -1,8 +1,9 @@
-import { css } from "@emotion/react";
-import { Theme, colors, fontSizes, useTheme } from "../../theme";
-import Header from "../../components/global/header";
-import { Heart, Repeat, Settings } from "react-feather";
-import { useState } from "react";
+import { Heart, Repeat, Settings } from "react-feather"
+import { useState } from "react"
+import { css } from "@emotion/react"
+
+import { Theme, fontSizes, useTheme } from "../../theme"
+import Header from "../../components/global/header"
 import avatar from "../../assets/avatar.jpg"
 import Avatar from "../../components/avatar"
 

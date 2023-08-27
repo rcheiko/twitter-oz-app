@@ -1,4 +1,4 @@
-import { css } from "@emotion/react";
+import { css } from "@emotion/react"
 
 const avatarStyle = (size?: string) => css`
 height: ${size ? size : `4.5rem`};
