@@ -1,8 +1,9 @@
-import { css } from "@emotion/react"
-import { Theme, fontSizes, useTheme } from "../../theme"
-import Header from "../../components/global/header"
 import { useState } from "react"
 import { RefreshCw } from "react-feather"
+import { css } from "@emotion/react"
+
+import { Theme, fontSizes, useTheme } from "../../theme"
+import Header from "../../components/global/header"
 import Tweet from "./tweet"
 
 const dashboard = (theme: Theme) => css`

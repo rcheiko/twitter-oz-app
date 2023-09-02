@@ -1,6 +1,7 @@
-import { css } from "@emotion/react";
-import { Theme, useTheme } from "../../theme";
-import Header from "../../components/global/header";
+import { css } from "@emotion/react"
+
+import { Theme, useTheme } from "../../theme"
+import Header from "../../components/global/header"
 
 export const settings = (theme: Theme) => css`
 .top-header {

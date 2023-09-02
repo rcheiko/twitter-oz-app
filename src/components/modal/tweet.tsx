@@ -1,13 +1,14 @@
 import { css } from "@emotion/react"
+import { Calendar, Clock, Image, PieChart, PlusCircle, Smile, X } from "react-feather"
+import { useEffect, useRef, useState } from "react"
+
+import { PopOver, PopOverCard, PopOverMenu } from "../popover/popover"
 import { Theme, colors, fontSizes, fontWeights, useTheme } from "../../theme"
+import { smileyStyle } from "../../pages/dashboard/tweet"
+import { breakpoints } from "../../styles/global"
 import Modal from "../modal"
 import avatar from "../../assets/avatar.jpg"
 import Avatar from "../avatar"
-import { Calendar, Clock, Image, PieChart, PlusCircle, Smile, X } from "react-feather"
-import { PopOver, PopOverCard, PopOverMenu } from "../popover/popover"
-import { useEffect, useRef, useState } from "react"
-import { smileyStyle } from "../../pages/dashboard/tweet"
-import { breakpoints } from "../../styles/global"
 
 export const tweetModalStyle = (theme: Theme) => css`
 @media (min-width: 640px) {

@@ -1,7 +1,8 @@
 import { CheckCircle, MoreHorizontal } from "react-feather"
 import avatar from "../assets/avatar.jpg"
-import { Theme, colors, fontSizes, fontWeights, useTheme } from '../theme'
 import { css } from '@emotion/react'
+
+import { Theme, fontSizes, fontWeights, useTheme } from '../theme'
 import { PopOver, PopOverCard, PopOverMenu } from './popover/popover'
 import Avatar from "./avatar"
 

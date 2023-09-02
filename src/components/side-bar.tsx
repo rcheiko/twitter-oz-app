@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom"
 import { Bell, Bookmark, Home, Mail, User, Settings, Moon, Sun, Feather } from "react-feather"
 import { css } from "@emotion/react"
+import { useState } from "react"
+
 import { Theme, toggleTheme, useTheme } from "../theme"
 import { Route, getRoutePath } from "../path"
-import twitter from '../assets/twitter-30.svg'
-import { styleSidebar } from "../styles/side"
 import { ListProfileConnected } from "./list-profile-connected"
-import { useState } from "react"
+import { styleSidebar } from "../styles/side"
 import { TweetModal } from "./modal/tweet"
+import twitter from '../assets/twitter-30.svg'
 
 const themeToggleStyle = (theme: Theme) => css`
   &.theme {

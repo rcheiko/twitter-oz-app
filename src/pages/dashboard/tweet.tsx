@@ -1,13 +1,14 @@
-import { css } from "@emotion/react"
-import { Theme, colors, fontSizes, useTheme } from "../../theme"
-import avatar from "../../assets/avatar.jpg"
-import Avatar from "../../components/avatar"
 import { useEffect, useRef, useState } from "react"
 import { Calendar, Clock, Image, PieChart, PlusCircle, Smile, X } from "react-feather"
-import { breakpoints } from "../../styles/global"
-import { PopOver, PopOverCard, PopOverMenu } from "../../components/popover/popover"
+import { css } from "@emotion/react"
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
+
+import { PopOver, PopOverCard, PopOverMenu } from "../../components/popover/popover"
+import { Theme, colors, fontSizes, useTheme } from "../../theme"
+import { breakpoints } from "../../styles/global"
 import { fontWeights } from "../../theme"
+import avatar from "../../assets/avatar.jpg"
+import Avatar from "../../components/avatar"
 
 const tweet = (theme: Theme) => css`
 display: flex;

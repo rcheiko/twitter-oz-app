@@ -1,6 +1,7 @@
 import { css } from "@emotion/react"
+
 import { Theme, colors, fontSizes, fontWeights } from "../theme"
-import { breakpoints } from "./global";
+import { breakpoints } from "./global"
 
 export const styleSidebar = (theme: Theme) => css`
 &.nav {
