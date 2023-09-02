@@ -9,7 +9,7 @@ export const profile = (theme: Theme) => css`
 }
 `
 
-export default function Profile() {
+export const Profile = () => {
   const theme = useTheme()
 
   return (
@@ -24,3 +24,5 @@ export default function Profile() {
     </div>
   )
 }
+
+export default Profile

@@ -21,7 +21,7 @@ span {
 }
 `
 
-export function PopOver ({ children }: { children: ReactNode }) {
+export const PopOver = ({ children }: { children: ReactNode }) => {
   const [open, setOpen] = useState(false)
   return (
     <RadixPopover.Root open={open} onOpenChange={setOpen}>
@@ -30,7 +30,7 @@ export function PopOver ({ children }: { children: ReactNode }) {
   )
 }
 
-export function PopOverCard ({ children }: { children: ReactNode }) {
+export const PopOverCard = ({ children }: { children: ReactNode }) => {
   return (
     <RadixPopover.Trigger asChild>
       {children}
@@ -38,7 +38,7 @@ export function PopOverCard ({ children }: { children: ReactNode }) {
   )
 }
 
-export function PopOverMenu ({ children }: { children: ReactNode }) {
+export const PopOverMenu = ({ children }: { children: ReactNode }) => {
   const theme = useTheme()
 
   return (
@@ -51,7 +51,7 @@ export function PopOverMenu ({ children }: { children: ReactNode }) {
   )
 }
 
-export function PopOverArrow () {
+export const PopOverArrow = () => {
   return (
     <RadixPopover.Arrow />
   )

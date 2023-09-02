@@ -60,7 +60,7 @@ padding: 5px 0;
 }
 `
 
-export function ListProfileConnected () {
+export const ListProfileConnected = () => {
   const theme = useTheme();
   
   return (
@@ -133,3 +133,5 @@ export function ListProfileConnected () {
     </PopOver>
   )
 }
+
+export default ListProfileConnected

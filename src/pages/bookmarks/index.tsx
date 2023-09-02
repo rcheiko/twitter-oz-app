@@ -1,5 +1,4 @@
 import { css } from "@emotion/react"
-
 import { Theme, useTheme } from "../../theme"
 import Header from "../../components/global/header"
 
@@ -7,9 +6,9 @@ export const bookmarks = (theme: Theme) => css`
 .top-header {
   padding: 0.25rem 1.5rem;
 }
-`;
+`
 
-export default function Bookmarks() {
+export const Bookmarks = () => {
   const theme = useTheme()
 
   return (
@@ -20,10 +19,8 @@ export default function Bookmarks() {
           <p>Pseudo</p>
         </div>
       </Header>
-      <div>
-        
-      </div>
-      <p></p>
     </div>
   )
 }
+
+export default Bookmarks

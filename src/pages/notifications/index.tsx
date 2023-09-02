@@ -1,5 +1,5 @@
-import { Heart, Repeat, Settings } from "react-feather"
 import { useState } from "react"
+import { Heart, Repeat, Settings } from "react-feather"
 import { css } from "@emotion/react"
 
 import { Theme, fontSizes, useTheme } from "../../theme"
@@ -92,9 +92,9 @@ export const notifications = (theme: Theme) => css`
     }
   }
 }
-`;
+`
 
-export default function Notifications() {
+export const Notifications = () => {
   const theme = useTheme()
   const [listTimeline, setlistTimeline] = useState(0)
   const wichTimeline = [
@@ -159,5 +159,7 @@ export default function Notifications() {
         </div>
       </div>
     </div>
-  );
+  )
 }
+
+export default Notifications;

@@ -9,7 +9,7 @@ export const settings = (theme: Theme) => css`
 }
 `
 
-export default function Settings() {
+export const Settings = () => {
   const theme = useTheme()
 
   return (
@@ -24,3 +24,5 @@ export default function Settings() {
     </div>
   )
 }
+
+export default Settings

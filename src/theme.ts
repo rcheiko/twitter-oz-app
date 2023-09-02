@@ -13,7 +13,7 @@ export const fontSizes = {
   '4xl': '3rem',
 }
 
-export function fontWeights (size: keyof typeof fontSizes) {
+export const fontWeights = (size: keyof typeof fontSizes) => {
   switch (size) {
     case 'xs':
       return 400

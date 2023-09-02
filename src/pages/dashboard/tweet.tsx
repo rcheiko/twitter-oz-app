@@ -132,7 +132,7 @@ export const smileyStyle = () => css`
 `
 
 
-export default function Tweet() {
+export const Tweet = () => {
   const theme = useTheme()
 
   const [val, setVal] = useState("")
@@ -206,3 +206,5 @@ export default function Tweet() {
     </div>
   )
 }
+
+export default Tweet
