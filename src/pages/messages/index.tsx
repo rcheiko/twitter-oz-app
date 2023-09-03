@@ -1,13 +1,13 @@
 import { css } from "@emotion/react"
-import { Theme, useTheme } from "../../theme"
 
+import { Theme, useTheme } from "../../theme"
 import Header from "../../components/global/header"
 
 export const messages = (theme: Theme) => css`
 .top-header {
   padding: 0.25rem 1.5rem;
 }
-`;
+`
 
 export const Messages = () => {
   const theme = useTheme()
