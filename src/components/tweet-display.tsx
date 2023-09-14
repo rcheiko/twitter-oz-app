@@ -41,6 +41,79 @@ margin: 0 2rem;
       font-weight: 400;
       color: ${theme.colors.inactive};
     }
+
+
+    .picture {
+      margin-top: 1rem;
+      display: grid;
+      gap: .25rem;
+      width: 80%;
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+
+      &.number-1 {
+        .picture-1 {
+          border-radius: 1rem;
+        }
+      }
+      
+      &.number-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        .picture-1 {
+          border-radius: 1rem 0 0 1rem;
+        }
+        .picture-2 {
+          border-radius: 0 1rem 1rem 0;
+        }
+      }
+      
+      &.number-3 {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+      
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+        .picture-1 {
+          height:-webkit-fill-available;
+          grid-column: 1 / span 1;
+          grid-row: 1 / span 2;
+          border-radius: 1rem 0 0 1rem;
+        }
+        .picture-2 {
+          border-radius: 0 0 1rem 0;
+        }
+        .picture-3 {
+          border-radius: 0 1rem 0 0;
+        }
+      }
+      
+      &.number-4 {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+
+        .picture-1 {
+          border-radius: 1rem 0 0 0;
+        }
+        .picture-2 {
+          border-radius: 0 1rem 0 0;
+        }
+        .picture-3 {
+          border-radius: 0 0 0 1rem;
+        }
+        .picture-4 {
+          border-radius: 0 0 1rem 0;
+        }
+      }
+    }
   }
 }
 `
@@ -51,7 +124,7 @@ interface ITweet {
 const TweetDisplay = ({
 }: ITweet) => {
   const theme = useTheme()
-
+  const imagesLength = 3
   return (
     <div css={tweet(theme)}>
       <div className="retweet">
@@ -70,7 +143,14 @@ const TweetDisplay = ({
             <span>Time Posted</span>
           </div>
         </div>
-        <span>Tweet message Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, ex.</span>  
+        <span>Tweet message Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, ex.</span>
+        <div className={`picture number-${imagesLength}`}>
+          {
+            Array(imagesLength).fill(0).map((_, i) => (
+              <img key={i} src={avatar} className={`picture-${i+1}`} />
+            ))
+          }
+        </div>
       </div>
     </div>
     </div>
