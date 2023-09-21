@@ -9,7 +9,7 @@ border-radius: 15px;
 z-index: 1301;
 background-color: ${theme.colors.backgroundTertiary};
 box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-width: 275px;
+width: fit-content;
 border: none;
 &:focus {
   outline: none;
