@@ -2,10 +2,11 @@ import { css } from "@emotion/react"
 import { BarChart2, Bookmark, Edit2, Heart, Link, Mail, MessageCircle, Repeat, Upload } from "react-feather"
 
 import { Theme, colors, useTheme } from "../theme"
-import { PopOver, PopOverCard, PopOverMenu } from "./popover/popover"
+import { PopOver, PopOverCard, PopOverMenu } from "./popover-card"
 import Avatar from "./avatar"
 import avatar from "../assets/avatar.jpg"
 import verified_badge from "../assets/verified_badge.svg"
+import { TooltipDisplay } from "./hover-card"
 
 export const tweet = (theme: Theme) => css`
 border-bottom: 1px solid ${theme.colors.borderPrimary};
@@ -32,6 +33,17 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
   display: flex;
   justify-content: flex-start;
   gap: 1rem;
+
+  .main {
+    img {
+      transition: all .2s ease-in-out;
+      opacity: 1;
+      :hover {
+        cursor: pointer;
+        opacity: .8;
+      }  
+    }
+  }
 
   .tweet {
     display: flex;
@@ -166,8 +178,6 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
     }
   }
 }
-
-
 `
 
 export const tooltipUpload = (theme: Theme) => css`
@@ -223,6 +233,77 @@ export const tooltipRetweet = (theme: Theme) => css`
   }
 `
 
+export const tooltipAvatar = (theme: Theme) => css`
+width: 25rem;
+
+.top-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  img {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+  button {
+    border-radius: 1rem;
+    padding: .5rem 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    transition: all .2s ease-in-out;
+    opacity: 1;
+    :hover {
+      cursor: pointer;
+      opacity: .9;
+    }
+  }
+  .following {
+    background-color: ${theme.colors.backgroundSecondary};
+    color: ${theme.colors.active};
+  }
+  .followed {
+    background-color: ${theme.colorScheme === 'dark' ? colors.white : colors.grey};
+    color: ${colors.black};
+  }
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  .name {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  .sub-name {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: ${theme.colors.inactive};
+    margin-bottom: .5rem;
+  }
+  .description {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+}
+
+.follow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  .number {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  .text {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: ${theme.colors.inactive};
+  }
+}
+`
+
+
 interface ITweet {
 }
 
@@ -230,6 +311,7 @@ const TweetDisplay = ({
 }: ITweet) => {
   const theme = useTheme()
   const imagesLength = 2
+  const follow = false
   return (
     <div css={tweet(theme)}>
       <div>
@@ -238,7 +320,44 @@ const TweetDisplay = ({
           <span>NAME retweeted</span>
         </div>
         <div className="profile">
-          <Avatar src={avatar} />
+          <div className="avatar">
+            <TooltipDisplay
+              text={
+                <div className="main">
+                  <Avatar src={avatar} />
+                </div>
+              }
+              toolTipText={
+                <div css={tooltipAvatar(theme)}>
+                  <div className="top-menu">
+                    <Avatar src={avatar} />
+                    <button className={follow ? "following" : "followed"}>
+                      {
+                        follow ? "Following" : "Follow"
+                      }
+                    </button>
+                  </div>
+                  <div className="flex">
+                    <span className="name">Shokker</span>
+                    <span className="sub-name">@shokker</span>
+                    <span className="description">Hello i'm fine and you</span>
+                  </div>
+                  <div className="follow">
+                    <div>
+                      <span className="number">543</span>
+                      {' '}
+                      <span className="text">Following</span>
+                    </div>
+                    <div>
+                      <span className="number">123,543</span>
+                      {' '}
+                      <span className="text">Followers</span>
+                    </div>
+                  </div>
+                </div>
+              }
+            />
+          </div>
           <div className="tweet">
             <div className="text">
               <span className="name">Name</span>

@@ -3,7 +3,7 @@ import { Calendar, Clock, Image, PieChart, PlusCircle, Smile, X } from "react-fe
 import { css } from "@emotion/react"
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
 
-import { PopOver, PopOverCard, PopOverMenu } from "../../components/popover/popover"
+import { PopOver, PopOverCard, PopOverMenu } from "../../components/popover-card"
 import { Theme, colors, fontSizes, useTheme } from "../../theme"
 import { breakpoints } from "../../styles/global"
 import { fontWeights } from "../../theme"

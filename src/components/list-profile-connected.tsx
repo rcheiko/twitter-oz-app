@@ -3,7 +3,7 @@ import avatar from "../assets/avatar.jpg"
 import { css } from '@emotion/react'
 
 import { Theme, fontSizes, fontWeights, useTheme } from '../theme'
-import { PopOver, PopOverCard, PopOverMenu } from './popover/popover'
+import { PopOver, PopOverCard, PopOverMenu } from './popover-card'
 import Avatar from "./avatar"
 
 const avatarStyle = (theme: Theme) => css`

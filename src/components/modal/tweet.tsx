@@ -2,7 +2,7 @@ import { css } from "@emotion/react"
 import { Calendar, Clock, Image, PieChart, PlusCircle, Smile, X } from "react-feather"
 import { useEffect, useRef, useState } from "react"
 
-import { PopOver, PopOverCard, PopOverMenu } from "../popover/popover"
+import { PopOver, PopOverCard, PopOverMenu } from "../popover-card"
 import { Theme, colors, fontSizes, fontWeights, useTheme } from "../../theme"
 import { smileyStyle } from "../../pages/dashboard/tweet"
 import { breakpoints } from "../../styles/global"

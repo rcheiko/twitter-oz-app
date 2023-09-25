@@ -2,7 +2,7 @@ import { css } from "@emotion/react"
 import * as RadixPopover from "@radix-ui/react-popover"
 import { ReactNode, useState } from "react"
 
-import { Theme, useTheme } from "../../theme"
+import { Theme, useTheme } from "../theme"
 
 const stylePopOverMenu = (theme: Theme) => css`
 border-radius: 15px;

@@ -79,7 +79,6 @@ export const lightTheme = {
     backgroundQuaternary: colors.eggshell,
     borderPrimary: '#eeeeee',
     progressBar: colors.green,
-    white: colors.white,
     errorPrimary: '#DB2525', // 'rgb(255, 40, 40)',
     backgroundError: 'rgb(214, 77, 77)',
     blur: 'rgba(240, 240, 240, 0.3)'
@@ -103,7 +102,6 @@ export const darkTheme = {
     backgroundQuaternary: '#374055',
     borderPrimary: 'rgba(255, 255, 255, 0.1)',
     progressBar: colors.green,
-    white: colors.white,
     errorPrimary: '#db4c4c', // 'rgb(255, 40, 40)',
     backgroundError: 'rgb(214, 77, 77)',
     blur: 'rgba(255, 255, 255, 0.03)'

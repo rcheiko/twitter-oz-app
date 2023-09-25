@@ -1,6 +1,6 @@
 import { css } from "@emotion/react"
 
-import { Theme, fontSizes } from "../theme"
+import { Theme, colors, fontSizes } from "../theme"
 
 export const breakpoints = {
   sm: '640px',
@@ -59,7 +59,7 @@ ul {
 }
 
 button {
-  color: ${theme.colors.white};
+  color: ${colors.white};
   cursor: pointer;
   border: none;
 
