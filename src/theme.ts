@@ -66,6 +66,7 @@ export const lightTheme = {
   colorScheme: 'light',
   colors: {
     jetBlack: colors.jetBlack,
+    primaryOpposite: colors.white,
     primary: colors.black,
     secondary: colors.dark_blue,
     third: colors.blue,
@@ -89,6 +90,7 @@ export const darkTheme = {
   colorScheme: 'dark',
   colors: {
     jetBlack: colors.jetBlack,
+    primaryOpposite: colors.black,
     primary: colors.white,
     secondary: colors.dark_blue,
     third: colors.blue,
