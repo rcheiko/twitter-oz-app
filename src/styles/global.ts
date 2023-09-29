@@ -63,8 +63,18 @@ button {
   cursor: pointer;
   border: none;
 
-  &:hover {
+  :hover {
     background-color: ${theme.colors.blur};
+  }
+}
+
+.link {
+  color: ${theme.colors.active};
+  border-bottom: .1rem solid transparent;
+
+  :hover {
+    border-bottom: .1rem solid ${theme.colors.active};
+    cursor: pointer;
   }
 }
 `
