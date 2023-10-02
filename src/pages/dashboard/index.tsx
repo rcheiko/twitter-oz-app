@@ -6,6 +6,7 @@ import { Theme, fontSizes, useTheme } from "../../theme"
 import Header from "../../components/global/header"
 import Tweet from "./tweet"
 import TweetDisplay from "../../components/tweet-display"
+import ListSelectTimeline from "../../components/global/list-select-timeline"
 
 const dashboard = (theme: Theme) => css`
 .icon {
@@ -25,40 +26,6 @@ const dashboard = (theme: Theme) => css`
   padding: 0.25rem 1.5rem;
 }
 
-.bar-blue {
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  span {
-    border-radius: 25px;
-    height: 3px;
-    width: 50%;
-    max-width: 100px;
-    background-color: rgb(29, 155, 240);  
-  }
-}
-
-.list-button-timeline {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  div p {
-    font-size: ${fontSizes.lg};
-    font-weight: 500;
-    padding-bottom: 0.5rem;
-  }
-
-  > * {
-    text-align: center;
-    padding-top: 0.5rem;
-    flex-grow: 1;
-
-    :hover {
-      background-color: ${theme.colors.blur}};
-    }
-  }
-}
-
 .new-tweet {
   display: flex;
   justify-content: center;
@@ -76,8 +43,8 @@ const dashboard = (theme: Theme) => css`
 
 export const Dashboard = () => {
   const theme = useTheme()
-  const [listTimeline, setlistTimeline] = useState(0)
-  const wichTimeline = [
+  const [indexTimeline, setIndexTimeline] = useState(0)
+  const listTimeline = [
     'For you',
     'Following'
   ]
@@ -108,23 +75,12 @@ export const Dashboard = () => {
             <RefreshCw size={22} />
           </div>
         </div>
-        <div className="list-button-timeline">
-          {
-            wichTimeline.map((item, index) => (
-              <div key={item} onClick={() => setlistTimeline(index)}>
-                <p>{item}</p>
-                {
-                  index === listTimeline
-                    ? (
-                      <div className="bar-blue">
-                        <span />
-                      </div>
-                    )
-                    : null
-                }
-              </div>
-            ))
-          }
+        <div>
+          <ListSelectTimeline
+            listTimeline={listTimeline}
+            indexTimeline={indexTimeline}
+            setIndexTimeline={setIndexTimeline}
+          />
         </div>
       </Header>
       <Tweet />

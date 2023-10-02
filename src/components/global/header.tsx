@@ -7,7 +7,6 @@ const styleHeader = () => css`
   position: sticky;
   top: 0;
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid ${colors.blur};
   cursor: pointer;
   h3 {
     font-weight: 600;

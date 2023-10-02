@@ -6,6 +6,9 @@ import CheckTextHashtag from "../../components/global/check-text-hashtag"
 import Header from "../../components/global/header"
 import headerImg from "../../assets/1500x500.jpeg"
 import avatar from "../../assets/avatar.jpg"
+import { useState } from "react"
+import ListSelectTimeline from "../../components/global/list-select-timeline"
+import TweetDisplay from "../../components/tweet-display"
 
 export const profile = (theme: Theme) => css`
 .top-header {
@@ -88,6 +91,7 @@ export const profile = (theme: Theme) => css`
     justify-content: center;
     align-items: flex-start;
     gap: 0.2rem;
+    margin-bottom: 2rem;
     .pseudo {
       font-size: 1.4rem;
       font-weight: 700;
@@ -171,7 +175,13 @@ export const profile = (theme: Theme) => css`
 
 export const Profile = () => {
   const theme = useTheme()
-
+  const [indexTimeline, setIndexTimeline] = useState(0)
+  const listTimeline = [
+    'Tweets',
+    'Replies',
+    'Media',
+    'Likes'
+  ]
   return (
     <div css={profile(theme)}>
       <Header scrollToTop={true}>
@@ -226,6 +236,14 @@ export const Profile = () => {
             </div>
           </div>
         </div>
+        <ListSelectTimeline
+          listTimeline={listTimeline}
+          indexTimeline={indexTimeline}
+          setIndexTimeline={setIndexTimeline}
+        />
+        <TweetDisplay />
+        <TweetDisplay />
+        <TweetDisplay />
       </div>
     </div>
   )

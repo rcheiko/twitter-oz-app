@@ -378,13 +378,13 @@ const TweetDisplay = ({
             </div>
             <div className="icon-tweet">
               <div className="answer">
-                <MessageCircle size={22} />
+                <MessageCircle size={18} />
                 1234
               </div>
               <PopOver>
                 <PopOverCard>
                   <div className="retweet">
-                    <Repeat size={22} />
+                    <Repeat size={18} />
                     <span>1234</span>
                   </div>
                 </PopOverCard>
@@ -402,17 +402,17 @@ const TweetDisplay = ({
                 </PopOverMenu>
               </PopOver>
               <div className="like">
-                <Heart size={22} />
+                <Heart size={18} />
                 1234
               </div>
               <div className="view">
-                <BarChart2 size={22} />
+                <BarChart2 size={18} />
                 1234
               </div>
               <PopOver>
                 <PopOverCard>
                   <div className="upload">
-                    <Upload size={22} />
+                    <Upload size={18} />
                   </div>
                 </PopOverCard>
                 <PopOverMenu>
