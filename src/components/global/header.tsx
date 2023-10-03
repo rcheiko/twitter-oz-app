@@ -1,6 +1,6 @@
 import { css } from "@emotion/react"
 
-import { colors, fontSizes, fontWeights } from "../../theme"
+import { fontSizes } from "../../theme"
 
 const styleHeader = () => css`
 &.top-page {
@@ -13,7 +13,7 @@ const styleHeader = () => css`
   }
   p {
     font-size: ${fontSizes.sm};
-    font-weight: ${fontWeights('sm')};
+    font-weight: 400;
   }
 }
 `

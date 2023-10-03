@@ -3,9 +3,8 @@ import { Calendar, Clock, Image, PieChart, PlusCircle, Smile, X } from "react-fe
 import { useEffect, useRef, useState } from "react"
 
 import { PopOver, PopOverCard, PopOverMenu } from "../popover-card"
-import { Theme, colors, fontSizes, fontWeights, useTheme } from "../../theme"
+import { Theme, colors, fontSizes, useTheme } from "../../theme"
 import { smileyStyle } from "../../pages/dashboard/tweet"
-import { breakpoints } from "../../styles/global"
 import Modal from "../modal"
 import avatar from "../../assets/avatar.jpg"
 import Avatar from "../avatar"
@@ -49,7 +48,7 @@ padding: 2rem 2rem .5rem;
         border: none;
         outline: none;
         font-size: ${fontSizes.base};
-        font-weight: ${fontWeights('base')};
+        font-weight: 400;
         color: ${theme.colors.primary};
         background-color: ${theme.colors.backgroundSecondary};
         border-radius: .5rem;
@@ -107,10 +106,10 @@ padding: 2rem 2rem .5rem;
       border-radius: 3rem;
       padding: 0.75rem 1.75rem;
       font-size: ${fontSizes.lg};
-      font-weight: ${fontWeights('lg')};
+      font-weight: 400;
       cursor: pointer;
 
-      @media (max-width: ${breakpoints.lg}) {
+      @media (max-width: 1024px) {
         padding: 0.5rem 1.25rem;
         font-size: ${fontSizes.sm};
         font-weight: 500;

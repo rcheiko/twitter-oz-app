@@ -2,13 +2,6 @@ import { css } from "@emotion/react"
 
 import { Theme, colors, fontSizes } from "../theme"
 
-export const breakpoints = {
-  sm: '640px',
-  md: '768px',
-  lg: '1024px',
-  xl: '1280px'
-}
-
 export const globalStyle = (theme: Theme) => css`
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 

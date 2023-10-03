@@ -5,8 +5,6 @@ import { openDB, deleteDB, wrap, unwrap } from 'idb'
 
 import { PopOver, PopOverCard, PopOverMenu } from "../../components/popover-card"
 import { Theme, colors, fontSizes, useTheme } from "../../theme"
-import { breakpoints } from "../../styles/global"
-import { fontWeights } from "../../theme"
 import avatar from "../../assets/avatar.jpg"
 import Avatar from "../../components/avatar"
 
@@ -39,7 +37,7 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
       border: none;
       outline: none;
       font-size: ${fontSizes.base};
-      font-weight: ${fontWeights('base')};
+      font-weight: 400;
       color: ${theme.colors.primary};
       background-color: ${theme.colors.backgroundSecondary};
       border-radius: 1rem;
@@ -99,10 +97,10 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
         border-radius: 3rem;
         padding: 0.75rem 1.75rem;
         font-size: ${fontSizes.lg};
-        font-weight: ${fontWeights('lg')};
+        font-weight: 400;
         cursor: pointer;
 
-        @media (max-width: ${breakpoints.lg}) {
+        @media (max-width: 1024px) {
           padding: 0.5rem 1.25rem;
           font-size: ${fontSizes.sm};
           font-weight: 500;

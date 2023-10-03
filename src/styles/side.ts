@@ -1,7 +1,6 @@
 import { css } from "@emotion/react"
 
-import { Theme, colors, fontSizes, fontWeights } from "../theme"
-import { breakpoints } from "./global"
+import { Theme, colors, fontSizes } from "../theme"
 
 export const styleSidebar = (theme: Theme) => css`
 &.nav {
@@ -13,10 +12,10 @@ export const styleSidebar = (theme: Theme) => css`
   min-height: 100vh;
   top: 0;
   > *:not(.profile) {
-    @media (min-width: ${breakpoints.md}) {
+    @media (min-width: 768px) {
       width: 175px;
     }
-    @media (min-width: ${breakpoints.lg}) {
+    @media (min-width: 1024px) {
       width: 225px;
     }
     display:flex;
@@ -49,14 +48,14 @@ export const styleSidebar = (theme: Theme) => css`
       cursor: pointer;
       padding: 0.75rem 0.75rem;
 
-      @media (min-width: ${breakpoints.md}) {
+      @media (min-width: 768px) {
         width: 175px;
       }
-      @media (min-width: ${breakpoints.lg}) {
+      @media (min-width: 1024px) {
         width: 225px;
         margin: 0.25rem;
       }
-      @media (min-width: ${breakpoints.md}) {
+      @media (min-width: 768px) {
         justify-content: center;
         align-items: center;
         flex-direction: row;
@@ -69,23 +68,23 @@ export const styleSidebar = (theme: Theme) => css`
       }
 
       .nameProfile {
-        @media (min-width: ${breakpoints.md}) {
+        @media (min-width: 768px) {
           display: flex;
           flex-direction: column;
           padding-left: 1rem;
           font-size: ${fontSizes.lg};
-          font-weight: ${fontWeights('lg')};
+          font-weight: 400;
         }
       }
 
       .text-at-profile {
         font-size: ${fontSizes.sm};
-        font-weight: ${fontWeights('sm')};
+        font-weight: 400;
       }
 
       .endProfile {
         display: none;
-        @media (min-width: ${breakpoints.md}) {
+        @media (min-width: 768px) {
           flex: auto;
           display: flex;
           align-items: center;
@@ -96,7 +95,7 @@ export const styleSidebar = (theme: Theme) => css`
   }
   .tweet-div {
     padding-right: .5rem;
-    @media (min-width: ${breakpoints.md}) {
+    @media (min-width: 768px) {
       padding-right: 2rem;
     }
 
@@ -112,7 +111,7 @@ export const styleSidebar = (theme: Theme) => css`
         display: none;
       }
 
-      @media (min-width: ${breakpoints.md}) {
+      @media (min-width: 768px) {
         span {
           display: initial;
         }
@@ -120,7 +119,7 @@ export const styleSidebar = (theme: Theme) => css`
           display: none;
         }
         font-size: ${fontSizes.lg};
-        font-weight: ${fontWeights('lg')};
+        font-weight: 400;
       }
 
       &:hover {
@@ -134,7 +133,7 @@ p {
   display: none;
 }
 
-@media (min-width: ${breakpoints.md}) {
+@media (min-width: 768px) {
   align-items: flex-end;
   p {
     display: inline;
@@ -142,7 +141,7 @@ p {
 }
 
 a :first-of-type {
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: 768px) {
     margin-right: 1rem;
   }
 }
@@ -152,7 +151,7 @@ a :first-of-type {
 export const styleRightbar = (theme: Theme) => css`
 &.nav {
   display: none;
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: 768px) {
     display: none;
   }
 }

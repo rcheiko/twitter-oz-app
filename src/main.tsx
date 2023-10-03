@@ -7,7 +7,7 @@ import { css, Global } from "@emotion/react"
 
 import { getRouterRoutePath, Route } from "./path"
 import { Theme, useTheme } from "./theme"
-import { breakpoints, globalStyle } from "./styles/global"
+import { globalStyle } from "./styles/global"
 import { client } from "./apollo/client"
 import Dashboard from "./pages/dashboard"
 import Profile from "./pages/profile"
@@ -24,7 +24,7 @@ const positionStyle = (theme: Theme) => css`
   display: grid;
   grid-template-columns: 15% 70% 15%;
   grid-template-rows: auto;
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: 768px) {
     grid-template-columns: 30% 40% 30%;
   }
 

@@ -13,27 +13,6 @@ export const fontSizes = {
   '4xl': '3rem',
 }
 
-export const fontWeights = (size: keyof typeof fontSizes) => {
-  switch (size) {
-    case 'xs':
-      return 400
-    case 'sm':
-      return 400
-    case 'base':
-      return 400
-    case 'lg':
-      return 400
-    case 'xl':
-      return 500
-    case '2xl':
-      return 500
-    case '3xl':
-      return 500
-    case '4xl':
-      return 600
-  }
-}
-
 export const colors = {
   green: '#21bba6',
   dark_blue: '#0084b4',

@@ -90,8 +90,6 @@ export const Dashboard = () => {
       <TweetDisplay />
       <TweetDisplay />
       <TweetDisplay />
-      <TweetDisplay />
-      <TweetDisplay />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import { CheckCircle, MoreHorizontal } from "react-feather"
 import avatar from "../assets/avatar.jpg"
 import { css } from '@emotion/react'
 
-import { Theme, fontSizes, fontWeights, useTheme } from '../theme'
+import { Theme, fontSizes, useTheme } from '../theme'
 import { PopOver, PopOverCard, PopOverMenu } from './popover-card'
 import Avatar from "./avatar"
 
@@ -55,7 +55,7 @@ padding: 5px 0;
 
   .text-at-profile {
     font-size: ${fontSizes.sm};
-    font-weight: ${fontWeights('sm')};
+    font-weight: 400;
   }
 }
 `
