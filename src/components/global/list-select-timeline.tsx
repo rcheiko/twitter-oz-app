@@ -32,9 +32,9 @@ border-bottom: .2rem solid ${colors.blur};
   padding-top: .5rem;
   span {
     height: .4rem;
-    border-radius: 25px;
+    border-radius: 2.5rem;
     width: 50%;
-    max-width: 100px;
+    max-width: 10rem;
     background-color: rgb(29, 155, 240);  
   }
 }

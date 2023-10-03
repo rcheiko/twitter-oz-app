@@ -47,8 +47,8 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
     .delete {
       height: 0;
       position: relative;
-      right: 30px;
-      top: 15px;
+      right: 3rem;
+      top: 1.5rem;
       cursor: pointer;
       svg:hover {
       background-color: ${theme.colors.blur};

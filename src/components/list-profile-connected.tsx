@@ -1,17 +1,17 @@
 import { CheckCircle, MoreHorizontal } from "react-feather"
-import avatar from "../assets/avatar.jpg"
 import { css } from '@emotion/react'
+
 
 import { Theme, fontSizes, useTheme } from '../theme'
 import { PopOver, PopOverCard, PopOverMenu } from './popover-card'
 import Avatar from "./avatar"
+import avatar from "../assets/avatar.jpg"
 
 const avatarStyle = (theme: Theme) => css`
-padding: 5px 0;
+width: 25rem;
 
 .separator {
-  margin: 10px 0;
-  height: 2px;
+  height: .2rem;
   border-radius: 50%;
   background-color: ${theme.colors.backgroundQuaternary};
 }
@@ -19,21 +19,19 @@ padding: 5px 0;
 .profile {
   display: flex;
   align-items: center;
-  padding: 3px 8px;
+  padding: 1.2rem;
+  :first-of-type {
+    border-radius: .8rem .8rem 0 0;
+  }
+  :last-of-type {
+    border-radius: 0 0 .8rem .8rem;
+  }
   .endProfile {
     flex: auto;
     display: flex;
     justify-content: flex-end;
-    margin-right: 10px;
+    margin-right: 1rem;
   }
-}
-
-.margin {
-  margin: 10px 0;
-}
-
-.margin-top {
-  margin-top: 10px;
 }
 
 > * {
@@ -89,10 +87,10 @@ export const ListProfileConnected = () => {
       </div>
       <PopOverMenu>
         <div css={avatarStyle(theme)}>
-          <div className="profile margin-top">
+          <div className="profile">
             <Avatar src={avatar} />
 
-            <div className="flex margin">
+            <div className="flex">
               <span className="text-next-to-profile">Shokker</span>
               <span className="text-at-profile">@Shokker</span>
             </div>
@@ -104,7 +102,7 @@ export const ListProfileConnected = () => {
 
           <div className="profile">
             <Avatar src={avatar} />
-            <div className="flex margin">
+            <div className="flex">
               <span className="text-next-to-profile">Shokker</span>
               <span className="text-at-profile">@Shokker</span>
             </div>
@@ -112,7 +110,7 @@ export const ListProfileConnected = () => {
 
           <div className="profile">
             <Avatar src={avatar} />
-            <div className="flex margin">
+            <div className="flex">
               <span className="text-next-to-profile">Shokker</span>
               <span className="text-at-profile">@Shokker</span>
             </div>
@@ -120,11 +118,11 @@ export const ListProfileConnected = () => {
 
           <div className="separator" />
 
-          <div className="profile margin">
+          <div className="profile">
             Shokitooo
           </div>
 
-          <div className="profile margin">
+          <div className="profile">
             Change Account
           </div>
 

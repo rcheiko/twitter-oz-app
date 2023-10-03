@@ -2,10 +2,11 @@ import { useState } from "react"
 import { Heart, Repeat, Settings } from "react-feather"
 import { css } from "@emotion/react"
 
-import { Theme, fontSizes, useTheme } from "../../theme"
+import { Theme, useTheme } from "../../theme"
 import Header from "../../components/global/header"
 import avatar from "../../assets/avatar.jpg"
 import Avatar from "../../components/avatar"
+import ListSelectTimeline from "../../components/global/list-select-timeline"
 
 export const notifications = (theme: Theme) => css`
 .icon {
@@ -23,40 +24,6 @@ export const notifications = (theme: Theme) => css`
   justify-content: space-between;
   align-items: center;
   padding: 0.25rem 1.5rem;
-}
-
-.bar-blue {
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  span {
-    border-radius: 25px;
-    height: 3px;
-    width: 50%;
-    max-width: 100px;
-    background-color: rgb(29, 155, 240);  
-  }
-}
-
-.list-button-timeline {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  div p {
-    font-size: ${fontSizes.lg};
-    font-weight: 500;
-    padding-bottom: 0.5rem;
-  }
-
-  > * {
-    text-align: center;
-    padding: 0.5rem 0;
-    flex-grow: 1;
-
-    :hover {
-      background-color: ${theme.colors.blur};
-    }
-  }
 }
 
 .main {
@@ -96,8 +63,8 @@ export const notifications = (theme: Theme) => css`
 
 export const Notifications = () => {
   const theme = useTheme()
-  const [listTimeline, setlistTimeline] = useState(0)
-  const wichTimeline = [
+  const [indexTimeline, setIndexTimeline] = useState(0)
+  const listTimeline = [
     'All',
     'Verified',
     'Mentions'
@@ -115,20 +82,11 @@ export const Notifications = () => {
             <Settings size={22} />
           </div>
         </div>
-        <div className="list-button-timeline">
-          {
-            wichTimeline.map((item, index) => (
-              <div key={item} onClick={() => setlistTimeline(index)}>
-                <p>{item}</p>
-                {
-                  index === listTimeline
-                    ? <div className="bar-blue"><span></span></div>
-                    : null
-                }
-              </div>
-            ))
-          }
-        </div>
+        <ListSelectTimeline
+          listTimeline={listTimeline}
+          indexTimeline={indexTimeline}
+          setIndexTimeline={setIndexTimeline}
+        />
      </Header>
       <div className="main">
         <Heart size={28} fill="red" color="red" className="icon-notification" />
