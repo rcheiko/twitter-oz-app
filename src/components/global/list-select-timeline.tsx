@@ -1,17 +1,19 @@
 import { css } from "@emotion/react"
 
-import { Theme, colors, useTheme } from "../../theme"
+import { Theme, useTheme } from "../../theme"
 
 const style = (theme: Theme) => css`
 display: flex;
 justify-content: center;
 align-items: center;
 cursor: pointer;
-border-bottom: .2rem solid ${colors.blur};
+border-bottom: .2rem solid ${theme.colors.borderPrimary};
+
 .text {
   font-size: 1.6rem;
   font-weight: 500;
 }
+
 .grey {
   color: ${theme.colors.inactive};
 }
