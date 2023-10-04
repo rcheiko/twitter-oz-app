@@ -40,7 +40,7 @@ export const Sidebar = () => {
   }
   return (
     <div>
-      <nav css={styleSidebar(theme)} className="nav">
+      <nav css={styleSidebar(theme)}>
         <NavLink to={getRoutePath(Route.DASHBOARD)}>
           <img src={twitter} alt="twitter logo" />
         </NavLink>
