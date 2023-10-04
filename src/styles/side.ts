@@ -8,7 +8,8 @@ position: sticky;
 flex-direction: column;
 align-items: center;
 width: 100%;
-min-height: 100vh;
+height: 100vh;
+overflow-y: auto;
 top: 0;
 @media (min-width: 768px) {
   align-items: flex-end;
