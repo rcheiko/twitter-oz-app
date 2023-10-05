@@ -13,6 +13,7 @@ export const notifications = (theme: Theme) => css`
   display: flex;
   align-items: center;
   padding: 1rem;
+  cursor: pointer;
   :hover {
     border-radius: 25%;
     background-color: ${theme.colors.backgroundSecondary};

@@ -1,3 +1,4 @@
+import { InboxArrowDownIcon } from '@heroicons/react/24/outline'
 import { Info, PlusSquare } from "react-feather"
 import { css } from "@emotion/react"
 
@@ -35,9 +36,74 @@ export const messages = (theme: Theme) => css`
     max-width: 400px;
     flex: 1;
     overflow: hidden;
-    height: 100vh;
     overflow-y: scroll;
-    .user-list {
+    .inner {
+      height: calc(100vh - 3.75rem);
+      display: flex;
+      flex-direction: column;
+
+      .message-request {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.8rem;
+        padding: 1.5rem 0;
+        gap: 1.5rem;
+        border-bottom: 1px solid ${theme.colors.borderPrimary};
+        border-top: 1px solid ${theme.colors.borderPrimary};
+        :hover {
+          background: ${theme.colors.blur};
+          cursor: pointer;
+        }
+
+        .icon {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+
+      .user {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+        padding: 2rem 1rem;
+
+        :hover {
+          background: ${theme.colors.blur};
+          cursor: pointer;
+        }
+
+        .details {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          gap: .5rem;
+
+          .top {
+            display: flex;
+            justify-content: center;
+            gap: .75rem;
+            font-size: 1.8rem;
+
+            .username {
+              font-weight: 600;
+            }
+
+            .inactive {
+              color: ${theme.colors.inactive};
+            }
+          }
+
+          .bottom {
+            display: flex;
+            align-items: center;
+            font-size: 1.6rem;
+            color: ${theme.colors.inactive};
+          }
+        }
+      }
     }
   }
   
@@ -70,18 +136,35 @@ export const Messages = () => {
               <PlusSquare />
             </div>
           </Header>
-          <div className="user-list">
-            <h3>Utilisateurs</h3>
-            <ul>
-              {userNames.map((userName, index) => (
-                <li key={index}>{userName}</li>
-              ))}
-            </ul>
+          <div className="inner">
+            <div className="message-request">
+              <InboxArrowDownIcon className="icon" />
+              <span>Message requests</span>
+            </div>
+            <div>
+              {
+                userNames.map((userName, index) => (
+                  <div key={index} className="user">
+                    <Avatar src={avatar} size="4.5rem" />
+                    <div className="details">
+                      <div className="top">
+                        <span className="username">{userName}</span>
+                        <span className="inactive">@{userName}</span>
+                        <span className="inactive">·</span>
+                        <span className="inactive">01 oct</span>
+                      </div>
+                      <div className="bottom">
+                        <span className="inactive">This is a message</span>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
 
         <div className="message">
-          <div className="test">
           <Header scrollToTop={true}>
             <div className="header">
               <div className="header-message">
@@ -91,7 +174,6 @@ export const Messages = () => {
               <Info />
             </div>
           </Header>
-          </div>
         </div>
       </div>
     </div>
