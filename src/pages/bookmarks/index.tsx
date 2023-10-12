@@ -2,6 +2,7 @@ import { css } from "@emotion/react"
 
 import { Theme, useTheme } from "../../theme"
 import Header from "../../components/global/header"
+import TweetDisplay from "../../components/tweet-display"
 
 export const bookmarks = (theme: Theme) => css`
 .top-header {
@@ -20,6 +21,11 @@ export const Bookmarks = () => {
           <p>Pseudo</p>
         </div>
       </Header>
+      <TweetDisplay />
+      <TweetDisplay />
+      <TweetDisplay />
+      <TweetDisplay />
+
     </div>
   )
 }

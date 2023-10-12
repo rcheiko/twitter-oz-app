@@ -1,12 +1,12 @@
-import { css } from "@emotion/react"
 import { BarChart2, Bookmark, Edit2, Heart, Link, Mail, MessageCircle, Repeat, Upload } from "react-feather"
+import { css } from "@emotion/react"
 
 import { Theme, colors, useTheme } from "../theme"
 import { PopOver, PopOverCard, PopOverMenu } from "./popover-card"
-import Avatar from "./avatar"
-import avatar from "../assets/avatar.jpg"
-import verified_badge from "../assets/verified_badge.svg"
 import { TooltipDisplay } from "./hover-card"
+import verified_badge from "../assets/verified_badge.svg"
+import avatar from "../assets/avatar.jpg"
+import Avatar from "./avatar"
 
 export const tweet = (theme: Theme) => css`
 border-bottom: 1px solid ${theme.colors.borderPrimary};

@@ -1,11 +1,14 @@
-import { InboxArrowDownIcon } from '@heroicons/react/24/outline'
-import { Info, PlusSquare } from "react-feather"
+import { InboxArrowDownIcon, GifIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline'
+import { Info, PlusSquare, Image, Smile } from "react-feather"
+import { useEffect, useRef, useState } from 'react'
 import { css } from "@emotion/react"
 
 import { Theme, useTheme } from "../../theme"
 import Header from "../../components/global/header"
 import Avatar from "../../components/avatar"
 import avatar from "../../assets/avatar.jpg"
+import Sender from './chat/sender'
+import Sended from './chat/sended'
 
 export const messages = (theme: Theme) => css`
 .header {
@@ -33,7 +36,7 @@ export const messages = (theme: Theme) => css`
     flex-direction: column;
     justify-content: center;
     align-items: space-between;
-    max-width: 400px;
+    max-width: 450px;
     flex: 1;
     overflow: hidden;
     overflow-y: scroll;
@@ -56,7 +59,7 @@ export const messages = (theme: Theme) => css`
           cursor: pointer;
         }
 
-        .icon {
+        .inbox-arrow {
           width: 3rem;
           height: 3rem;
         }
@@ -114,7 +117,77 @@ export const messages = (theme: Theme) => css`
     align-items: space-between;
     flex: 1;
     overflow: hidden;
-      .message {
+    height: 100vh;
+
+    .main-chat {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      flex: 1;
+      overflow-y: scroll;
+      margin-top: 1rem;
+    }
+    .chat-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      
+      background: ${theme.colors.backgroundSecondary};
+      min-height: 5rem;
+      padding: 0 2rem;
+      .icon-send {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding-right: 2rem;
+        border-right: 1px solid ${theme.colors.backgroundQuaternary};
+        color: ${theme.colors.active};
+        div {
+          display: flex;
+          align-items: center;
+
+          padding: .5rem;
+          :hover {
+            cursor: pointer;
+            background: ${theme.colors.backgroundQuaternary};
+            border-radius: 50%;
+          }
+  
+          .gif-icon {
+            width: 2.4rem;
+            height: 2.4rem;
+          }  
+        }
+      }
+      .input {
+        display: flex;
+        flex: 1;
+        textarea {
+          display: flex;
+          align-items: center;
+          font-size: 1.4rem;
+          color: ${theme.colors.primary};
+          flex: 1;
+          border: none;
+          resize: none;
+          outline: none;
+          background: transparent;
+          padding: 0 1rem;
+        }
+      }
+
+      .send-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        color: ${theme.colors.active};
+        cursor: pointer;
+        padding: .5rem;
+
+        :hover {
+          border-radius: 50%;
+          background: ${theme.colors.backgroundQuaternary};
+        }
+      }
     }
   }
 }
@@ -122,7 +195,48 @@ export const messages = (theme: Theme) => css`
 
 export const Messages = () => {
   const theme = useTheme()
-  const userNames = ['User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5',];
+  const userNames = ['User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5']
+  const scrollableElementRef = useRef(null)
+  const textareaRef = useRef(null)
+  const [inputValue, setInputValue] = useState('')
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value)
+  }
+
+  useEffect(() => {
+    const textarea = textareaRef.current
+
+    const maxTextareaHeight = 200
+
+    const adjustTextareaHeight = () => {
+      if (textarea) {
+        textarea.style.height = 'auto'
+        textarea.style.height = Math.min(maxTextareaHeight, textarea.scrollHeight) + 'px'
+      }
+    }
+
+    adjustTextareaHeight()
+
+    textarea.addEventListener('input', adjustTextareaHeight)
+
+    return () => {
+      textarea.removeEventListener('input', adjustTextareaHeight)
+    };
+  }, [inputValue])
+
+  useEffect(() => {
+    const scrollableElement = scrollableElementRef.current
+    const scrollToBottom = () => {
+      if (scrollableElement)
+        scrollableElement.scrollTop = scrollableElement.scrollHeight
+    }
+    scrollToBottom()
+    window.addEventListener('load', scrollToBottom)
+    return () => {
+      window.removeEventListener('load', scrollToBottom)
+    }
+  }, []) // scroll chat to the last message
 
   return (
     <div css={messages(theme)}>
@@ -138,7 +252,7 @@ export const Messages = () => {
           </Header>
           <div className="inner">
             <div className="message-request">
-              <InboxArrowDownIcon className="icon" />
+              <InboxArrowDownIcon className="inbox-arrow" />
               <span>Message requests</span>
             </div>
             <div>
@@ -174,6 +288,51 @@ export const Messages = () => {
               <Info />
             </div>
           </Header>
+          <div
+            className="main-chat"
+            ref={scrollableElementRef}
+          >
+            <Sender />
+            <Sended />
+            <Sender />
+            <Sended />
+            <Sended />
+            <Sended />
+            <Sender />
+            <Sender />
+            <Sender />
+            <Sender />
+            <Sended />
+            <Sended />
+            <Sended />
+            <Sender />
+            <Sender />
+            <Sender />
+            <Sender />
+          </div>
+          <div className='chat-bottom'>
+            <div className='icon-send'>
+              <div>
+                <Image size={22} />
+              </div>
+              <div>
+                <Smile size={22} />
+              </div>
+              <div>
+                <GifIcon className='gif-icon' />
+              </div>
+            </div>
+            <div className='input'>
+              <textarea
+                ref={textareaRef}
+                rows={1}
+                value={inputValue}
+                onChange={handleChange}
+                placeholder="Message"
+              />
+            </div>
+            <PaperAirplaneIcon className='send-icon' />
+          </div>
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@ const positionStyle = (theme: Theme) => css`
   grid-template-columns: 15% 70% 15%;
   grid-template-rows: auto;
   @media (min-width: 768px) {
-    grid-template-columns: 30% 40% 30%;
+    grid-template-columns: 30% 42.5% 27.5%;
   }
 
   > * {
