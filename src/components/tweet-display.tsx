@@ -16,7 +16,10 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
   background-color: ${theme.colors.blur};
 }
 > div {
-  margin: 0 2rem;
+  margin: 0 .25rem;
+    @media (min-width: 640px) {
+    margin: 0 2rem;
+  }
   padding-bottom: 2rem;
 }
 .retweet-tweet {
@@ -32,7 +35,10 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
 .profile {
   display: flex;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: .5rem;
+  @media (min-width: 640px) {
+    gap: 1rem;
+  }
 
   .main {
     img {
@@ -48,21 +54,37 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
   .tweet {
     display: flex;
     flex-direction: column;
+    font-size: 1.4rem;
+    @media (min-width: 640px) {
+      font-size: 1.6rem;
+    }
 
     .text {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      gap: 0.5rem;
-      font-size: 1.6rem;
       font-weight: 500;
-    }  
+
+      gap: .25rem;
+      @media (min-width: 640px) {
+        gap: .5rem;
+      }
+
+      img {
+        width: 1.75rem;
+        height: 1.75rem;
+      }
+  
+    }
     .hashtag-name {
       display: flex;
-      gap: 0.5rem;
-      font-size: 1.6rem;
       font-weight: 400;
       color: ${theme.colors.inactive};
+
+      gap: 0.25rem;
+      @media (min-width: 640px) {
+        gap: .5rem;
+      }
     }
     .picture {
       margin-top: 1rem;
@@ -100,7 +122,10 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
       &.number-3 {
         display: grid;
         grid-template-columns: 2fr 1fr;
-        width: 70%;
+        width: 90%;
+        @media (min-width: 640px) {
+          width: 70%;
+        }
         .picture-1 {
           height:-webkit-fill-available;
           grid-column: 1 / span 1;
@@ -118,7 +143,10 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
       &.number-4 {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        width: 60%;
+        width: 90%;
+        @media (min-width: 640px) {
+          width: 60%;
+        }
         .picture-1 {
           border-radius: 1rem 0 0 0;
         }
@@ -137,10 +165,18 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 2rem;
-      margin-right: 4.5rem;
+      margin-top: 1rem;
       color: ${theme.colors.secondaryInactive};
 
+      @media (min-width: 640px) {
+        margin-top: 2rem;
+        margin-right: 4.5rem;
+      }
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
       .answer {
         :hover {
           color: ${theme.colors.active};
@@ -149,7 +185,6 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
       .retweet {
         display: flex;
         align-items: center;
-        gap: 1rem;
         :hover {
           color: ${colors.green};
         }
@@ -173,7 +208,12 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 1rem;
+        gap: .25rem;
+        font-size: 1.2rem;
+        @media (min-width: 640px) {
+          gap: 1rem;
+          font-size: 1.6rem;
+        }
       }
     }
   }
@@ -365,7 +405,7 @@ const TweetDisplay = ({
               <div className="hashtag-name">
                 <span>@Name</span>
                 <span>·</span>
-                <span>Time Posted</span>
+                <span>11h</span>
               </div>
             </div>
             <span>Tweet message Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, ex.</span>
