@@ -67,7 +67,7 @@ export const ListProfileConnected = () => {
         <PopOverCard>
             <div className="profile">
               <Avatar src={avatar} />
-              <div className="nameProfile">
+              <div className="name-profile">
                 <p>
                   {
                     "Shokker".length > 12 ? "Shokker".slice(0, 12) + "..." : "Shokker"

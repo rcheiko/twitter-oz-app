@@ -74,12 +74,12 @@ export const Sidebar = () => {
             <p>Profile</p>
           </NavLink>
         </div>
-        <div>
+        {/* <div>
           <NavLink to={getRoutePath(Route.SETTINGS)}>
             <Settings />
             <p>Settings</p>
           </NavLink>
-        </div>
+        </div> */}
         <ThemeToggle />
         <div className="tweet-div">
           <button

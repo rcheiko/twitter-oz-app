@@ -68,10 +68,7 @@ export const Dashboard = () => {
     <div css={dashboard(theme)}>
       <Header scrollToTop={true}>
         <div className="top-header">
-          <div>
-            <h3>Home</h3>
-            <p>Pseudo</p>
-          </div>
+          <h3>Home</h3>
           <div className="icon">
             <RefreshCw size={22} />
           </div>

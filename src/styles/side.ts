@@ -73,13 +73,13 @@ top: 0;
       background-color: ${theme.colors.backgroundSecondary};
     }
 
-    .nameProfile {
+    .name-profile {
       @media (min-width: 768px) {
         display: flex;
         flex-direction: column;
         padding-left: 1rem;
         font-size: ${fontSizes.lg};
-        font-weight: 400;
+        font-weight: 500;
       }
       @media (min-width: 1024px) {
         font-size: ${fontSizes.xl};

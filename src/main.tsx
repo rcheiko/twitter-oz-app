@@ -44,7 +44,6 @@ grid-template-rows: auto;
 const WrapElement = ({children}: HTMLAttributes<HTMLDivElement>) => {
   const theme = useTheme()
   const path = useLocation()
-  
   return (
     <>
       <Global styles={globalStyle(theme)} />

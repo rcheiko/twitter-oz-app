@@ -1,4 +1,4 @@
-import { BarChart2, Bookmark, Edit2, Heart, Link, Mail, MessageCircle, Repeat, Upload } from "react-feather"
+import { BarChart2, Bookmark, Edit2, Heart, Link, Mail, MessageCircle, MoreHorizontal, Repeat, Upload } from "react-feather"
 import { css } from "@emotion/react"
 
 import { Theme, colors, useTheme } from "../theme"
@@ -59,33 +59,54 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
       font-size: 1.6rem;
     }
 
-    .text {
+    .top-tweet {
+      position: relative;
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      font-weight: 500;
+      align-items: flex-start;
+      justify-content: space-between;
 
-      gap: .25rem;
-      @media (min-width: 640px) {
-        gap: .5rem;
-      }
-
-      img {
-        width: 1.75rem;
-        height: 1.75rem;
-      }
+      .text {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-weight: 500;
+        gap: .25rem;
+        @media (min-width: 640px) {
+          gap: .5rem;
+        }
   
-    }
-    .hashtag-name {
-      display: flex;
-      font-weight: 400;
-      color: ${theme.colors.inactive};
+        img {
+          width: 1.75rem;
+          height: 1.75rem;
+        }
 
-      gap: 0.25rem;
-      @media (min-width: 640px) {
-        gap: .5rem;
+        .hashtag-name {
+          display: flex;
+          font-weight: 400;
+          color: ${theme.colors.inactive};
+          gap: 0.25rem;
+          @media (min-width: 640px) {
+            gap: .5rem;
+          }
+        }
+      }
+      .more {
+        position: absolute;
+        right: 0;
+        top: -.75rem;
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        cursor: pointer;
+        border-radius: 50%;
+        color: ${theme.colors.inactive};
+        :hover {
+          color: ${theme.colors.active};
+          background-color: rgb(29, 155, 240, 0.1);
+        }
       }
     }
+
     .picture {
       margin-top: 1rem;
       display: grid;
@@ -399,13 +420,18 @@ const TweetDisplay = ({
             />
           </div>
           <div className="tweet">
-            <div className="text">
-              <span className="name">Name</span>
-              <Avatar src={verified_badge} size="2rem" />
-              <div className="hashtag-name">
-                <span>@Name</span>
-                <span>·</span>
-                <span>11h</span>
+            <div className="top-tweet">
+              <div className="text">
+                <span className="name">Name</span>
+                <Avatar src={verified_badge} size="2rem" />
+                <div className="hashtag-name">
+                  <span>@Name</span>
+                  <span>·</span>
+                  <span>11h</span>
+                </div>
+              </div>
+              <div className="more">
+                <MoreHorizontal size={20} />
               </div>
             </div>
             <span>Tweet message Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, ex.</span>
