@@ -1,7 +1,7 @@
 /// <reference types="@emotion/react/types/css-prop" />
 import React, { HTMLAttributes } from "react"
 import ReactDOM from "react-dom/client"
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom"
 import { ApolloProvider } from "@apollo/client"
 import { css, Global } from "@emotion/react"
 
@@ -19,31 +19,36 @@ import ErrorPage from "./error-page"
 import Sidebar from "./components/side-bar"
 import Rightbar from "./components/right-bar"
 
-const positionStyle = (theme: Theme) => css`
-&.body {
-  display: grid;
-  grid-template-columns: 15% 70% 15%;
-  grid-template-rows: auto;
-  @media (min-width: 768px) {
-    grid-template-columns: 30% 55% 15%;
-  }
-  @media (min-width: 1024px) {
-    grid-template-columns: 30% 42.5% 27.5%;
+const positionStyle = (theme: Theme, path?: string) => css`
+display: grid;
+grid-template-columns: 15% 70% 15%;
+grid-template-rows: auto;
+
+@media (min-width: 768px) {
+  grid-template-columns: 30% 55% 15%;
+}
+
+@media (min-width: 1024px) {
+  grid-template-columns: ${
+    path === '/messages'
+      ? '30% 55% 15%;'
+      : '30% 42.5% 27.5%;'
   }
 
-  > * {
-    border-right: 1px solid ${theme.colors.borderPrimary};
-    min-height: 100vh;
-  }
+> * {
+  border-right: 1px solid ${theme.colors.borderPrimary};
+  min-height: 100vh;
 }
 `
 
 const WrapElement = ({children}: HTMLAttributes<HTMLDivElement>) => {
   const theme = useTheme()
+  const path = useLocation()
+  
   return (
     <>
       <Global styles={globalStyle(theme)} />
-      <div css={positionStyle(theme)} className="body">
+      <div css={positionStyle(theme, path.pathname)}>
           <Sidebar />
           {children}
           <Rightbar />
