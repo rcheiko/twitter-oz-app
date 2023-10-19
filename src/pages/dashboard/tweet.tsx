@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react"
-import { Calendar, Clock, Image, PieChart, PlusCircle, Smile, X } from "react-feather"
+import { X } from "react-feather"
 import { css } from "@emotion/react"
 import { openDB, deleteDB, wrap, unwrap } from 'idb'
+import { PhotoIcon, GifIcon, CalendarDaysIcon, ListBulletIcon } from '@heroicons/react/24/outline'
 
-import { PopOver, PopOverCard, PopOverMenu } from "../../components/popover-card"
 import { Theme, colors, fontSizes, useTheme } from "../../theme"
 import avatar from "../../assets/avatar.jpg"
 import Avatar from "../../components/avatar"
+import Emoji from "../../components/emoji"
 
 const tweet = (theme: Theme) => css`
 display: flex;
@@ -74,6 +75,8 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
           display: flex;
           align-items: center;
           justify-content: center;
+          width: 2rem;
+          height: 2rem;
         }
         &:hover {
           background-color: ${theme.colors.blur};
@@ -160,38 +163,17 @@ export const Tweet = () => {
         <div className="action-tweet">
           <div className="tweet-icon">
             <div>
-              <Image size={20} />
+              <PhotoIcon />
             </div>
             <div>
-              <PopOver>
-                <PopOverCard>
-                  <Smile size={20} />
-                </PopOverCard>
-                <PopOverMenu>
-                  <div css={smileyStyle()}>
-                    <input type="text" placeholder="Search Emoji" />               
-                    <div className="smiley-list">
-                      <div>
-                        <Clock size={20} />
-                      </div>
-                      <div>
-                        <Smile size={20} />
-                      </div>
-                      <div></div>
-                      <div></div>
-                    </div>
-                  </div>
-                </PopOverMenu>
-              </PopOver>
+              <GifIcon />
+            </div>
+            <Emoji />
+            <div>
+              <CalendarDaysIcon />
             </div>
             <div>
-              <PieChart size={20} />
-            </div>
-            <div>
-              <Calendar size={20} />
-            </div>
-            <div>
-              <PlusCircle size={20} />
+              <ListBulletIcon />
             </div>
           </div>
           <div className="tweet-button">
