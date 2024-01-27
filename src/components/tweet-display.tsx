@@ -3,12 +3,12 @@ import { css } from "@emotion/react"
 
 import { Theme, colors, useTheme } from "../theme"
 import { PopOver, PopOverCard, PopOverMenu } from "./popover-card"
-import { TooltipDisplay } from "./hover-card"
 import verified_badge from "../assets/verified_badge.svg"
 import avatar from "../assets/avatar.jpg"
 import Avatar from "./avatar"
+import TooltipDisplay from "./hover-card"
 
-export const tweet = (theme: Theme) => css`
+const tweet = (theme: Theme) => css`
 border-bottom: 1px solid ${theme.colors.borderPrimary};
 
 :hover {
@@ -241,7 +241,7 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
 }
 `
 
-export const tooltipUpload = (theme: Theme) => css`
+const tooltipUpload = (theme: Theme) => css`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -269,7 +269,7 @@ export const tooltipUpload = (theme: Theme) => css`
   }
 `
 
-export const tooltipRetweet = (theme: Theme) => css`
+const tooltipRetweet = (theme: Theme) => css`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -294,7 +294,7 @@ export const tooltipRetweet = (theme: Theme) => css`
   }
 `
 
-export const tooltipAvatar = (theme: Theme) => css`
+const tooltipAvatar = (theme: Theme) => css`
 width: 25rem;
 
 .top-menu {

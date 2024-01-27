@@ -17,7 +17,7 @@ const styleHeader = () => css`
 }
 `
 
-export const Header = ({ children, scrollToTop }: { children: React.ReactNode, scrollToTop: boolean }) => {
+const Header = ({ children, scrollToTop }: { children: React.ReactNode, scrollToTop: boolean }) => {
   const bottomToTop = () => {
     if (scrollToTop) {
       window.scrollTo({

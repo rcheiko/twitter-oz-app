@@ -1,7 +1,7 @@
 import { useTheme } from "../theme"
 import { styleRightbar } from "../styles/side"
 
-export const Rightbar = () => {
+const Rightbar = () => {
   const theme = useTheme()
 
   return (

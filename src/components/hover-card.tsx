@@ -30,7 +30,7 @@ interface TooltipDisplayProps {
   width?: number;
 }
 
-export const TooltipDisplay = ({toolTipText, text, width = 30}: TooltipDisplayProps) => {
+const TooltipDisplay = ({toolTipText, text, width = 30}: TooltipDisplayProps) => {
   const theme = useTheme()
   const [isOpen, setIsOpen] = useState(false)
 
@@ -48,3 +48,5 @@ export const TooltipDisplay = ({toolTipText, text, width = 30}: TooltipDisplayPr
     </HoverCard.Root>
     )
 }
+
+export default TooltipDisplay

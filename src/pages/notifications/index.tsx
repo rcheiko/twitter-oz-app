@@ -8,7 +8,7 @@ import avatar from "../../assets/avatar.jpg"
 import Avatar from "../../components/avatar"
 import ListSelectTimeline from "../../components/global/list-select-timeline"
 
-export const notifications = (theme: Theme) => css`
+const style = (theme: Theme) => css`
 .icon {
   display: flex;
   align-items: center;
@@ -62,7 +62,7 @@ export const notifications = (theme: Theme) => css`
 }
 `
 
-export const Notifications = () => {
+const Notifications = () => {
   const theme = useTheme()
   const [indexTimeline, setIndexTimeline] = useState(0)
   const listTimeline = [
@@ -72,7 +72,7 @@ export const Notifications = () => {
   ]
 
   return (
-    <div css={notifications(theme)}>
+    <div css={style(theme)}>
       <Header scrollToTop={true}>
         <div className="top-header">
           <div>
@@ -121,4 +121,4 @@ export const Notifications = () => {
   )
 }
 
-export default Notifications;
+export default Notifications

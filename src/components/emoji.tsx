@@ -7,7 +7,7 @@ import { Theme, useTheme } from "../theme"
 import { useState } from "react"
 
 
-export const style = (theme: Theme) => css`
+const style = (theme: Theme) => css`
 .smiley-list {
   display: flex;
   justify-content: flex-start;

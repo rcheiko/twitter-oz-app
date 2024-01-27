@@ -3,17 +3,17 @@ import { css } from "@emotion/react"
 import { Theme, useTheme } from "../../theme"
 import Header from "../../components/global/header"
 
-export const settings = (theme: Theme) => css`
+const style = (theme: Theme) => css`
 .top-header {
   padding: 0.25rem 1.5rem;
 }
 `
 
-export const Settings = () => {
+const Settings = () => {
   const theme = useTheme()
 
   return (
-    <div css={settings(theme)}>
+    <div css={style(theme)}>
       <Header scrollToTop={true}>
         <div className="top-header">
           <h3>Settings</h3>

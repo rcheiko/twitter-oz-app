@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { css } from "@emotion/react"
 import { Calendar, Link, MapPin } from "react-feather"
 
@@ -6,11 +7,10 @@ import CheckTextHashtag from "../../components/global/check-text-hashtag"
 import Header from "../../components/global/header"
 import headerImg from "../../assets/1500x500.jpeg"
 import avatar from "../../assets/avatar.jpg"
-import { useState } from "react"
 import ListSelectTimeline from "../../components/global/list-select-timeline"
 import TweetDisplay from "../../components/tweet-display"
 
-export const profile = (theme: Theme) => css`
+const style = (theme: Theme) => css`
 .top-header {
   padding: 0.25rem 1.5rem;
 }
@@ -173,7 +173,7 @@ export const profile = (theme: Theme) => css`
 }
 `
 
-export const Profile = () => {
+const Profile = () => {
   const theme = useTheme()
   const [indexTimeline, setIndexTimeline] = useState(0)
   const listTimeline = [
@@ -183,7 +183,7 @@ export const Profile = () => {
     'Likes'
   ]
   return (
-    <div css={profile(theme)}>
+    <div css={style(theme)}>
       <Header scrollToTop={true}>
         <div className="top-header">
           <h3>Pseudo</h3>

@@ -4,17 +4,17 @@ import { Theme, useTheme } from "../../theme"
 import Header from "../../components/global/header"
 import TweetDisplay from "../../components/tweet-display"
 
-export const bookmarks = (theme: Theme) => css`
+const style = (theme: Theme) => css`
 .top-header {
   padding: 0.25rem 1.5rem;
 }
 `
 
-export const Bookmarks = () => {
+const Bookmarks = () => {
   const theme = useTheme()
 
   return (
-    <div css={bookmarks(theme)}>
+    <div css={style(theme)}>
       <Header scrollToTop={true}>
         <div className="top-header">
           <h3>Bookmarks</h3>

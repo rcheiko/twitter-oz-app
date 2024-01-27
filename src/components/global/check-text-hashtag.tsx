@@ -1,5 +1,4 @@
 const CheckTextHashtag = ({ text }: { text: string }) => {
-
   const coloredText = text.split(/(#\w+)/g).map((part, index) => (
     part.startsWith('#') ? (
       <span key={index} className="link">
@@ -9,8 +8,7 @@ const CheckTextHashtag = ({ text }: { text: string }) => {
       <span key={index}>{part}</span>
     )
   ))
-
   return <>{coloredText}</>
-};
+}
 
 export default CheckTextHashtag;

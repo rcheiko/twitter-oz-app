@@ -9,7 +9,7 @@ import avatar from "../../assets/avatar.jpg"
 import Avatar from "../../components/avatar"
 import Emoji from "../../components/emoji"
 
-const tweet = (theme: Theme) => css`
+const style = (theme: Theme) => css`
 display: flex;
 align-items: flex-start;
 justify-content: space-between;
@@ -122,18 +122,8 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
 }
 `
 
-export const smileyStyle = () => css`
-.smiley-list {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: row;
-  gap: 1rem;
-}
-`
 
-
-export const Tweet = () => {
+const Tweet = () => {
   const theme = useTheme()
 
   const [val, setVal] = useState("")
@@ -149,7 +139,7 @@ export const Tweet = () => {
   const db = openDB('my-db', 1.2);
 
   return (
-    <div css={tweet(theme)}>
+    <div css={style(theme)}>
       <div className="responsive-avatar">
         <Avatar src={avatar} />
       </div>

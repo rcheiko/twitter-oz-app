@@ -8,7 +8,7 @@ import Tweet from "./tweet"
 import TweetDisplay from "../../components/tweet-display"
 import ListSelectTimeline from "../../components/global/list-select-timeline"
 
-const dashboard = (theme: Theme) => css`
+const style = (theme: Theme) => css`
 .icon {
   display: flex;
   align-items: center;
@@ -65,7 +65,7 @@ export const Dashboard = () => {
   // console.log("UserTweet: ", UserTweets)
 
   return (
-    <div css={dashboard(theme)}>
+    <div css={style(theme)}>
       <Header scrollToTop={true}>
         <div className="top-header">
           <h3>Home</h3>

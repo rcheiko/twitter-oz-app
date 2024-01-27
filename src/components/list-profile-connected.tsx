@@ -58,7 +58,7 @@ width: 25rem;
 }
 `
 
-export const ListProfileConnected = () => {
+const ListProfileConnected = () => {
   const theme = useTheme();
   
   return (

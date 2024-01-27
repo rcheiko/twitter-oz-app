@@ -4,14 +4,13 @@ import { PhotoIcon, GifIcon, CalendarDaysIcon, ListBulletIcon } from '@heroicons
 import { useEffect, useRef, useState } from "react"
 
 import { Theme, colors, fontSizes, useTheme } from "../../theme"
-import { smileyStyle } from "../../pages/dashboard/tweet"
 
 import Modal from "../modal"
 import avatar from "../../assets/avatar.jpg"
 import Avatar from "../avatar"
 import Emoji from "../emoji"
 
-export const tweetModalStyle = (theme: Theme) => css`
+const style = (theme: Theme) => css`
 padding: 2rem 2rem .5rem;
 
 @media (min-width: 640px) {
@@ -139,7 +138,7 @@ interface ITweetModal {
   onClose: () => void
 }
 
-export const TweetModal = ({
+const TweetModal = ({
   open,
   onClose
 }: ITweetModal) => {
@@ -157,7 +156,7 @@ export const TweetModal = ({
 
   return (
     <Modal open={open} onClose={onClose}>
-      <div css={tweetModalStyle(theme)}>
+      <div css={style(theme)}>
         <div className="main">
           <div className="responsive-avatar">
             <Avatar src={avatar} />
@@ -199,3 +198,5 @@ export const TweetModal = ({
     </Modal>
   )
 }
+
+export default TweetModal

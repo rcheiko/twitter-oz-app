@@ -5,7 +5,7 @@ import { X } from 'react-feather'
 
 import { Theme, useTheme } from '../theme'
 
-export const modalRootStyle = (theme: Theme, height: number) => css`
+const style = (theme: Theme, height: number) => css`
 position: fixed;
 inset: 0;
 display: flex;
@@ -70,44 +70,6 @@ overflow-y: auto;
 }
 `
 
-export const modalStyle = (theme: Theme) => css`
-position: relative;
-max-width: 42.5rem;
-color: ${theme.colors.secondary};
-
-@media (min-width: 640px) {
-  display: grid;
-}
-
-.header {
-  padding: 1.6rem;
-  border-bottom: .1rem solid ${theme.colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : '#eee'};
-
-  img {
-    height: 2.2rem;
-    width: 2.2rem;
-    object-fit: cover;
-  }
-
-  .title {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.4rem;
-    width: 100%;
-    line-height: 2.3rem;
-    font-size: 1.8rem;
-    color: ${theme.colors.primary};
-    font-weight: 500;
-    
-    &__asset {
-      display: flex;
-      gap: 0.2rem;
-    }
-  }
-}
-`
-
 type ModalRootOptions =
   HTMLAttributes<HTMLDivElement>
   & {
@@ -140,7 +102,7 @@ const ModalRoot = ({ header, onClose, preventBackdropClose, children, ...rest }:
   }
   
   return (
-    <div css={modalRootStyle(theme, height)} {...rest}>
+    <div css={style(theme, height)} {...rest}>
       <div className="backdrop" onClick={handleBackdropClose}></div>
       <div className="modal" role="dialog" tabIndex={-1} ref={setRef}>
         {

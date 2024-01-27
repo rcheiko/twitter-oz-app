@@ -10,7 +10,7 @@ import avatar from "../../assets/avatar.jpg"
 import Sender from './chat/sender'
 import Sended from './chat/sended'
 
-export const messages = (theme: Theme) => css`
+const style = (theme: Theme) => css`
 .header {
   display: flex;
   justify-content: space-between;
@@ -82,16 +82,15 @@ export const messages = (theme: Theme) => css`
           flex-direction: column;
           justify-content: center;
           align-items: flex-start;
-          gap: .5rem;
 
           .top {
             display: flex;
             justify-content: center;
-            gap: .75rem;
-            font-size: 1.8rem;
+            gap: .5rem;
+            font-size: 1.4rem;
 
             .username {
-              font-weight: 600;
+              font-weight: 500;
             }
 
             .inactive {
@@ -193,7 +192,7 @@ export const messages = (theme: Theme) => css`
 }
 `
 
-export const Messages = () => {
+const Messages = () => {
   const theme = useTheme()
   const userNames = ['User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5','User1', 'User2', 'User3', 'User4', 'User5']
   const scrollableElementRef = useRef(null)
@@ -239,7 +238,7 @@ export const Messages = () => {
   }, []) // scroll chat to the last message
 
   return (
-    <div css={messages(theme)}>
+    <div css={style(theme)}>
       <div className="main">
         <div className="navigation">
           <Header scrollToTop={true}>

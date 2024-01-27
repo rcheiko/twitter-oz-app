@@ -61,7 +61,7 @@ export const lightTheme = {
     progressBar: colors.green,
     errorPrimary: '#DB2525', // 'rgb(255, 40, 40)',
     backgroundError: 'rgb(214, 77, 77)',
-    blur: 'rgba(240, 240, 240, 0.3)'
+    blur: 'rgba(240, 240, 240, 1)'
   }
 } as const
 
@@ -85,7 +85,7 @@ export const darkTheme = {
     progressBar: colors.green,
     errorPrimary: '#db4c4c', // 'rgb(255, 40, 40)',
     backgroundError: 'rgb(214, 77, 77)',
-    blur: 'rgba(255, 255, 255, 0.03)'
+    blur: 'rgba(255, 255, 255, 0.02)'
   }
 } as const
 
