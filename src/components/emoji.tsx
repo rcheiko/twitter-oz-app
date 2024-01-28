@@ -1,10 +1,10 @@
+import React, { useState } from "react"
 import { css } from "@emotion/react"
 import { FaceSmileIcon, ClockIcon } from '@heroicons/react/24/outline'
 import emojis from 'emojibase-data/en/data.json'
 
 import { PopOver, PopOverCard, PopOverMenu } from "./popover-card"
 import { Theme, useTheme } from "../theme"
-import { useState } from "react"
 
 
 const style = (theme: Theme) => css`
@@ -76,7 +76,7 @@ const Emoji = () => {
                 {
                   emojis.map((emoji, index) => {
                     return (
-                      <>
+                      <React.Fragment key={index}>
                         {
                           emoji && emoji.group === 9
                             ? (
@@ -86,7 +86,7 @@ const Emoji = () => {
                             )
                             : undefined
                         } 
-                      </>
+                      </React.Fragment>
                     )
                   })
                 }
