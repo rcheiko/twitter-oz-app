@@ -138,10 +138,7 @@ interface ITweetModal {
   onClose: () => void
 }
 
-const TweetModal = ({
-  open,
-  onClose
-}: ITweetModal) => {
+const TweetModal = ({ open, onClose }: ITweetModal) => {
   const theme = useTheme()
 
   const [val, setVal] = useState("")

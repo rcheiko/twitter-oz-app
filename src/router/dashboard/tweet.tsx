@@ -8,6 +8,7 @@ import { Theme, colors, fontSizes, useTheme } from "../../theme"
 import avatar from "../../assets/avatar.jpg"
 import Avatar from "../../components/avatar"
 import Emoji from "../../components/emoji"
+import GifModal from "../../components/modal/gif"
 
 const style = (theme: Theme) => css`
 display: flex;
@@ -126,8 +127,11 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
 const Tweet = () => {
   const theme = useTheme()
 
-  const [val, setVal] = useState("")
   const textAreaRef = useRef(null)
+
+  const [val, setVal] = useState("")
+  const [openGif, setOpenGif] = useState(false)
+  const [gif, setGif] = useState("")
 
   useEffect(() => {
     if (textAreaRef.current) {
@@ -136,7 +140,7 @@ const Tweet = () => {
     }
   }, [val])
 
-  const db = openDB('my-db', 1.2);
+  const db = openDB('my-db', 1.2)
 
   return (
     <div css={style(theme)}>
@@ -155,7 +159,7 @@ const Tweet = () => {
             <div>
               <PhotoIcon />
             </div>
-            <div>
+            <div onClick={() => setOpenGif(!openGif)}>
               <GifIcon />
             </div>
             <Emoji />
@@ -173,6 +177,11 @@ const Tweet = () => {
           </div>
         </div>
       </div>
+      <GifModal
+        open={openGif}
+        onClose={() => setOpenGif(false)}
+        setGif={setGif}
+      />
     </div>
   )
 }
