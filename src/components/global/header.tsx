@@ -4,6 +4,7 @@ import { fontSizes } from "../../theme"
 
 const styleHeader = () => css`
 &.top-page {
+  z-index: 1;
   position: sticky;
   top: 0;
   backdrop-filter: blur(12px);

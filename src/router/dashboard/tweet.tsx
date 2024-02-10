@@ -32,6 +32,7 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
     overflow: hidden;
     flex: auto;
     display: flex;
+    flex-direction: column;
     .text-area-tweet {
       flex: auto;
       resize: none;
@@ -45,6 +46,42 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
       border-radius: 1rem;
       padding: 1rem;
       margin: 1rem 0 0 1rem;
+    }
+    .img-gif {
+      display: grid;
+      place-items: center;
+      padding: 1.5rem;
+      .img {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        max-width: 25rem;
+        img {
+          max-width: 25rem;
+          height: auto;
+          border-radius: .5rem;
+        }
+
+        .delete-gif {
+          position: absolute;
+          top: 0;
+          right: 0;
+          padding: .25rem;
+          > div {
+            padding: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: ${colors.darkTransparent};
+            :hover {
+              opacity: 0.8;
+              cursor: pointer;
+            }
+          }
+        }
+      }
     }
     .delete {
       height: 0;
@@ -149,7 +186,28 @@ const Tweet = () => {
       </div>
       <div className="tweet">
         <div className="area-tweet">
-          <textarea className="text-area-tweet"  ref={textAreaRef} value={val} onChange={(e)=> setVal(e.target.value)} rows={3} placeholder="What's Happening?" />
+          <textarea
+            className="text-area-tweet"
+            ref={textAreaRef}
+            value={val}
+            onChange={(e) => setVal(e.target.value)}
+            rows={3}
+            placeholder="What's Happening?"
+          />
+          {
+            gif && (
+              <div className="img-gif">
+                <div className="img">
+                  <img src={gif} alt="gif" />
+                  <div className="delete-gif">
+                    <div onClick={() => setGif("")} >
+                      <X size={18} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          }
           <div className="delete">
             <X onClick={() => setVal("")} />
           </div>

@@ -9,6 +9,7 @@ import Modal from "../modal"
 import avatar from "../../assets/avatar.jpg"
 import Avatar from "../avatar"
 import Emoji from "../emoji"
+import GifModal from "./gif"
 
 const style = (theme: Theme) => css`
 padding: 2rem 2rem .5rem;
@@ -42,6 +43,7 @@ padding: 2rem 2rem .5rem;
       overflow: hidden;
       flex: auto;
       display: flex;
+      flex-direction: column;
       .text-area-tweet {
         height: 100%;
         min-height: 10rem;
@@ -57,6 +59,35 @@ padding: 2rem 2rem .5rem;
         border-radius: .5rem;
         padding: 1.5rem;
         margin: 0 0 2rem 1rem;
+      }
+      .img-gif {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        img {
+          border-radius: .5rem;
+          width: 75%;  
+        }
+        .delete-gif {
+          padding: 1.5rem;
+          position: absolute;
+          top: .5rem;
+          right: 6.5rem;
+          > div {
+            padding: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: ${colors.darkTransparent};
+            :hover {
+              opacity: 0.8;
+              cursor: pointer;
+            }
+          }
+        }
       }
       .delete {
         height: 0;
@@ -144,13 +175,16 @@ const TweetModal = ({ open, onClose }: ITweetModal) => {
   const [val, setVal] = useState("")
   const textAreaRef = useRef(null)
 
+  const [openGif, setOpenGif] = useState(false)
+  const [gif, setGif] = useState("")
+
   useEffect(() => {
     if (textAreaRef.current) {
       textAreaRef.current.style.height = "auto"
       textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px"
     }
   }, [val])
-
+  
   return (
     <Modal open={open} onClose={onClose}>
       <div css={style(theme)}>
@@ -160,7 +194,26 @@ const TweetModal = ({ open, onClose }: ITweetModal) => {
           </div>
           <div className="tweet">
             <div className="area-tweet">
-              <textarea className="text-area-tweet"  ref={textAreaRef} value={val} onChange={(e)=> setVal(e.target.value)} rows={3} placeholder="What's Happening?" />
+              <textarea
+                className="text-area-tweet" 
+                ref={textAreaRef}
+                value={val}
+                onChange={(e)=> setVal(e.target.value)}
+                rows={3}
+                placeholder="What's Happening?"
+              />
+              {
+                gif && (
+                  <div className="img-gif">
+                    <img src={gif} alt="gif" />
+                    <div className="delete-gif">
+                      <div onClick={() => setGif("")} >
+                        <X size={18} />
+                      </div>
+                    </div>
+                  </div>
+                )
+              }
               <div className="delete">
                 <X size={14} onClick={() => setVal("")} />
               </div>
@@ -172,7 +225,7 @@ const TweetModal = ({ open, onClose }: ITweetModal) => {
             <div>
               <PhotoIcon />
             </div>
-            <div>
+            <div onClick={() => setOpenGif(!openGif)}>
               <GifIcon />
             </div>
             <div>
@@ -191,6 +244,11 @@ const TweetModal = ({ open, onClose }: ITweetModal) => {
             </button>
           </div>
         </div>
+        <GifModal
+          open={openGif}
+          onClose={() => setOpenGif(false)}
+          setGif={setGif}
+        />
       </div>
     </Modal>
   )

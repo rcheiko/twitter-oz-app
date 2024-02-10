@@ -28,7 +28,8 @@ export const colors = {
   seagrey: '#cddadf',
   lightgrey: '#e9ecef',
   white: '#fff',
-  blur: 'rgba(247, 249, 249, 0.1)'
+  blur: 'rgba(247, 249, 249, 0.1)',
+  darkTransparent: 'rgba(15, 20, 25, 0.75)',
 }
 
 export const darkColors = {
