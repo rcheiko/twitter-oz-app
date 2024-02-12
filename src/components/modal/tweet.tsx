@@ -208,7 +208,7 @@ const TweetModal = ({ open, onClose }: ITweetModal) => {
                     <img src={gif} alt="gif" />
                     <div className="delete-gif">
                       <div onClick={() => setGif("")} >
-                        <X size={18} />
+                        <X size={18} color="white" />
                       </div>
                     </div>
                   </div>

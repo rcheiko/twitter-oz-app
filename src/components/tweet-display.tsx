@@ -55,6 +55,7 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
     display: flex;
     flex-direction: column;
     font-size: 1.4rem;
+    flex: 1;
     @media (min-width: 640px) {
       font-size: 1.6rem;
     }
