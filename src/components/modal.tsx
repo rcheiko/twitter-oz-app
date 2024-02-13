@@ -11,6 +11,7 @@ inset: 0;
 display: flex;
 justify-content: center;
 overflow-y: auto;
+z-index: 1;
 .backdrop {
   position: fixed;
   top: 0;

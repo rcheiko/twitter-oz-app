@@ -184,7 +184,11 @@ const TweetModal = ({ open, onClose }: ITweetModal) => {
       textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px"
     }
   }, [val])
-  
+
+  const addText = (text: string) => {
+    setVal(val + text)
+  }
+
   return (
     <Modal open={open} onClose={onClose}>
       <div css={style(theme)}>
@@ -229,7 +233,7 @@ const TweetModal = ({ open, onClose }: ITweetModal) => {
               <GifIcon />
             </div>
             <div>
-              <Emoji />
+              <Emoji addText={addText} />
             </div>
             <div>
               <CalendarDaysIcon />

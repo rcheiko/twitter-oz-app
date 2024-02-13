@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { X } from "react-feather"
 import { css } from "@emotion/react"
-import { openDB, deleteDB, wrap, unwrap } from 'idb'
 import { PhotoIcon, GifIcon, CalendarDaysIcon, ListBulletIcon } from '@heroicons/react/24/outline'
 
 import { Theme, colors, fontSizes, useTheme } from "../../theme"
@@ -177,7 +176,9 @@ const Tweet = () => {
     }
   }, [val])
 
-  const db = openDB('my-db', 1.2)
+  const addText = (text: string) => {
+    setVal(val + text)
+  }
 
   return (
     <div css={style(theme)}>
@@ -220,7 +221,7 @@ const Tweet = () => {
             <div onClick={() => setOpenGif(!openGif)}>
               <GifIcon />
             </div>
-            <Emoji />
+            <Emoji addText={addText} />
             <div>
               <CalendarDaysIcon />
             </div>
