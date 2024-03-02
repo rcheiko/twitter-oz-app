@@ -1,11 +1,14 @@
+import { useEffect, useState } from "react"
 import { CheckCircle, MoreHorizontal } from "react-feather"
 import { css } from '@emotion/react'
 
 
 import { Theme, fontSizes, useTheme } from '../theme'
 import { PopOver, PopOverCard, PopOverMenu } from './popover-card'
+import { ProfileConnectedType, getProfileConnected } from "../utils/fetch/profile-connected"
 import Avatar from "./avatar"
 import avatar from "../assets/avatar.jpg"
+import Shimmer from "./shimmer/shimmer"
 
 const avatarStyle = (theme: Theme) => css`
 width: 25rem;
@@ -59,8 +62,28 @@ width: 25rem;
 `
 
 const ListProfileConnected = () => {
-  const theme = useTheme();
-  
+  const theme = useTheme()
+  const [profileConnected, setProfileConnected] = useState<ProfileConnectedType | undefined>()
+  useEffect(() => {
+    getProfileConnected().then((res) => setProfileConnected(res))
+  }, [])
+
+  if (!profileConnected || !profileConnected?.users?.length) return (
+      <div className="profile-under">
+        <div className="profile">
+          <Avatar shimmer={true} />
+          <div className="name-profile">
+              <Shimmer children="Shokker" />
+            <p className="text-at-profile">
+              <Shimmer children="Shokker" />
+            </p>
+          </div>
+          <div className="endProfile">
+            <Shimmer children="......." />
+          </div>
+        </div>
+    </div>
+  )
   return (
     <PopOver>
       <div className="profile-under">
@@ -88,44 +111,30 @@ const ListProfileConnected = () => {
       <PopOverMenu>
         <div css={avatarStyle(theme)}>
           <div className="profile">
-            <Avatar src={avatar} />
-
-            <div className="flex">
-              <span className="text-next-to-profile">Shokker</span>
-              <span className="text-at-profile">@Shokker</span>
-            </div>
-
-            <div className="endProfile">
-              <CheckCircle size={18} />
-            </div>
-          </div>
-
-          <div className="profile">
-            <Avatar src={avatar} />
-            <div className="flex">
-              <span className="text-next-to-profile">Shokker</span>
-              <span className="text-at-profile">@Shokker</span>
-            </div>
-          </div>
-
-          <div className="profile">
-            <Avatar src={avatar} />
-            <div className="flex">
-              <span className="text-next-to-profile">Shokker</span>
-              <span className="text-at-profile">@Shokker</span>
-            </div>
+            <>
+              <Avatar src={profileConnected.users[0].avatar_image_url} />
+              <div className="flex">
+                <span className="text-next-to-profile">{profileConnected.users[0].name}</span>
+                <span className="text-at-profile">@{profileConnected.users[0].screen_name}</span>
+              </div>
+              <div className="endProfile">
+                <CheckCircle size={18} />
+              </div>
+            </>
           </div>
 
           <div className="separator" />
 
           <div className="profile">
-            Shokitooo
+            Add an existing account
           </div>
-
-          <div className="profile">
-            Change Account
-          </div>
-
+          {
+            profileConnected?.users?.length && (
+              <div className="profile">
+              Logout @{profileConnected?.users[0].screen_name}
+              </div>
+            )
+          }
         </div>
       </PopOverMenu>
     </PopOver>

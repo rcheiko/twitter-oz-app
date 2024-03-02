@@ -49,8 +49,6 @@ export const Dashboard = () => {
     'For you',
     'Following'
   ]
-  // const { data: { ProfileConnected } = { } } = useQuery<{ProfileConnected: ProfileConnectedType}>(GET_PROFILE_CONNECTED)
-  // console.log("ProfileConnected: ", ProfileConnected)
 
   // const { data : { ProfileSpotlight } = { } } = useQuery<{ProfileSpotlight: ProfileSpotlightType}>(GET_PROFILE_SPOTLIGHT)
   // console.log("ProfileSpotlight: ", ProfileSpotlight)
