@@ -2,7 +2,7 @@
 //   "headers": {
 //     "accept": "*/*",
 //     "accept-language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7",
-//     "authorization": "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA",
+//     "authorization": "",
 //     "cache-control": "no-cache",
 //     "content-type": "application/json",
 //     "pragma": "no-cache",

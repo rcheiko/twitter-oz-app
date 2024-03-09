@@ -6,6 +6,7 @@ import { css } from '@emotion/react'
 import { Theme, fontSizes, useTheme } from '../theme'
 import { PopOver, PopOverCard, PopOverMenu } from './popover-card'
 import { ProfileConnectedType, getProfileConnected } from "../utils/fetch/profile-connected"
+import { SettingsType, getSettings } from "../utils/fetch/settings"
 import Avatar from "./avatar"
 import avatar from "../assets/avatar.jpg"
 import Shimmer from "./shimmer/shimmer"
@@ -64,11 +65,14 @@ width: 25rem;
 const ListProfileConnected = () => {
   const theme = useTheme()
   const [profileConnected, setProfileConnected] = useState<ProfileConnectedType | undefined>()
+  const [settings, setSettings] = useState<SettingsType | undefined>()
+  const profile = profileConnected?.users.find(user => settings?.screen_name === user.screen_name)
   useEffect(() => {
     getProfileConnected().then((res) => setProfileConnected(res))
+    getSettings().then((res) => setSettings(res))
   }, [])
 
-  if (!profileConnected || !profileConnected?.users?.length) return (
+  if (!profileConnected || !profileConnected?.users?.length || !profile) return (
       <div className="profile-under">
         <div className="profile">
           <Avatar shimmer={true} />
@@ -91,14 +95,20 @@ const ListProfileConnected = () => {
             <div className="profile">
               <Avatar src={avatar} />
               <div className="name-profile">
+
                 <p>
                   {
-                    "Shokker".length > 12 ? "Shokker".slice(0, 12) + "..." : "Shokker"
+
+                    profile.name.length > 12
+                      ? profile.name.slice(0, 12) + "..."
+                      : profile.name
                   }
                 </p>
                 <p className="text-at-profile">
-                  {
-                    "@Shokker".length > 18 ? "@Shokker".slice(0, 18) + "..." : "@Shokker"
+                  @{
+                    profile.screen_name.length > 18
+                      ? profile.screen_name.slice(0, 18) + "..."
+                      : profile.screen_name
                   }
                 </p>
               </div>
@@ -110,18 +120,24 @@ const ListProfileConnected = () => {
       </div>
       <PopOverMenu>
         <div css={avatarStyle(theme)}>
-          <div className="profile">
-            <>
-              <Avatar src={profileConnected.users[0].avatar_image_url} />
-              <div className="flex">
-                <span className="text-next-to-profile">{profileConnected.users[0].name}</span>
-                <span className="text-at-profile">@{profileConnected.users[0].screen_name}</span>
+          {
+            profileConnected.users.map((user, i) => (
+              <div className="profile">
+                <Avatar src={user.avatar_image_url} />
+                <div className="flex">
+                  <span className="text-next-to-profile">{user.name}</span>
+                  <span className="text-at-profile">@{user.screen_name}</span>
+                </div>
+                {
+                  profile.screen_name === user.screen_name && (
+                    <div className="endProfile">
+                      <CheckCircle size={18} />
+                    </div>
+                  )
+                }
               </div>
-              <div className="endProfile">
-                <CheckCircle size={18} />
-              </div>
-            </>
-          </div>
+            ))
+          }
 
           <div className="separator" />
 
@@ -129,9 +145,9 @@ const ListProfileConnected = () => {
             Add an existing account
           </div>
           {
-            profileConnected?.users?.length && (
+            profile && (
               <div className="profile">
-              Logout @{profileConnected?.users[0].screen_name}
+              Logout @{profile.screen_name}
               </div>
             )
           }

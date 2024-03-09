@@ -4,7 +4,7 @@
 //     "accept": "*/*",
 /*
     "accept-language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7",
-    "authorization": "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA",
+    "authorization": "",
     "cache-control": "no-cache",
     "content-type": "application/json",
     "x-csrf-token": "59b91845c9a89633ea0df693dbea6c7cd8e694f4bd0fb4f58a1dc3a5be4f9fe9a8be88184c1125c79d3ee69df5145b2493a44f091b99ed724ccb07184abaaa6729f896b8098220957ac6137b019018eb",
