@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { RefreshCw } from "react-feather"
 import { css } from "@emotion/react"
 
+import { HomeTimelineType, getHomeTimeline } from "../../utils/fetch/homeTimeline"
 import { Theme, fontSizes, useTheme } from "../../theme"
 import Header from "../../components/global/header"
 import Tweet from "./tweet"
@@ -62,6 +63,13 @@ export const Dashboard = () => {
   // const { data : { UserTweets } = { } } = useQuery<{UserTweets: UserTweetType }>(GET_PROFILE_TIMELINE_TWEET)
   // console.log("UserTweet: ", UserTweets)
 
+  const [homeTimeline, setHomeTimeline] = useState<HomeTimelineType | undefined>()
+
+  useEffect(() => {
+    getHomeTimeline().then(res => setHomeTimeline(res))
+  }, [])
+  console.log('homeTimeline', homeTimeline);
+  
   return (
     <div css={style(theme)}>
       <Header scrollToTop={true}>
