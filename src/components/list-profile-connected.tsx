@@ -95,10 +95,8 @@ const ListProfileConnected = () => {
             <div className="profile">
               <Avatar src={avatar} />
               <div className="name-profile">
-
                 <p>
                   {
-
                     profile.name.length > 12
                       ? profile.name.slice(0, 12) + "..."
                       : profile.name
@@ -121,8 +119,11 @@ const ListProfileConnected = () => {
       <PopOverMenu>
         <div css={avatarStyle(theme)}>
           {
-            profileConnected.users.map((user, i) => (
-              <div className="profile">
+            profileConnected.users.map(user => (
+              <div
+                key={user.user_id}
+                className="profile"
+              >
                 <Avatar src={user.avatar_image_url} />
                 <div className="flex">
                   <span className="text-next-to-profile">{user.name}</span>
