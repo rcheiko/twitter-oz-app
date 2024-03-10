@@ -2,7 +2,7 @@ import { css } from "@emotion/react"
 
 import { Theme, useTheme } from "../../theme"
 import Header from "../../components/global/header"
-import TweetDisplay from "../../components/tweet-display"
+import TweetDisplay from "../../components/tweet/tweet-display"
 
 const style = (theme: Theme) => css`
 .top-header {
@@ -21,10 +21,10 @@ const Bookmarks = () => {
           <p>Pseudo</p>
         </div>
       </Header>
+      {/* <TweetDisplay />
       <TweetDisplay />
       <TweetDisplay />
-      <TweetDisplay />
-      <TweetDisplay />
+      <TweetDisplay /> */}
 
     </div>
   )

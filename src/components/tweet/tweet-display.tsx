@@ -1,246 +1,15 @@
 import { BarChart2, Bookmark, Edit2, Heart, Link, Mail, MessageCircle, MoreHorizontal, Repeat, Upload } from "react-feather"
 import { css } from "@emotion/react"
 
-import { Theme, colors, useTheme } from "../theme"
-import { PopOver, PopOverCard, PopOverMenu } from "./popover-card"
-import verified_badge from "../assets/verified_badge.svg"
-import avatar from "../assets/avatar.jpg"
-import Avatar from "./avatar"
-import TooltipDisplay from "./hover-card"
-
-const tweet = (theme: Theme) => css`
-border-bottom: 1px solid ${theme.colors.borderPrimary};
-
-:hover {
-  cursor: pointer;
-  background-color: ${theme.colors.blur};
-}
-> div {
-  margin: 0 .25rem;
-    @media (min-width: 640px) {
-    margin: 0 2rem;
-  }
-  padding-bottom: 2rem;
-}
-.retweet-tweet {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  gap: 1rem;
-  color: ${theme.colors.inactive};
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-.profile {
-  display: flex;
-  justify-content: flex-start;
-  gap: .5rem;
-  @media (min-width: 640px) {
-    gap: 1rem;
-  }
-
-  .main {
-    img {
-      transition: all .2s ease-in-out;
-      opacity: 1;
-      :hover {
-        cursor: pointer;
-        opacity: .8;
-      }  
-    }
-  }
-
-  .tweet {
-    display: flex;
-    flex-direction: column;
-    font-size: 1.4rem;
-    flex: 1;
-    @media (min-width: 640px) {
-      font-size: 1.6rem;
-    }
-
-    .top-tweet {
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-
-      .text {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        font-weight: 500;
-        gap: .25rem;
-        @media (min-width: 640px) {
-          gap: .5rem;
-        }
-  
-        img {
-          width: 1.75rem;
-          height: 1.75rem;
-        }
-
-        .hashtag-name {
-          display: flex;
-          font-weight: 400;
-          color: ${theme.colors.inactive};
-          gap: 0.25rem;
-          @media (min-width: 640px) {
-            gap: .5rem;
-          }
-        }
-      }
-      .more {
-        position: absolute;
-        right: 0;
-        top: -.75rem;
-        display: flex;
-        align-items: center;
-        padding: 1rem;
-        cursor: pointer;
-        border-radius: 50%;
-        color: ${theme.colors.inactive};
-        :hover {
-          color: ${theme.colors.active};
-          background-color: rgb(29, 155, 240, 0.1);
-        }
-      }
-    }
-
-    .picture {
-      margin-top: 1rem;
-      display: grid;
-      gap: .25rem;
-      width: 80%;
-      height: auto;
-      img {
-        max-width: 100%;
-        height: auto;
-        object-fit: cover;
-        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-      }
-
-      &.number-1 {
-        .picture-1 {
-          border-radius: 1rem;
-        }
-      }
-      
-      &.number-2 {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 1fr;
-        width: 90%;
-        .picture-1 {
-          border-radius: 1rem 0 0 1rem;
-        }
-        .picture-2 {
-          border-radius: 0 1rem 1rem 0;
-        }
-      }
-      
-      &.number-3 {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        width: 90%;
-        @media (min-width: 640px) {
-          width: 70%;
-        }
-        .picture-1 {
-          height:-webkit-fill-available;
-          grid-column: 1 / span 1;
-          grid-row: 1 / span 2;
-          border-radius: 1rem 0 0 1rem;
-        }
-        .picture-2 {
-          border-radius: 0 0 1rem 0;
-        }
-        .picture-3 {
-          border-radius: 0 1rem 0 0;
-        }
-      }
-      
-      &.number-4 {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        width: 90%;
-        @media (min-width: 640px) {
-          width: 60%;
-        }
-        .picture-1 {
-          border-radius: 1rem 0 0 0;
-        }
-        .picture-2 {
-          border-radius: 0 1rem 0 0;
-        }
-        .picture-3 {
-          border-radius: 0 0 0 1rem;
-        }
-        .picture-4 {
-          border-radius: 0 0 1rem 0;
-        }
-      }
-    }
-    .icon-tweet {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1rem;
-      color: ${theme.colors.secondaryInactive};
-
-      @media (min-width: 640px) {
-        margin-top: 2rem;
-        margin-right: 4.5rem;
-      }
-
-      svg {
-        width: 1.5rem;
-        height: 1.5rem;
-      }
-      .answer {
-        :hover {
-          color: ${theme.colors.active};
-        }
-      }
-      .retweet {
-        display: flex;
-        align-items: center;
-        :hover {
-          color: ${colors.green};
-        }
-      }
-      .like {
-        :hover {
-          color: ${theme.colors.errorPrimary};
-        }
-      }
-      .view {
-        :hover {
-          color: ${theme.colors.active};
-        }
-      }
-      .upload {
-        :hover {
-          color: ${theme.colors.active};
-        }
-      }
-      > div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: .25rem;
-        font-size: 1.2rem;
-        @media (min-width: 640px) {
-          gap: 1rem;
-          font-size: 1.6rem;
-        }
-      }
-    }
-  }
-}
-`
+import { PopOver, PopOverCard, PopOverMenu } from "../popover-card"
+import { Theme, colors, useTheme } from "../../theme"
+import { styleTweetDisplay } from "../../styles/tweet"
+import { Entry } from "../../utils/fetch/homeTimeline"
+import blue_verified_badge from "../../assets/blue-verified-badge.svg"
+import yellow_verified_badge from "../../assets/yellow-verified-badge.svg"
+import avatar from "../../assets/avatar.jpg"
+import Avatar from "../avatar"
+import TooltipDisplay from "../hover-card"
 
 const tooltipUpload = (theme: Theme) => css`
   display: flex;
@@ -365,22 +134,39 @@ width: 25rem;
 }
 `
 
-
 interface ITweet {
+  tweet: Entry
 }
 
 const TweetDisplay = ({
+  tweet
 }: ITweet) => {
   const theme = useTheme()
   const imagesLength = 2
   const follow = false
+  console.log('tweet', tweet);
+  const description = tweet.content.itemContent?.tweet_results.result?.legacy?.full_text
+  const description2 = tweet.content.itemContent?.tweet_results.result?.legacy?.retweeted_status_result
+  const views = tweet.content.itemContent?.tweet_results.result?.views?.count
+  const replyCount = tweet.content.itemContent?.tweet_results.result?.legacy?.reply_count
+  const retweetCount = tweet.content.itemContent?.tweet_results.result?.legacy?.retweet_count
+  const likesCount = tweet.content.itemContent?.tweet_results.result?.legacy?.favorite_count
+  const bookmarkCount = tweet.content.itemContent?.tweet_results.result?.legacy?.bookmark_count
+  const isRetweeted = tweet.content.itemContent?.tweet_results.result?.legacy?.retweeted
+  const media = tweet.content.itemContent?.tweet_results.result?.legacy?.entities.media
+  const userTweetInfo = tweet.content.itemContent?.tweet_results.result?.core?.user_results.result
+  const userName = userTweetInfo?.legacy.name
+  const userScreenName = userTweetInfo?.legacy.screen_name
+  const userIsBlueVerified = userTweetInfo?.is_blue_verified
+  const userIsVerifiedBusiness = userTweetInfo?.legacy.verified_type === 'Business'
+  
   return (
-    <div css={tweet(theme)}>
+    <div css={styleTweetDisplay(theme)}>
       <div>
-        <div className="retweet-tweet">
+        {/* <div className="retweet-tweet">
           <Repeat size={16} fill="grey" color="grey" className="icon-notification" />
           <span>NAME retweeted</span>
-        </div>
+        </div> */}
         <div className="profile">
           <div className="avatar">
             <TooltipDisplay
@@ -423,10 +209,11 @@ const TweetDisplay = ({
           <div className="tweet">
             <div className="top-tweet">
               <div className="text">
-                <span className="name">Name</span>
-                <Avatar src={verified_badge} size="2rem" />
+                <span className="name">{userName}</span>
+                {userIsBlueVerified && <Avatar src={blue_verified_badge} size="2rem" />}
+                {userIsVerifiedBusiness && <Avatar src={yellow_verified_badge} size="2rem" />}
                 <div className="hashtag-name">
-                  <span>@Name</span>
+                  <span>@{userScreenName}</span>
                   <span>·</span>
                   <span>11h</span>
                 </div>
@@ -435,7 +222,9 @@ const TweetDisplay = ({
                 <MoreHorizontal size={20} />
               </div>
             </div>
-            <span>Tweet message Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, ex.</span>
+            <span>
+              {description}
+            </span>
             <div className={`picture number-${imagesLength}`}>
               {
                 Array(imagesLength).fill(0).map((_, i) => (

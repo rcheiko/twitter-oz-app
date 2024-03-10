@@ -15,7 +15,6 @@ align-items: flex-start;
 justify-content: space-between;
 padding: 1rem 1.5rem;
 border-bottom: 1px solid ${theme.colors.borderPrimary};
-
 @media (max-width: 767px) {
   .responsive-avatar {
     display: none;
@@ -26,7 +25,6 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
   display: flex;
   flex-direction: column;
   flex: auto;
-
   .area-tweet {
     overflow: hidden;
     flex: auto;
@@ -61,7 +59,6 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
           height: auto;
           border-radius: .5rem;
         }
-
         .delete-gif {
           position: absolute;
           top: 0;
@@ -99,11 +96,9 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    
     .tweet-icon {
       display: flex;
       align-items: center;
-
       > * {
         cursor: pointer;
         padding: 0.75rem;
@@ -121,14 +116,12 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
         }
       }
     }
-
     .tweet-button {
       flex: auto;
       display: flex;
       align-items: center;
       justify-content: flex-end;
       padding: 0.75rem;
-
       button {
         background-color: ${colors.blue};
         color: ${colors.white};
@@ -139,13 +132,11 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
         font-size: ${fontSizes.lg};
         font-weight: 400;
         cursor: pointer;
-
         @media (max-width: 1024px) {
           padding: 0.5rem 1.25rem;
           font-size: ${fontSizes.sm};
           font-weight: 500;
         }
-
         &:hover {
           opacity: 0.8;
         }
@@ -162,9 +153,7 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
 
 const Tweet = () => {
   const theme = useTheme()
-
   const textAreaRef = useRef(null)
-
   const [val, setVal] = useState("")
   const [openGif, setOpenGif] = useState(false)
   const [gif, setGif] = useState("")

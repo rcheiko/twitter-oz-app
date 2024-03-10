@@ -8,7 +8,7 @@ import Header from "../../components/global/header"
 import headerImg from "../../assets/1500x500.jpeg"
 import avatar from "../../assets/avatar.jpg"
 import ListSelectTimeline from "../../components/global/list-select-timeline"
-import TweetDisplay from "../../components/tweet-display"
+import TweetDisplay from "../../components/tweet/tweet-display"
 
 const style = (theme: Theme) => css`
 .top-header {
@@ -241,9 +241,9 @@ const Profile = () => {
           indexTimeline={indexTimeline}
           setIndexTimeline={setIndexTimeline}
         />
+        {/* <TweetDisplay />
         <TweetDisplay />
-        <TweetDisplay />
-        <TweetDisplay />
+        <TweetDisplay /> */}
       </div>
     </div>
   )
