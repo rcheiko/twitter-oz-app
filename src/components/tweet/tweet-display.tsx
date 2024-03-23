@@ -7,7 +7,6 @@ import { styleTweetDisplay } from "../../styles/tweet"
 import { Entry } from "../../utils/fetch/homeTimeline"
 import blue_verified_badge from "../../assets/blue-verified-badge.svg"
 import yellow_verified_badge from "../../assets/yellow-verified-badge.svg"
-import avatar from "../../assets/avatar.jpg"
 import Avatar from "../avatar"
 import TooltipDisplay from "../hover-card"
 
@@ -76,6 +75,11 @@ width: 25rem;
     width: 6.5rem;
     height: 6.5rem;
   }
+  video {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
   button {
     border-radius: 1rem;
     padding: .5rem 1.5rem;
@@ -145,20 +149,23 @@ const TweetDisplay = ({
   const imagesLength = 2
   const follow = false
   console.log('tweet', tweet);
-  const description = tweet.content.itemContent?.tweet_results.result?.legacy?.full_text
-  const description2 = tweet.content.itemContent?.tweet_results.result?.legacy?.retweeted_status_result
-  const views = tweet.content.itemContent?.tweet_results.result?.views?.count
-  const replyCount = tweet.content.itemContent?.tweet_results.result?.legacy?.reply_count
-  const retweetCount = tweet.content.itemContent?.tweet_results.result?.legacy?.retweet_count
-  const likesCount = tweet.content.itemContent?.tweet_results.result?.legacy?.favorite_count
-  const bookmarkCount = tweet.content.itemContent?.tweet_results.result?.legacy?.bookmark_count
-  const isRetweeted = tweet.content.itemContent?.tweet_results.result?.legacy?.retweeted
-  const media = tweet.content.itemContent?.tweet_results.result?.legacy?.entities.media
-  const userTweetInfo = tweet.content.itemContent?.tweet_results.result?.core?.user_results.result
+  const tweetDetails = tweet.content.itemContent?.tweet_results.result
+  const description = tweetDetails?.legacy?.full_text
+  const description2 = tweetDetails?.legacy?.retweeted_status_result
+  const views = tweetDetails?.views?.count
+  const replyCount = tweetDetails?.legacy?.reply_count
+  const retweetCount = tweetDetails?.legacy?.retweet_count
+  const likesCount = tweetDetails?.legacy?.favorite_count
+  const bookmarkCount = tweetDetails?.legacy?.bookmark_count
+  const isRetweeted = tweetDetails?.legacy?.retweeted
+  const medias = tweetDetails?.legacy?.entities.media
+  const userTweetInfo = tweetDetails?.core?.user_results.result
   const userName = userTweetInfo?.legacy.name
   const userScreenName = userTweetInfo?.legacy.screen_name
   const userIsBlueVerified = userTweetInfo?.is_blue_verified
   const userIsVerifiedBusiness = userTweetInfo?.legacy.verified_type === 'Business'
+
+  const avatar = userTweetInfo?.legacy.profile_image_url_https
   
   return (
     <div css={styleTweetDisplay(theme)}>
@@ -227,21 +234,41 @@ const TweetDisplay = ({
             </span>
             <div className={`picture number-${imagesLength}`}>
               {
-                Array(imagesLength).fill(0).map((_, i) => (
-                  <img key={i} src={avatar} className={`picture-${i+1}`} />
-                ))
+                medias?.map((media,i) => {
+                  if (media.type === 'photo') {
+                    return (
+                      <img
+                        key={media.id_str}
+                        src={media.media_url_https}
+                        className={`picture-${i+1}`}
+                      />
+                    )  
+                  }
+                  if (media.type === 'video') {
+                    const videoInfo = media.video_info?.variants.find((variant) => variant.content_type === 'video/mp4' )
+                    return (
+                      <video
+                        key={media.id_str}
+                        src={videoInfo?.url}
+                        className={`picture-${i+1}`}
+                        typeof={videoInfo?.content_type}
+                        controls
+                      />
+                    )
+                  }
+                })
               }
             </div>
             <div className="icon-tweet">
               <div className="answer">
                 <MessageCircle size={18} />
-                1234
+                {replyCount}
               </div>
               <PopOver>
                 <PopOverCard>
                   <div className="retweet">
                     <Repeat size={18} />
-                    <span>1234</span>
+                    <span>{retweetCount}</span>
                   </div>
                 </PopOverCard>
                 <PopOverMenu>
@@ -259,11 +286,11 @@ const TweetDisplay = ({
               </PopOver>
               <div className="like">
                 <Heart size={18} />
-                1234
+                {likesCount}
               </div>
               <div className="view">
                 <BarChart2 size={18} />
-                1234
+                {views}
               </div>
               <PopOver>
                 <PopOverCard>
