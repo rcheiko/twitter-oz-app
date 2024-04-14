@@ -66,7 +66,7 @@ const ListProfileConnected = () => {
   const theme = useTheme()
   const [profileConnected, setProfileConnected] = useState<ProfileConnectedType | undefined>()
   const [settings, setSettings] = useState<SettingsType | undefined>()
-  const profile = profileConnected?.users.find(user => settings?.screen_name === user.screen_name)
+  const profile = profileConnected?.users?.find(user => settings?.screen_name === user.screen_name)
   useEffect(() => {
     getProfileConnected().then((res) => setProfileConnected(res))
     getSettings().then((res) => setSettings(res))

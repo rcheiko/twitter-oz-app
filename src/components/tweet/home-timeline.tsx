@@ -23,7 +23,7 @@ const TweetHomeTimeline = () => {
       {
         homeTimeline
          ? (
-          homeTimeline?.data.home.home_timeline_urt.instructions[0].entries.map(tweet => {
+          homeTimeline?.data?.home.home_timeline_urt.instructions[0].entries.map(tweet => {
             return (
               <TweetDisplay
                 key={tweet.entryId}
