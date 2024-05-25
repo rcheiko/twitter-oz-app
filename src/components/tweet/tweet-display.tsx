@@ -116,7 +116,7 @@ width: 25rem;
     margin-bottom: .5rem;
   }
   .description {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 400;
   }
 }
@@ -160,6 +160,9 @@ const TweetDisplay = ({
   const isRetweeted = tweetDetails?.legacy?.retweeted
   const medias = tweetDetails?.legacy?.entities.media
   const userTweetInfo = tweetDetails?.core?.user_results.result
+  const userFollowersCount = userTweetInfo?.legacy.followers_count
+  const userFollowingCount = userTweetInfo?.legacy.friends_count
+  const userDescription = userTweetInfo?.legacy.description
   const userName = userTweetInfo?.legacy.name
   const userScreenName = userTweetInfo?.legacy.screen_name
   const userIsBlueVerified = userTweetInfo?.is_blue_verified
@@ -193,18 +196,18 @@ const TweetDisplay = ({
                     </button>
                   </div>
                   <div className="flex">
-                    <span className="name">Shokker</span>
-                    <span className="sub-name">@shokker</span>
-                    <span className="description">Hello i'm fine and you</span>
+                    <span className="name">{userName}</span>
+                    <span className="sub-name">@{userScreenName}</span>
+                    <span className="description">{userDescription}</span>
                   </div>
                   <div className="follow">
                     <div>
-                      <span className="number">543</span>
+                      <span className="number">{userFollowingCount}</span>
                       {' '}
                       <span className="text">Following</span>
                     </div>
                     <div>
-                      <span className="number">123,543</span>
+                      <span className="number">{userFollowersCount}</span>
                       {' '}
                       <span className="text">Followers</span>
                     </div>
