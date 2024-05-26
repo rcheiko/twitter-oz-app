@@ -4,11 +4,12 @@ import { css } from "@emotion/react"
 import { PopOver, PopOverCard, PopOverMenu } from "../popover-card"
 import { Theme, colors, useTheme } from "../../theme"
 import { styleTweetDisplay } from "../../styles/tweet"
-import { Entry } from "../../utils/fetch/homeTimeline"
+import { Entry, Result } from "../../utils/fetch/homeTimeline"
 import blue_verified_badge from "../../assets/blue-verified-badge.svg"
 import yellow_verified_badge from "../../assets/yellow-verified-badge.svg"
 import Avatar from "../avatar"
 import TooltipDisplay from "../hover-card"
+import TweetTextFormated from "./tweet-text-formated"
 
 const tooltipUpload = (theme: Theme) => css`
   display: flex;
@@ -139,7 +140,7 @@ width: 25rem;
 `
 
 interface ITweet {
-  tweet: Entry
+  tweet: Result | undefined
 }
 
 const TweetDisplay = ({
@@ -149,17 +150,19 @@ const TweetDisplay = ({
   const imagesLength = 2
   const follow = false
   console.log('tweet', tweet);
-  const tweetDetails = tweet.content.itemContent?.tweet_results.result
-  const description = tweetDetails?.legacy?.full_text
-  const description2 = tweetDetails?.legacy?.retweeted_status_result
-  const views = tweetDetails?.views?.count
-  const replyCount = tweetDetails?.legacy?.reply_count
-  const retweetCount = tweetDetails?.legacy?.retweet_count
-  const likesCount = tweetDetails?.legacy?.favorite_count
-  const bookmarkCount = tweetDetails?.legacy?.bookmark_count
-  const isRetweeted = tweetDetails?.legacy?.retweeted
-  const medias = tweetDetails?.legacy?.entities.media
-  const userTweetInfo = tweetDetails?.core?.user_results.result
+
+  const description = tweet?.legacy?.full_text
+  const description2 = tweet?.legacy?.retweeted_status_result
+  const views = tweet?.views?.count
+  const createdAt = tweet?.legacy?.created_at
+  const replyCount = tweet?.legacy?.reply_count
+  const retweetCount = tweet?.legacy?.retweet_count
+  const likesCount = tweet?.legacy?.favorite_count
+  const bookmarkCount = tweet?.legacy?.bookmark_count
+  const isRetweeted = tweet?.legacy?.retweeted
+  const medias = tweet?.legacy?.entities.media
+  const userTweetInfo = tweet?.core?.user_results.result
+
   const userFollowersCount = userTweetInfo?.legacy.followers_count
   const userFollowingCount = userTweetInfo?.legacy.friends_count
   const userDescription = userTweetInfo?.legacy.description
@@ -232,36 +235,42 @@ const TweetDisplay = ({
                 <MoreHorizontal size={20} />
               </div>
             </div>
-            <span>
-              {description}
-            </span>
-            <div className={`picture number-${imagesLength}`}>
-              {
-                medias?.map((media,i) => {
-                  if (media.type === 'photo') {
-                    return (
-                      <img
-                        key={media.id_str}
-                        src={media.media_url_https}
-                        className={`picture-${i+1}`}
-                      />
-                    )  
+            <TweetTextFormated
+              text={description ?? ''}
+              tweetDetails={tweet}
+            />
+            {
+              medias && (
+                <div className={`picture number-${imagesLength}`}>
+                  {
+                    medias?.map((media,i) => {
+                      if (media.type === 'photo') {
+                        return (
+                          <img
+                            key={media.id_str}
+                            src={media.media_url_https}
+                            className={`picture-${i+1}`}
+                          />
+                        )  
+                      }
+                      if (media.type === 'video') {
+                        const videoInfo = media.video_info?.variants.find((variant) => variant.content_type === 'video/mp4' )
+                        return (
+                          <video
+                            key={media.id_str}
+                            src={videoInfo?.url}
+                            className={`picture-${i+1}`}
+                            typeof={videoInfo?.content_type}
+                            controls
+                          />
+                        )
+                      }
+                    })
                   }
-                  if (media.type === 'video') {
-                    const videoInfo = media.video_info?.variants.find((variant) => variant.content_type === 'video/mp4' )
-                    return (
-                      <video
-                        key={media.id_str}
-                        src={videoInfo?.url}
-                        className={`picture-${i+1}`}
-                        typeof={videoInfo?.content_type}
-                        controls
-                      />
-                    )
-                  }
-                })
-              }
-            </div>
+                </div>
+              )
+            }
+
             <div className="icon-tweet">
               <div className="answer">
                 <MessageCircle size={18} />

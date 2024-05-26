@@ -87,6 +87,18 @@ export interface Content {
   clientEventInfo?: ClientEventInfo
   value?: string
   cursorType?: string
+  items?: Item[]
+}
+
+export interface Item {
+  entryId: string
+  item: Item2
+}
+
+export interface Item2 {
+  itemContent: ItemContent
+  feedbackInfo: FeedbackInfo
+  clientEventInfo: ClientEventInfo
 }
 
 export interface ItemContent {

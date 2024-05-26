@@ -16,23 +16,32 @@ const TweetHomeTimeline = () => {
   useEffect(() => {
     getHomeTimeline().then(res => setHomeTimeline(res))
   }, [])
-  console.log("homeTimeline: ", homeTimeline);
-  
+
   return (
     <div>
       {
         homeTimeline
-         ? (
-          homeTimeline?.data?.home.home_timeline_urt.instructions[0].entries.map(tweet => {
-            return (
-              <TweetDisplay
-                key={tweet.entryId}
-                tweet={tweet}
-              />
-            )
-          })
-         )
-        : <Loading />
+          ? (
+            homeTimeline?.data?.home.home_timeline_urt.instructions[0].entries
+              .filter((entry) => !entry.entryId.includes('promoted-tweet'))
+              .map(tweet => {
+                if (tweet.entryId.includes('home-conversation') && tweet.content?.items?.length) {
+                  return (
+                    <TweetDisplay
+                      key={tweet.entryId}
+                      tweet={tweet.content.items[0].item.itemContent.tweet_results.result}
+                    />
+                  )
+                }
+                return (
+                  <TweetDisplay
+                    key={tweet.entryId}
+                    tweet={tweet.content.itemContent?.tweet_results.result}
+                  />
+                )
+            })
+          )
+          : <Loading />
       }
     </div>
   )

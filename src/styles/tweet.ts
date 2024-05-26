@@ -30,6 +30,7 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
   justify-content: flex-start;
   margin-top: 1rem;
   gap: .5rem;
+  width: 95%;
   @media (min-width: 640px) {
     gap: 1rem;
   }
@@ -48,6 +49,7 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
     flex-direction: column;
     font-size: 1.4rem;
     flex: 1;
+    width: 100%;
     @media (min-width: 640px) {
       font-size: 1.6rem;
     }
