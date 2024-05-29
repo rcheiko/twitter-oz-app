@@ -1,7 +1,7 @@
 import { css } from "@emotion/react"
 
 import { Theme, colors, useTheme } from "../../theme"
-import { Result } from "../../utils/fetch/homeTimeline"
+import { Result } from "../../utils/fetch/home-timeline"
 
 const style = (theme: Theme) => css`
   white-space: pre-wrap;

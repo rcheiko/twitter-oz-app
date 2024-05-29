@@ -30,7 +30,6 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
   justify-content: flex-start;
   margin-top: 1rem;
   gap: .5rem;
-  width: 95%;
   @media (min-width: 640px) {
     gap: 1rem;
   }
@@ -198,6 +197,15 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
         :hover {
           color: ${theme.colors.errorPrimary};
         }
+
+      }
+      .liked {
+        svg {
+          color: ${theme.colors.errorPrimary};
+          fill: ${theme.colors.errorPrimary};
+        }
+        color: ${theme.colors.errorPrimary};
+
       }
       .view {
         :hover {

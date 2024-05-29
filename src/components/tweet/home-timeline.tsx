@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { css } from "@emotion/react"
 
-import { HomeTimelineType, getHomeTimeline } from "../../utils/fetch/homeTimeline"
+import { HomeTimelineType, getHomeTimeline } from "../../utils/fetch/home-timeline"
 import { Theme, useTheme } from "../../theme"
 import TweetDisplay from "./tweet-display"
 import Loading from "../shimmer/loading"

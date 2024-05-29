@@ -1,10 +1,12 @@
+import { useState } from "react"
 import { BarChart2, Bookmark, Edit2, Heart, Link, Mail, MessageCircle, MoreHorizontal, Repeat, Upload } from "react-feather"
 import { css } from "@emotion/react"
 
+import { dislikeTweet, likeTweet } from "../../utils/fetch/like-tweet"
 import { PopOver, PopOverCard, PopOverMenu } from "../popover-card"
 import { Theme, colors, useTheme } from "../../theme"
 import { styleTweetDisplay } from "../../styles/tweet"
-import { Entry, Result } from "../../utils/fetch/homeTimeline"
+import { Result } from "../../utils/fetch/home-timeline"
 import blue_verified_badge from "../../assets/blue-verified-badge.svg"
 import yellow_verified_badge from "../../assets/yellow-verified-badge.svg"
 import Avatar from "../avatar"
@@ -147,9 +149,10 @@ const TweetDisplay = ({
   tweet
 }: ITweet) => {
   const theme = useTheme()
+  const [isFavorited, setIsFavorited] = useState(tweet?.legacy?.favorited)
+  const [likeCount, setLikeCount] = useState(tweet?.legacy?.favorite_count ?? 0)
   const imagesLength = 2
   const follow = false
-  console.log('tweet', tweet);
 
   const description = tweet?.legacy?.full_text
   const description2 = tweet?.legacy?.retweeted_status_result
@@ -157,7 +160,6 @@ const TweetDisplay = ({
   const createdAt = tweet?.legacy?.created_at
   const replyCount = tweet?.legacy?.reply_count
   const retweetCount = tweet?.legacy?.retweet_count
-  const likesCount = tweet?.legacy?.favorite_count
   const bookmarkCount = tweet?.legacy?.bookmark_count
   const isRetweeted = tweet?.legacy?.retweeted
   const medias = tweet?.legacy?.entities.media
@@ -170,9 +172,19 @@ const TweetDisplay = ({
   const userScreenName = userTweetInfo?.legacy.screen_name
   const userIsBlueVerified = userTweetInfo?.is_blue_verified
   const userIsVerifiedBusiness = userTweetInfo?.legacy.verified_type === 'Business'
-
   const avatar = userTweetInfo?.legacy.profile_image_url_https
-  
+
+  const likeButton = () => {
+    if (isFavorited) {
+      dislikeTweet(tweet?.rest_id)
+      setIsFavorited(false)
+      setLikeCount(likeCount - 1)
+    } else {
+      likeTweet(tweet?.rest_id)
+      setIsFavorited(true)
+      setLikeCount(likeCount + 1)
+    }
+  }
   return (
     <div css={styleTweetDisplay(theme)}>
       <div>
@@ -223,7 +235,7 @@ const TweetDisplay = ({
             <div className="top-tweet">
               <div className="text">
                 <span className="name">{userName}</span>
-                {userIsBlueVerified && <Avatar src={blue_verified_badge} size="2rem" />}
+                {!userIsVerifiedBusiness && userIsBlueVerified && <Avatar src={blue_verified_badge} size="2rem" />}
                 {userIsVerifiedBusiness && <Avatar src={yellow_verified_badge} size="2rem" />}
                 <div className="hashtag-name">
                   <span>@{userScreenName}</span>
@@ -296,9 +308,12 @@ const TweetDisplay = ({
                   </div>
                 </PopOverMenu>
               </PopOver>
-              <div className="like">
+              <div
+                className={`like ${isFavorited ? 'liked' : ''}`}
+                onClick={() => likeButton()}
+              >
                 <Heart size={18} />
-                {likesCount}
+                {likeCount}
               </div>
               <div className="view">
                 <BarChart2 size={18} />
