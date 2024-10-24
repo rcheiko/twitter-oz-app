@@ -9,9 +9,9 @@ import { styleTweetDisplay } from "../../styles/tweet"
 import { Result } from "../../utils/fetch/home-timeline"
 import blue_verified_badge from "../../assets/blue-verified-badge.svg"
 import yellow_verified_badge from "../../assets/yellow-verified-badge.svg"
-import Avatar from "../avatar"
-import TooltipDisplay from "../hover-card"
 import TweetTextFormated from "./tweet-text-formated"
+import UserScreenName from "../user-screen-name"
+import Avatar from "../avatar"
 
 const tooltipUpload = (theme: Theme) => css`
   display: flex;
@@ -66,81 +66,6 @@ const tooltipRetweet = (theme: Theme) => css`
   }
 `
 
-const tooltipAvatar = (theme: Theme) => css`
-width: 25rem;
-
-.top-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  img {
-    width: 6.5rem;
-    height: 6.5rem;
-  }
-  video {
-    width: 6.5rem;
-    height: 6.5rem;
-  }
-
-  button {
-    border-radius: 1rem;
-    padding: .5rem 1.5rem;
-    font-size: 1.6rem;
-    font-weight: 600;
-    transition: all .2s ease-in-out;
-    opacity: 1;
-    :hover {
-      cursor: pointer;
-      opacity: .9;
-    }
-  }
-  .following {
-    background-color: ${theme.colors.backgroundSecondary};
-    color: ${theme.colors.active};
-  }
-  .followed {
-    background-color: ${theme.colorScheme === 'dark' ? colors.white : colors.grey};
-    color: ${colors.black};
-  }
-}
-
-.flex {
-  display: flex;
-  flex-direction: column;
-  .name {
-    font-size: 1.8rem;
-    font-weight: 600;
-  }
-  .sub-name {
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: ${theme.colors.inactive};
-    margin-bottom: .5rem;
-  }
-  .description {
-    font-size: 1.3rem;
-    font-weight: 400;
-  }
-}
-
-.follow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1rem;
-  .number {
-    font-size: 1.4rem;
-    font-weight: 600;
-  }
-  .text {
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: ${theme.colors.inactive};
-  }
-}
-`
-
 interface ITweet {
   tweet: Result | undefined
 }
@@ -152,8 +77,7 @@ const TweetDisplay = ({
   const [isFavorited, setIsFavorited] = useState(tweet?.legacy?.favorited)
   const [likeCount, setLikeCount] = useState(tweet?.legacy?.favorite_count ?? 0)
   const imagesLength = 2
-  const follow = false
-
+  
   const description = tweet?.legacy?.full_text
   const description2 = tweet?.legacy?.retweeted_status_result
   const views = tweet?.views?.count
@@ -169,10 +93,11 @@ const TweetDisplay = ({
   const userFollowingCount = userTweetInfo?.legacy.friends_count
   const userDescription = userTweetInfo?.legacy.description
   const userName = userTweetInfo?.legacy.name
-  const userScreenName = userTweetInfo?.legacy.screen_name
+  const name = userTweetInfo?.legacy.screen_name
   const userIsBlueVerified = userTweetInfo?.is_blue_verified
   const userIsVerifiedBusiness = userTweetInfo?.legacy.verified_type === 'Business'
   const avatar = userTweetInfo?.legacy.profile_image_url_https
+  const followed = userTweetInfo?.legacy.following
 
   const likeButton = () => {
     if (isFavorited) {
@@ -185,6 +110,7 @@ const TweetDisplay = ({
       setLikeCount(likeCount + 1)
     }
   }
+
   return (
     <div css={styleTweetDisplay(theme)}>
       <div>
@@ -194,41 +120,13 @@ const TweetDisplay = ({
         </div> */}
         <div className="profile">
           <div className="avatar">
-            <TooltipDisplay
+            <UserScreenName
               text={
                 <div className="main">
                   <Avatar src={avatar} />
                 </div>
               }
-              toolTipText={
-                <div css={tooltipAvatar(theme)}>
-                  <div className="top-menu">
-                    <Avatar src={avatar} />
-                    <button className={follow ? "following" : "followed"}>
-                      {
-                        follow ? "Following" : "Follow"
-                      }
-                    </button>
-                  </div>
-                  <div className="flex">
-                    <span className="name">{userName}</span>
-                    <span className="sub-name">@{userScreenName}</span>
-                    <span className="description">{userDescription}</span>
-                  </div>
-                  <div className="follow">
-                    <div>
-                      <span className="number">{userFollowingCount}</span>
-                      {' '}
-                      <span className="text">Following</span>
-                    </div>
-                    <div>
-                      <span className="number">{userFollowersCount}</span>
-                      {' '}
-                      <span className="text">Followers</span>
-                    </div>
-                  </div>
-                </div>
-              }
+              userInfo={userTweetInfo}
             />
           </div>
           <div className="tweet">
@@ -238,7 +136,7 @@ const TweetDisplay = ({
                 {!userIsVerifiedBusiness && userIsBlueVerified && <Avatar src={blue_verified_badge} size="2rem" />}
                 {userIsVerifiedBusiness && <Avatar src={yellow_verified_badge} size="2rem" />}
                 <div className="hashtag-name">
-                  <span>@{userScreenName}</span>
+                  <span>@{name}</span>
                   <span>·</span>
                   <span>11h</span>
                 </div>

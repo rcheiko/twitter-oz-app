@@ -28,7 +28,7 @@ border-bottom: 1px solid ${theme.colors.borderPrimary};
 .profile {
   display: flex;
   justify-content: flex-start;
-  margin-top: 1rem;
+  padding-top: 1rem;
   gap: .5rem;
   @media (min-width: 640px) {
     gap: 1rem;
