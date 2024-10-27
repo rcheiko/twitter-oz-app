@@ -3,10 +3,11 @@ import { CheckCircle, MoreHorizontal } from "react-feather"
 import { css } from '@emotion/react'
 
 
-import { Theme, fontSizes, useTheme } from '../theme'
-import { PopOver, PopOverCard, PopOverMenu } from './popover-card'
 import { ProfileConnectedType, getProfileConnected } from "../utils/fetch/profile-connected"
 import { SettingsType, getSettings } from "../utils/fetch/settings"
+import { PopOver, PopOverCard, PopOverMenu } from './popover-card'
+import { Theme, fontSizes, useTheme } from '../theme'
+import { screenName } from "../apollo/client"
 import Avatar from "./avatar"
 import avatar from "../assets/avatar.jpg"
 import Shimmer from "./shimmer/shimmer"
@@ -69,7 +70,7 @@ const ListProfileConnected = () => {
   const profile = profileConnected?.users?.find(user => settings?.screen_name === user.screen_name)
   useEffect(() => {
     getProfileConnected().then((res) => setProfileConnected(res))
-    getSettings().then((res) => setSettings(res))
+    getSettings().then((res) => { setSettings(res); screenName(res.screen_name) })
   }, [])
 
   if (!profileConnected || !profileConnected?.users?.length || !profile) return (

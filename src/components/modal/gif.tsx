@@ -106,7 +106,7 @@ const GifModal = ({ open, onClose, setGif }: IGifModal) => {
   }
 
   const onGifClick = (gif: IGif, e: SyntheticEvent<HTMLElement, Event>) => {
-    console.log(gif);
+    console.log(gif)
     setGif(gif.images.original.url)
     onClose()
   }

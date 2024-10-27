@@ -59,7 +59,6 @@ const TweetTextFormated = ({ text, tweetDetails }: { text: string, tweetDetails:
   const symbolArray = tweetDetails?.legacy?.entities.symbols
   const userMentions = tweetDetails?.legacy?.entities.user_mentions
   const urls = tweetDetails?.legacy?.entities.urls
-  console.log('tweetDetails', tweetDetails);
   
   // Add symbols to be formatted
   symbolArray?.forEach(symbol => {
@@ -142,25 +141,34 @@ const TweetTextFormated = ({ text, tweetDetails }: { text: string, tweetDetails:
         const result = urls?.map(url => {
           if (part.includes(url.url)) {
             part = url.display_url
-            return <a target="_blank" className="link" href={url.expanded_url} key={index}>{url.display_url}</a>
+            return (
+              <a
+                key={index}
+                target="_blank"
+                className="link"
+                href={url.expanded_url}
+              >
+                {url.display_url}
+              </a>
+            )
           }
           return null
         })
         if (result?.length) return result
         if (fullText && !tweetDetails?.legacy?.full_text.includes(fullText)) {
-          return <span className="link" onClick={() => setShowMore(true)}><br />Show more</span>
+          return <span key={index} className="link" onClick={() => setShowMore(true)}><br />Show more</span>
         }
-        return <span className="wip">work in progress</span>
+        return <span key={index} className="wip">work in progress</span>
       }
 
       // Format links
       if (/https?:\/\/\S+/.test(part)) {
-        return <span className="link" key={index}>{part}</span>
+        return <span key={index} className="link">{part}</span>
       }
 
       // Format hashtags
       if (/#\w+/.test(part)) {
-        return <span className="hashtag" key={index}>{part}</span>
+        return <span key={index} className="hashtag">{part}</span>
       }
 
       // Format user mentions with surrounding characters handled
@@ -173,6 +181,7 @@ const TweetTextFormated = ({ text, tweetDetails }: { text: string, tweetDetails:
           if (/@\w+/.test(segment)) {
             return (
               <UserScreenName
+                key={`${index}-${segIndex}`}
                 text={
                   <span
                     className="user-mentions"

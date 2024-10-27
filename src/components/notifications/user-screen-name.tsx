@@ -1,13 +1,11 @@
-import { ReactNode, useEffect, useState } from "react"
+import { ReactNode, useState } from "react"
 import { css } from "@emotion/react"
 
-import { followButton } from "../utils/action/handleFollow"
-import { Result3 } from "../types/twitter/UserTweet"
-import { colors, Theme, useTheme } from "../theme"
-import { useReactiveVar } from "@apollo/client"
-import { screenName } from "../apollo/client"
-import TooltipDisplay from "./hover-card"
-import Avatar from "./avatar"
+import { followButton } from "../../utils/action/handleFollow"
+import { User } from "../../utils/fetch/notifications"
+import { colors, Theme, useTheme } from "../../theme"
+import TooltipDisplay from "./../hover-card"
+import Avatar from "./../avatar"
 
 const tooltipAvatar = (theme: Theme) => css`
 width: 25rem;
@@ -86,33 +84,28 @@ width: 25rem;
 
 export const userScreenName = ({
   text,
-  userInfo
+  user
 }: {
   text: ReactNode,
-  userInfo: Result3 | undefined
+  user: User | undefined
 }) => {
   const theme = useTheme()
-  const userScreenName = useReactiveVar(screenName)
 
-  const [followed, setFollowed] = useState(userInfo?.legacy.following)
-  
-  const userFollowersCount = userInfo?.legacy.followers_count
-  const userFollowingCount = userInfo?.legacy.friends_count
-  const userDescription = userInfo?.legacy.description
-  const userName = userInfo?.legacy.name
-  const name = userInfo?.legacy.screen_name
-  const avatar = userInfo?.legacy.profile_image_url_https
+  const [followed, setFollowed] = useState(user?.following)
+
+  const userFollowersCount = user?.followers_count
+  const userFollowingCount = user?.friends_count
+  const userDescription = user?.description
+  const userName = user?.name
+  const name = user?.screen_name
+  const avatar = user?.profile_image_url_https
 
   const updateFollow = async() => {
-    const status = await followButton(userInfo, followed)
+    const status = await followButton(user, followed)
     if (status) {
       setFollowed(!followed)
     }
   }
-
-  useEffect(() => {
-    setFollowed(userInfo?.legacy.following)
-  }, [userInfo])
 
   return (
     <TooltipDisplay
@@ -121,20 +114,14 @@ export const userScreenName = ({
         <div css={tooltipAvatar(theme)}>
           <div className="top-menu">
             <Avatar src={avatar} />
-            {
-              !(userInfo?.legacy.screen_name === userScreenName)
-                ? (
-                  <button
-                    onClick={() => updateFollow()}
-                    className={followed ? "following" : "followed"}
-                  >
-                    {
-                      followed ? "Following" : "Follow"
-                    }
-                  </button>
-                )
-                : null
-            }
+            <button
+              onClick={() => updateFollow()}
+              className={followed ? "following" : "followed"}
+            >
+              {
+                followed ? "Following" : "Follow"
+              }
+            </button>
           </div>
           <div className="flex">
             <span className="name">{userName}</span>

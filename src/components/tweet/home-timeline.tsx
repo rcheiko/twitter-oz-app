@@ -59,7 +59,6 @@ const TweetHomeTimeline = () => {
       // if the user has scrolled within 300px of the bottom
       if (scrollTop + windowHeight >= docHeight - 500 && !isLoading) {
         console.log('load more tweets')
-        
         // loadMoreTweets()
       }
     }

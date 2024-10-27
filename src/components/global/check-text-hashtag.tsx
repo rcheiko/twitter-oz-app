@@ -11,4 +11,4 @@ const CheckTextHashtag = ({ text }: { text: string }) => {
   return <>{coloredText}</>
 }
 
-export default CheckTextHashtag;
+export default CheckTextHashtag

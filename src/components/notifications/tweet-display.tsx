@@ -1,16 +1,15 @@
 import { useState } from "react"
-import { BarChart2, Bookmark, Edit2, Heart, Link, Mail, MessageCircle, MoreHorizontal, Repeat, Upload } from "react-feather"
+import { Bookmark, Edit2, Heart, Link, Mail, MessageCircle, MoreHorizontal, Repeat, Upload } from "react-feather"
 import { css } from "@emotion/react"
 
 import { dislikeTweet, likeTweet } from "../../utils/fetch/like-tweet"
 import { PopOver, PopOverCard, PopOverMenu } from "../popover-card"
-import { Theme, useTheme } from "../../theme"
+import { Tweet, User } from "../../utils/fetch/notifications"
 import { styleTweetDisplay } from "../../styles/tweet"
-import { Result } from "../../utils/fetch/home-timeline"
+import { Theme, useTheme } from "../../theme"
 import blue_verified_badge from "../../assets/blue-verified-badge.svg"
-import yellow_verified_badge from "../../assets/yellow-verified-badge.svg"
-import TweetTextFormated from "./tweet-text-formated"
-import UserScreenName from "../user-screen-name"
+import TweetTextFormated from "../tweet/tweet-text-formated"
+import UserScreenName from "./user-screen-name"
 import Avatar from "../avatar"
 
 const tooltipUpload = (theme: Theme) => css`
@@ -67,45 +66,36 @@ const tooltipRetweet = (theme: Theme) => css`
 `
 
 interface ITweet {
-  tweet: Result | undefined
+  tweet: Tweet
+  user: User | undefined
 }
 
 const TweetDisplay = ({
-  tweet
+  tweet,
+  user
 }: ITweet) => {
   const theme = useTheme()
-  const [isFavorited, setIsFavorited] = useState(tweet?.legacy?.favorited)
-  const [likeCount, setLikeCount] = useState(tweet?.legacy?.favorite_count ?? 0)
-  const imagesLength = 2
+  const [isFavorited, setIsFavorited] = useState(tweet?.favorited)
+  const [likeCount, setLikeCount] = useState(tweet?.favorite_count ?? 0)
   
-  const description = tweet?.legacy?.full_text
-  const description2 = tweet?.legacy?.retweeted_status_result
-  const views = tweet?.views?.count
-  const createdAt = tweet?.legacy?.created_at
-  const replyCount = tweet?.legacy?.reply_count
-  const retweetCount = tweet?.legacy?.retweet_count
-  const bookmarkCount = tweet?.legacy?.bookmark_count
-  const isRetweeted = tweet?.legacy?.retweeted
-  const medias = tweet?.legacy?.entities.media
-  const userTweetInfo = tweet?.core?.user_results.result
+  const description = tweet?.full_text
+  const replyCount = tweet?.reply_count
+  const retweetCount = tweet?.retweet_count
+  const isRetweeted = tweet?.retweeted
 
-  const userFollowersCount = userTweetInfo?.legacy.followers_count
-  const userFollowingCount = userTweetInfo?.legacy.friends_count
-  const userDescription = userTweetInfo?.legacy.description
-  const userName = userTweetInfo?.legacy.name
-  const name = userTweetInfo?.legacy.screen_name
-  const userIsBlueVerified = userTweetInfo?.is_blue_verified
-  const userIsVerifiedBusiness = userTweetInfo?.legacy.verified_type === 'Business'
-  const avatar = userTweetInfo?.legacy.profile_image_url_https
-  const followed = userTweetInfo?.legacy.following
+  const userName = user?.name
+  const name = user?.screen_name
+  const userIsBlueVerified = user?.verified
+  const avatar = user?.profile_image_url_https
+  console.log('user', user, isFavorited);
 
   const likeButton = () => {
     if (isFavorited) {
-      dislikeTweet(tweet?.rest_id)
+      dislikeTweet(tweet.id_str)
       setIsFavorited(false)
       setLikeCount(likeCount - 1)
     } else {
-      likeTweet(tweet?.rest_id)
+      likeTweet(tweet.id_str)
       setIsFavorited(true)
       setLikeCount(likeCount + 1)
     }
@@ -122,25 +112,29 @@ const TweetDisplay = ({
           <div className="avatar">
             <UserScreenName
               text={
-                <div className="main">
+                <div>
                   <Avatar src={avatar} />
                 </div>
               }
-              userInfo={userTweetInfo}
+              user={user}
             />
           </div>
           <div className="tweet">
             <div className="top-tweet">
-              <div className="text">
-                <span className="name">{userName}</span>
-                {!userIsVerifiedBusiness && userIsBlueVerified && <Avatar src={blue_verified_badge} size="2rem" />}
-                {userIsVerifiedBusiness && <Avatar src={yellow_verified_badge} size="2rem" />}
-                <div className="hashtag-name">
-                  <span>@{name}</span>
-                  <span>·</span>
-                  <span>11h</span>
-                </div>
-              </div>
+              <UserScreenName
+                text={
+                  <div className="text">
+                    <span className="name">{userName}</span>
+                    {userIsBlueVerified && <Avatar src={blue_verified_badge} size="2rem" />}
+                    <div className="hashtag-name">
+                      <span>@{name}</span>
+                      <span>·</span>
+                      <span>11h</span>
+                    </div>
+                  </div>
+                }
+                user={user}
+              />
               <div className="more">
                 <MoreHorizontal size={20} />
               </div>
@@ -149,7 +143,7 @@ const TweetDisplay = ({
               text={description ?? ''}
               tweetDetails={tweet}
             />
-            {
+            {/* {
               medias && (
                 <div className={`picture number-${imagesLength}`}>
                   {
@@ -179,8 +173,7 @@ const TweetDisplay = ({
                   }
                 </div>
               )
-            }
-
+            } */}
             <div className="icon-tweet">
               <div className="answer">
                 <MessageCircle size={18} />
@@ -212,10 +205,6 @@ const TweetDisplay = ({
               >
                 <Heart size={18} />
                 {likeCount}
-              </div>
-              <div className="view">
-                <BarChart2 size={18} />
-                {views}
               </div>
               <PopOver>
                 <PopOverCard>
